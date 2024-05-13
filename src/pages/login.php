@@ -8,17 +8,22 @@
 </head>
 <body>
     <?php
-        include '../connection.php';
+        include '../../connection.php';
 
         if(isset($_POST['login'])){
             $email = $_POST['email'];
             $pw = $_POST['pw'];
 
             $user = mysqli_query($conn, "SELECT id FROM users WHERE email='$email' AND password='$pw'");
-            if(count(mysqli_fetch_all($user, MYSQLI_ASSOC)) < 1){
-                echo "tak de";
+            if($user){
+                $userFind = mysqli_fetch_all($user, MYSQLI_ASSOC);
+                $userID = $userFind[0]['id'];
+                header("location:pengaduan.php?user_id=$userID");
             }else{
-                echo " ada";
+                
+                echo '<script>      
+                        alert("Pastikan email dan password Anda benar")
+                    </script>';
             }
         }
     ?>

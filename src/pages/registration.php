@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registrasi</title>
 </head>
 <body>
     <?php
-        include '../connection.php';
+        include '../../connection.php';
 
         if(isset($_POST['submit'])){
             $nama = $_POST['nama'];
@@ -26,7 +26,7 @@
                     echo '<script>      
                         alert("Nomor Telepon dan NIK melebihi batas maksimal")
                     </script>';
-                }else if($noHp < 1000000000 || $nik < 10000000000000000){
+                }else if($noHp < 10000000000 || $nik < 1000000000000000){
                     echo '<script>      
                         alert("Nomor Telepon dan NIK kurang dari batas yang ditentukan")
                     </script>';   
@@ -43,9 +43,10 @@
                         $addUser = mysqli_query($conn, $query);
 
                         if($addUser){
-                            echo '<script>      
-                                    alert("ok")
-                                </script>';
+                            $toLogin = mysqli_query($conn, "SELECT id FROM users WHERE nik=$nik");
+                            $resultForLogin = mysqli_fetch_all($toLogin, MYSQLI_ASSOC);
+                            $userID = $resultForLogin[0]['id'];
+                            header("location:pengaduan.php?user_id=$userID");
                         }else{
                             echo '<script>      
                                     alert("data harus lengkap")
