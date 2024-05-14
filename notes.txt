@@ -1,0 +1,22 @@
+business rules for system pengaduan
+
+user login:
+1. index
+2. login
+3. buat pengaduan
+
+user register:
+1. index
+2. register 
+3. buat pengaduan
+
+admin:
+1. index
+2. login
+3. dashboard admin
+
+
+ERD:
+
+
+color : https://colorhunt.co/palette/eef5ffb4d4ff86b6f6176b87

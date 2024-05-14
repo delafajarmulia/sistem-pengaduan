@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
 </head>
 <body>
     <?php
@@ -15,15 +15,25 @@
             $pw = $_POST['pw'];
 
             $user = mysqli_query($conn, "SELECT id FROM users WHERE email='$email' AND password='$pw'");
-            if($user){
-                $userFind = mysqli_fetch_all($user, MYSQLI_ASSOC);
+            $userFind = mysqli_fetch_all($user, MYSQLI_ASSOC);
+            $userAvailabled = count($userFind);
+
+            if($userAvailabled == 1){
                 $userID = $userFind[0]['id'];
                 header("location:pengaduan.php?user_id=$userID");
             }else{
-                
-                echo '<script>      
-                        alert("Pastikan email dan password Anda benar")
-                    </script>';
+                $admin = mysqli_query($conn, "SELECT id FROM employees WHERE email='$email' AND password='$pw'");
+                $adminFind = mysqli_fetch_all($admin, MYSQLI_ASSOC);
+                $adminAvailabled = count($adminFind);
+
+                if($adminAvailabled == 1){
+                    $employeeID = $adminFind[0]['id'];
+                    header("location:dashboard-admin.php?employee_id=$employeeID");
+                }else{
+                    echo '<script>      
+                            alert("Pastikan email dan password Anda benar")
+                        </script>';
+                }
             }
         }
     ?>

@@ -39,7 +39,7 @@
                                 alert("data harus lengkap")
                             </script>';
                     }else{
-                        $query = "INSERT INTO users(nama, password, email, nik, no_telp, role) VALUES('$nama', '$pw', '$email', '$nik', '$noHp', 'masyarakat')";
+                        $query = "INSERT INTO users(nama, password, email, nik, no_telp) VALUES('$nama', '$pw', '$email', '$nik', '$noHp')";
                         $addUser = mysqli_query($conn, $query);
 
                         if($addUser){
