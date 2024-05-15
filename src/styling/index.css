@@ -37,12 +37,17 @@ h2{
     height: 60vh;
     background-color: #9BC53D;
     padding: 120px 70px;
+    display: flex;
+    justify-content: space-between;
+}
+.title-content{
+    padding-top: 100px;
 }
 .btn-login{
     background-color: #FDE74C;
 }
 .title-content h2{
-    font-size: 28pt;
+    font-size: 33pt;
 }
 .con-p{
     padding-top: 10px;
@@ -52,9 +57,12 @@ h2{
 .con-btn{
     display: flex;
 }
-.link > .btn-regis{
+.btn-regis{
     margin-left: 5px;
-    color: #FDE74C;
+    color: red;
     background-color: #9BC53D;
     border: #FDE74C;
+}
+.img-title{
+    width: 700px;
 }

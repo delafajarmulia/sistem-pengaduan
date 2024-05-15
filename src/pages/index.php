@@ -26,8 +26,7 @@
             <div class="title-content">
                 <h2>Lorem Ipsum</h2>
                 <div class="con-p">
-                    <p>Lorem ipsum dolor sit amet,</p>
-                    <p>consectetur adipiscing elit,</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,</p>
                     <p>sed do eiusmod tempor incididunt ut</p>
                     <p>labore et dolore magna aliqua.</p>
                 </div>
@@ -45,7 +44,7 @@
                 </div>
             </div>
             <div class="img-title">
-
+                <img src="../../img/pengaduan-removebg.png" alt="pengaduan" class="img-title">
             </div>
         </div>
     </div>

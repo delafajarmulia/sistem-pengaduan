@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="../styling/login.css">
 </head>
 <body>
     <?php
@@ -29,21 +30,33 @@
                 if($adminAvailabled == 1){
                     $employeeID = $adminFind[0]['id'];
                     header("location:dashboard-admin.php?employee_id=$employeeID");
-                }else{
-                    echo '<script>      
-                            alert("Pastikan email dan password Anda benar")
-                        </script>';
-                }
+                }else{ ?>
+                    <div class="alert alert-danger">
+                        <p>
+                            Pastikan Anda telah mengisikan Email dan Password dengan benar.
+                        </p>
+                    </div>
+                <?php }
             }
         }
     ?>
     <div class="card">
+        <h2>Login</h2>
         <form action="" method="post">
-            <label for="">Email</label>
-            <input type="email" name="email" required>
-            <label for="">Password</label>
-            <input type="password" name="pw" required>
-            <button type="submit" name="login">Masuk</button>
+            <div class="con-field">
+                <label for="">Email</label><br>
+                <input type="email" name="email" required>
+            </div>
+            <div class="con-field">
+                <label for="">Password</label><br>
+                <input type="password" name="pw" required>
+            </div>
+            <div class="con-field">
+                <button type="submit" name="login" class="btn-login">Masuk</button>
+                <div class="daftar">
+                    <p>Belum punya akun? <a href="registration.php">Daftar sekarang</a></p>
+                </div>
+            </div>
         </form>
     </div>
 </body>

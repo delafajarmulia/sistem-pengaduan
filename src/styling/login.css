@@ -1,0 +1,74 @@
+*{
+    color: #114232;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.card{
+    max-width: 400px;
+    min-height: 200px;
+    background-color: #9BC53D;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+}
+h2{
+    text-align: center;
+    padding-top: 10px;
+}
+form{
+    padding-left: 50px;
+    padding-top: 15px;
+    padding-bottom: 20px;
+}
+.con-field{
+    padding-top: 7px;
+}
+label{
+    font-size: 11pt;
+}
+input{
+    width: 300px;
+    height: 23px;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 3px;
+    margin-top: 5px;
+}
+.btn-login{
+    margin-top: 20px;
+    width: 300px;
+    height: 30px;
+    background-color: #FDE74C;
+    border: none;
+    border-radius: 5px;
+}
+.daftar{
+    padding-left: 40px;
+    padding-top: 3px;
+    padding-bottom: 10px;
+}
+.daftar p{
+    font-size: 10pt;
+}
+a{
+    font-size: 10pt;
+    color: #318eb5;
+}
+.alert{
+    width: 50%;
+    height: 50px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 25px;
+    border-radius: 5px;
+}
+.alert-danger{
+    background-color: #FF6666;
+}
+.alert p {
+    text-align: center;
+}
