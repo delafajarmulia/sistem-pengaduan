@@ -1,5 +1,5 @@
 <?php
-    include '../../connection.php';
+    include '../../../connection.php';
 
     $pengaduanID = $_GET['pengaduan_id'];
     $status = $_GET['status'];

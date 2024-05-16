@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="../styling/login.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"> -->
 </head>
 <body>
     <?php
@@ -40,7 +42,7 @@
             }
         }
     ?>
-    <div class="card">
+    <div class="card border">
         <h2>Login</h2>
         <form action="" method="post">
             <div class="con-field">
@@ -49,7 +51,7 @@
             </div>
             <div class="con-field">
                 <label for="">Password</label><br>
-                <input type="password" name="pw" required>
+                <input type="password" name="pw" class="form-control mr-3" required>
             </div>
             <div class="con-field">
                 <button type="submit" name="login" class="btn-login">Masuk</button>
@@ -59,5 +61,7 @@
             </div>
         </form>
     </div>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script> -->
 </body>
 </html>
