@@ -31,7 +31,7 @@
 
                 if($adminAvailabled == 1){
                     $employeeID = $adminFind[0]['id'];
-                    header("location:dashboard-admin.php?employee_id=$employeeID");
+                    header("location:admin-pages/dashboard-admin.php?employee_id=$employeeID");
                 }else{ ?>
                     <div class="alert alert-danger">
                         <p>

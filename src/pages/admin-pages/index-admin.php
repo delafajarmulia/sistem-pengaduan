@@ -14,44 +14,62 @@
         $employeeID = $_GET['employee_id'];
         $pengaduans = mysqli_query($conn, "SELECT p.id AS id, p.isi_laporan AS isi_laporan, p.status AS status, u.nama AS nama FROM pengaduans AS p 
                                             LEFT JOIN users AS u ON p.user_id=u.id");
+
+        // include_once 'dashboard-admin.php';
     ?>
 
-    <div class="container px-5 w-100 d-flex">
-        <div class="sidebar">
-            <?php 
-                include_once 'dashboard-admin.php';
-            ?>
-        </div>
-        <div class="pengaduan mx-5">
-            <div class="mx-auto">
-                <h1 class="text-dark">hello</h1>                
+    <div class="container">
+        <!-- <div class="sidebar">
+            
+        </div> -->
+        <div class="content">
+            <div class="title">
+                <h1 class="">hello</h1>                
             </div>
+            <?php
+                if(isset($_GET['msg'])){
+                    $msg = $_GET['msg'];
+                    if($msg == 'update'){ ?>
+                        <div class="alert">
+                            Berhasil mengubah status data
+                        </div>
+                    <?php }
+                }
+            ?>
             <?php while($pengaduan = mysqli_fetch_assoc($pengaduans)){ 
                         $pengaduanID = $pengaduan['id'];
                         $status = $pengaduan['status'];
                         ?>
-                <div class="card mt-3 w-100 p-3 mb-3">
-                    <div class="card-header text-white bg-gradient <?= $status == 'proses' ? 'bg-warning' : 'bg-success'?>">
-                        <div class="info-pengaduan d-flex justify-content-between">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="info-pengaduan ">
                             <div class="pengadu-name">
-                                <h5><?php echo $pengaduan['nama'];?></h5>
+                                <h2><?php echo $pengaduan['nama'];?></h2>
+                                <h5 class="<?= $status == 'proses' ? 'label-proses' : 'label-selesai'?>"><?php echo $pengaduan['status'];?></h5>
                             </div>
                             <div class="go-to-action">
-                                <a href="edit-status.php?pengaduan_id=<?php echo $pengaduanID; ?>&&status=<?php echo $status;?>&&employee_id=<?php echo $employeeID;?>" class="btn btn-primary">Ubah status</a>
-                                <a href="detail-pengaduan.php?pengaduan_id=<?php echo $pengaduanID;?>&&employee_id=<?php echo $employeeID;?>" class="btn btn-primary">Lihat detail</a>
+                                <a href="edit-status.php?pengaduan_id=<?php echo $pengaduanID; ?>&&status=<?php echo $status;?>&&employee_id=<?php echo $employeeID;?>">
+                                    <div class="btn <?= $status == 'proses' ? 'edit-to-end' : 'edit-to-process' ?>">Ubah Status</div>
+                                </a>
+                                <a href="detail-pengaduan.php?pengaduan_id=<?php echo $pengaduanID;?>&&employee_id=<?php echo $employeeID;?>">
+                                    <div class="btn btn-detail">Lihat Detail</div>
+                                </a>
                             </div>
                         </div>
                         <p><?php echo $pengaduan['isi_laporan']; ?></p>
-                    </div class="card-body ml-5">
+                        <hr>
+                    </div>
+                    <div class="card-body">
                         <?php 
                             $tanggapans = mysqli_query($conn, "SELECT t.id, t.pengaduan_id AS pengaduanID, t.isi_tanggapan, e.nama AS nama_employee FROM tanggapans AS t
                                                                 LEFT JOIN employees AS e ON t.pegawai_id=e.id
                                                                 WHERE pengaduan_id=$pengaduanID");
                             while($tanggapan = mysqli_fetch_assoc($tanggapans)){
                         ?>
-                                <h6 class="card-title pt-3 "><?php echo $tanggapan['nama_employee'];?></h6>
+                                <h4 class="card-title"><?php echo $tanggapan['nama_employee'];?></h4>
                                 <p class="card-text"><?php echo $tanggapan['isi_tanggapan'];?></p>
                         <?php } ?>
+                    </div>
                 </div>
             <?php } ?>
         </div>

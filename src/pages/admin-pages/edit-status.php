@@ -8,7 +8,7 @@
     if($status == 'proses'){
         $editStatus = mysqli_query($conn, "UPDATE pengaduans SET status='selesai' WHERE id='$pengaduanID'");
         if($editStatus){
-            header("location:dashboard-admin.php?employee_id=$employeeID&&msg=update");
+            header("location:index-admin.php?employee_id=$employeeID&&msg=update");
         }else{
             echo '<script>      
                         alert("gagal mengubah status data")
@@ -17,7 +17,7 @@
     }else{
         $editStatus = mysqli_query($conn, "UPDATE pengaduans SET status='proses' WHERE id='$pengaduanID'");
         if($editStatus){
-            header("location:dashboard-admin.php?employee_id=$employeeID&&msg=update");
+            header("location:index-admin.php?employee_id=$employeeID&&msg=update");
         }else{
             echo '<script>      
                         alert("gagal mengubah status data")
