@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Employee;
 use App\Models\PublicUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -13,7 +14,7 @@ class LoginController extends Controller
     }
 
     public function actionLogin(Request $request){
-        $request->validate([
+        $credentials = $request->validate([
             'email'=>'required',
             'password'=>'required|min:3'
         ], [
@@ -22,17 +23,31 @@ class LoginController extends Controller
             'password.min'=>'panjang password minimal 3 karakter'
         ]);
 
+        // if(Auth::attempt($credentials)){
+        //     $request->session()->regenerate();
+        //     return redirect()->intended('complaint');
+        // }
+
         $findUserLogin = Employee::where([
                                 ['email', $request->email],
                                 ['password', $request->password]])->get();
         
         if($findUserLogin){
-            return redirect()->route('login')->with('success', $findUserLogin);
+            if(Auth::attempt($credentials)){
+                $request->session()->regenerate();
+                return redirect()->intended('complaint');
+            }
+            // return redirect()->route('complaint')->with('success', $findUserLogin);
         } else {
             $findUserLogin = PublicUser::where([
                 ['email', $request->email],
                 ['password', $request->password]])->get();
-            return redirect()->route('login')->with('success', $findUserLogin);
+            
+            if(Auth::attempt($credentials)){
+                $request->session()->regenerate();
+                return redirect()->intended('complaint');
+            }
+            // return redirect()->route('complaint')->with('success', $findUserLogin);
         }
     }
 }

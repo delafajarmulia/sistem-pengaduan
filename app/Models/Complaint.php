@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PublicUser extends Model
+class Complaint extends Model
 {
     use HasFactory;
-    protected $table = 'publics';
-    protected $fillable = ['name', 'nik', 'email', 'phone', 'password'];
+    protected $table = 'complaints';
+    protected $fillable = ['category_id', 'user_id', 'content', 'status'];
 }
