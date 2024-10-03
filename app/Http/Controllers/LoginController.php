@@ -23,31 +23,45 @@ class LoginController extends Controller
             'password.min'=>'panjang password minimal 3 karakter'
         ]);
 
+        $credentials = [
+            'email'=>$request->email,
+            'password'=>$request->password
+        ];
+
+        if(Auth::attempt($credentials)){
+            // echo 'ok';
+            $request->session()->regenerate();
+
+            return redirect()->intended('/complaint');
+        }else{
+            echo 'gagal';
+        }
+
         // if(Auth::attempt($credentials)){
         //     $request->session()->regenerate();
         //     return redirect()->intended('complaint');
         // }
 
-        $findUserLogin = Employee::where([
-                                ['email', $request->email],
-                                ['password', $request->password]])->get();
+        // $findUserLogin = Employee::where([
+        //                         ['email', $request->email],
+        //                         ['password', $request->password]])->get();
         
-        if($findUserLogin){
-            if(Auth::attempt($credentials)){
-                $request->session()->regenerate();
-                return redirect()->intended('complaint');
-            }
-            // return redirect()->route('complaint')->with('success', $findUserLogin);
-        } else {
-            $findUserLogin = PublicUser::where([
-                ['email', $request->email],
-                ['password', $request->password]])->get();
+        // if($findUserLogin){
+        //     if(Auth::attempt($credentials)){
+        //         $request->session()->regenerate();
+        //         return redirect()->intended('complaint');
+        //     }
+        //     // return redirect()->route('complaint')->with('success', $findUserLogin);
+        // } else {
+        //     $findUserLogin = PublicUser::where([
+        //         ['email', $request->email],
+        //         ['password', $request->password]])->get();
             
-            if(Auth::attempt($credentials)){
-                $request->session()->regenerate();
-                return redirect()->intended('complaint');
-            }
-            // return redirect()->route('complaint')->with('success', $findUserLogin);
-        }
+        //     if(Auth::attempt($credentials)){
+        //         $request->session()->regenerate();
+        //         return redirect()->intended('complaint');
+        //     }
+        //     // return redirect()->route('complaint')->with('success', $findUserLogin);
+        // }
     }
 }

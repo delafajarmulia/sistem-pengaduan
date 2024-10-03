@@ -9,5 +9,11 @@ class PublicUser extends Model
 {
     use HasFactory;
     protected $table = 'publics';
-    protected $fillable = ['name', 'nik', 'email', 'phone', 'password'];
+    protected $fillable = [
+        'name',
+        'nik',
+        'email',
+        'phone',
+        'password'
+    ];
 }
