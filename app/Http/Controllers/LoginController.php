@@ -29,39 +29,11 @@ class LoginController extends Controller
         ];
 
         if(Auth::attempt($credentials)){
-            // echo 'ok';
             $request->session()->regenerate();
 
-            return redirect()->intended('/complaint');
+            return redirect('complaint');
         }else{
-            echo 'gagal';
+            return redirect()->route('login')->with('failed', 'Email dan Password Anda salah. Pastikan Anda telah menggunakan email dan password yang benar.');
         }
-
-        // if(Auth::attempt($credentials)){
-        //     $request->session()->regenerate();
-        //     return redirect()->intended('complaint');
-        // }
-
-        // $findUserLogin = Employee::where([
-        //                         ['email', $request->email],
-        //                         ['password', $request->password]])->get();
-        
-        // if($findUserLogin){
-        //     if(Auth::attempt($credentials)){
-        //         $request->session()->regenerate();
-        //         return redirect()->intended('complaint');
-        //     }
-        //     // return redirect()->route('complaint')->with('success', $findUserLogin);
-        // } else {
-        //     $findUserLogin = PublicUser::where([
-        //         ['email', $request->email],
-        //         ['password', $request->password]])->get();
-            
-        //     if(Auth::attempt($credentials)){
-        //         $request->session()->regenerate();
-        //         return redirect()->intended('complaint');
-        //     }
-        //     // return redirect()->route('complaint')->with('success', $findUserLogin);
-        // }
     }
 }

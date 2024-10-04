@@ -13,7 +13,7 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'actionLogin'])->name('login.action');
 
 Route::get('/registration', [RegistrationController::class, 'index'])->name('registration');
-Route::post('/registration', [RegistrationController::class, 'store'])->name('registrati');
+Route::post('/registration', [RegistrationController::class, 'store'])->name('registration.post');
 
-Route::get('/complaint', [ComplaintController::class, 'index'])->name('complaint')->middleware('auth');
+Route::get('/complaint', [ComplaintController::class, 'index'])->name('complaint');
 Route::post('/complaint', [ComplaintController::class, 'store'])->name('complaint.post');

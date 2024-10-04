@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\PublicUser;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RegistrationController extends Controller
 {
@@ -56,10 +58,23 @@ class RegistrationController extends Controller
             'nik'=>$request->input('nik'),
             'email'=>$request->input('email'),
             'phone'=>$request->input('no_hp'),
-            'password'=>$request->input('password')
+            'password'=>bcrypt($request->input('password')),
+            'role'=>'public'
         ];
 
-        PublicUser::create($data);
-        dd($request);
+
+        $nikDuplicate = User::where('nik', $data['nik']);
+        if($nikDuplicate){
+            return redirect()->route('registration')->with('failed', 'NIK Anda telah terdaftar');
+        }
+
+        $emailDuplicate = User::where('email', $data['email']);
+        if($emailDuplicate){
+            return redirect()->route('registration')->with('failed', 'Email Anda telah terdaftar');
+        }
+
+        User::create($data);
+
+        return redirect()->route('login');
     }
 }

@@ -10,13 +10,18 @@
 <body class="flex justify-center items-center">
     <div class="p-10 border border-inherit border-red-500 mt-5 w-96 rounded-md">
         <h1 class="text-center font-bold pb-5 text-2xl">Registrasi</h1>
-        @if ($errors->any())
-            <p>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </p>
-        @endif
+        <div class="flex justify-center items-center w-auto bg-red-300 rounded-md mt-3">
+            @if ($errors->any())
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li class="text-white text-center py-1 px-3">{{ $error }}</li>
+                    @endforeach
+                </ul>
+            @endif
+            @if (session('failed'))
+                <p class="text-white text-center py-1 px-3">{{ session('failed') }}</p>
+            @endif
+        </div>
         <form id="login-form" action="{{ route('registration.post') }}" method="POST">
             @csrf
             <div class="pt-4">

@@ -12,16 +12,28 @@
         <h1 class="text-2xl font-bold pb-5 text-center">
             Buat Pengaduan
         </h1>
-        <p>
-            @auth
-                {{ auth()->publics()?->name }}
-            @endauth
-        </p>
-        @if ($errors->any())
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        @endif
+        <div class="flex flex-col justify-center items-center">
+            <p class="text-center">
+                @auth
+                    Hallo {{ auth()->user()->name }}👋🏻...
+                @endauth
+            </p>
+            <p class="text-center">
+                Memiliki keluhan? Jangan ragu untuk melaporkan yaa
+            </p>
+        </div>
+        <div class="flex justify-center items-center mt-3 w-auto bg-red-300 rounded-md">
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <li class="py-1 px-3 text-white">{{ $error }}</li>
+                @endforeach
+            @endif
+        </div>
+        <div class="flex justify-center items-center mt-3 w-auto bg-green-300 rounded-md">
+            @if (session('success'))
+                <p class="py-1 px-3 text-white">{{ session('success') }}</p>
+            @endif
+        </div>
         <form action="{{ route('complaint.post') }}" method="post" class="p-10">
             @csrf
             <table class="w-full ">

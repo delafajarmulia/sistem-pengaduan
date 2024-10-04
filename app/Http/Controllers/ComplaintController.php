@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Complaint;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ComplaintController extends Controller
 {
@@ -40,13 +41,13 @@ class ComplaintController extends Controller
         
         $data = [
             'category_id'=>$request->input('category'),
-            'user_id'=>1,
+            'user_id'=>Auth::user()->id,
             'content'=>$request->input('isi_pengaduan'),
             'status'=>'process'
         ];
 
         Complaint::create($data);
-        return redirect()->route('complaint')->with('success', 'yeayy');
+        return redirect()->route('complaint')->with('success', 'Terima kasih telah membuat laporan. Laporan Anda secepatnya akan kami proses');
     }
 
     /**
