@@ -31,9 +31,13 @@ class AuthController extends Controller
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
 
-            return redirect('complaint');
+            if(Auth::user()->role == 'admin'){
+                return redirect('admin');
+            }else{
+                return redirect('complaint');
+            }
         }else{
-            return redirect()->route('login')->with('failed', 'Email dan Password Anda salah. Pastikan Anda telah menggunakan email dan password yang benar.');
+            return redirect()->route('login')->with('failed', 'Email atau Password Anda salah. Pastikan Anda telah menggunakan email dan password yang benar.');
         }
     }
 
@@ -44,7 +48,6 @@ class AuthController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect('login')->with('failed', 'berhasil logout');
-        // return echo('berhasil logout');
+        return redirect('login');
     }
 }

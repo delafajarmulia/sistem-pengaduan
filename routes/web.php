@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\RegistrationController;
@@ -19,3 +20,7 @@ Route::post('/registration', [RegistrationController::class, 'store'])->name('re
 
 Route::get('/complaint', [ComplaintController::class, 'index'])->name('complaint');
 Route::post('/complaint', [ComplaintController::class, 'store'])->name('complaint.post');
+
+Route::middleware(['auth', 'user-access:admin'])->group(function(){
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+});
