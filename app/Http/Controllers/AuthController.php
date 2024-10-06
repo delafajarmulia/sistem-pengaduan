@@ -7,7 +7,7 @@ use App\Models\PublicUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
+class AuthController extends Controller
 {
     public function index(){
         return view('login');
@@ -35,5 +35,16 @@ class LoginController extends Controller
         }else{
             return redirect()->route('login')->with('failed', 'Email dan Password Anda salah. Pastikan Anda telah menggunakan email dan password yang benar.');
         }
+    }
+
+    public function logout(Request $request){
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerate();
+
+        return redirect('login')->with('failed', 'berhasil logout');
+        // return echo('berhasil logout');
     }
 }

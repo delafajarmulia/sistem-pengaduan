@@ -12,6 +12,7 @@
         <h1 class="text-2xl font-bold pb-5 text-center">
             Buat Pengaduan
         </h1>
+        <a href="{{ route('logout') }}">Logout</a>
         <div class="flex flex-col justify-center items-center">
             <p class="text-center">
                 @auth
