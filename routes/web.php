@@ -10,17 +10,30 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', [AuthController::class, 'index'])->name('login');
-Route::post('/login', [AuthController::class, 'actionLogin'])->name('login.action');
+Route::middleware(['guest'])->group(
+    function(){
+        Route::get('/login', [AuthController::class, 'index'])->name('login');
+        Route::post('/login', [AuthController::class, 'actionLogin'])->name('login.action');
+        Route::get('/registration', [RegistrationController::class, 'index'])->name('registration');
+        Route::post('/registration', [RegistrationController::class, 'store'])->name('registration.post');
+    }
+);
 
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::middleware(['auth'])->group(
+    function(){
+        Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    }
+);
 
-Route::get('/registration', [RegistrationController::class, 'index'])->name('registration');
-Route::post('/registration', [RegistrationController::class, 'store'])->name('registration.post');
+Route::middleware(['auth', 'user-access:admin'])->group(
+    function(){
+        Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    }
+);
 
-Route::get('/complaint', [ComplaintController::class, 'index'])->name('complaint');
-Route::post('/complaint', [ComplaintController::class, 'store'])->name('complaint.post');
-
-Route::middleware(['auth', 'user-access:admin'])->group(function(){
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
-});
+Route::middleware(['auth', 'user-access:public'])->group(
+    function(){
+        Route::get('/complaint', [ComplaintController::class, 'index'])->name('complaint');
+        Route::post('/complaint', [ComplaintController::class, 'store'])->name('complaint.post');
+    }
+);
