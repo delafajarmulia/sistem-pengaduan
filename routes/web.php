@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ComplaintController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegistrationController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,7 @@ Route::middleware(['guest'])->group(
 Route::middleware(['auth'])->group(
     function(){
         Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     }
 );
 
@@ -31,7 +33,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(
     }
 );
 
-Route::middleware(['auth', 'user-access:public'])->group(
+Route::middleware(['auth', 'user-access:user'])->group(
     function(){
         Route::get('/complaint', [ComplaintController::class, 'index'])->name('complaint');
         Route::post('/complaint', [ComplaintController::class, 'store'])->name('complaint.post');

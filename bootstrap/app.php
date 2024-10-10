@@ -15,7 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'user-access' => UserAccess::class,
         ]);
-        $middleware->redirectGuestsTo('login');
+        // $middleware->redirectGuestsTo('login');
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

@@ -31,11 +31,13 @@ class AuthController extends Controller
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
 
-            if(Auth::user()->role == 'admin'){
-                return redirect('admin');
-            }else{
-                return redirect('complaint');
-            }
+            // if(Auth::user()->role == 'admin'){
+            //     return redirect('admin');
+            // }else{
+            //     return redirect('complaint');
+            // }
+
+            return redirect('dashboard');
         }else{
             return redirect()->route('login')->with('failed', 'Email atau Password Anda salah. Pastikan Anda telah menggunakan email dan password yang benar.');
         }

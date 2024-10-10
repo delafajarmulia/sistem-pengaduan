@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('user_id');
             $table->longText('content');
+            $table->enum('status', ['proses', 'selesai']);
             $table->dateTime('date_of_complaint');
             $table->timestamps();
 
