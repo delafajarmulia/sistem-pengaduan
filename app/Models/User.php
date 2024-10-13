@@ -50,10 +50,8 @@ class User extends Authenticatable
         ];
     }
 
-    // protected function role(): Attribute
-    // {
-    //     return new Attribute(
-    //         get: fn($value) => ['admin', 'public'][$value],
-    //     );
-    // }
+    public function complaints()
+    {
+        $this->hasMany(Complaint::class);
+    }
 }

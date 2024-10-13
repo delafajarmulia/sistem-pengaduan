@@ -16,10 +16,11 @@ return new class extends Migration
             $table->unsignedBigInteger('complaint_id');
             $table->unsignedBigInteger('user_id');
             $table->longText('content');
+            $table->dateTime('date_of_response');
             $table->timestamps();
 
-            $table->foreign('complaint_id')->references('id')->on('complaints');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('complaint_id')->references('id')->on('complaints')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
