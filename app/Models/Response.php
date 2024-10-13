@@ -11,16 +11,21 @@ class Response extends Model
 {
     use HasFactory;
     protected $table = 'responses';
-    // protected $fillable = [
-    //     'complaint_id',
-    //     'user_id',
-    //     'content',
-    //     'date_of_response'
-    // ];
     protected $primaryKey = 'id';
+    protected $fillable = [
+        'complaint_id',
+        'user_id',
+        'content',
+        'date_of_response'
+    ];
 
     public function complaint()
     {
         return $this->belongsTo(Complaint::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

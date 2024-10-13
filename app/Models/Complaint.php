@@ -12,7 +12,12 @@ class Complaint extends Model
     use HasFactory;
     protected $table = 'complaints';
     protected $primayKey = 'id';
-    // protected $fillable = ['category_id', 'user_id', 'content', 'status'];
+    protected $fillable = [
+        'category_id', 
+        'user_id', 
+        'content', 
+        'status'
+    ];
 
     public function category()
     {

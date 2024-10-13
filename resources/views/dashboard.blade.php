@@ -9,13 +9,37 @@
 </head>
 <body>
     <x-navbar-auth-public />
-    {{-- <h1 class="text-underlined"> --}}
-        {{-- @foreach ($complaints as $complaint)
-            <p>{{$complaint->content}}</p>
-            @foreach ($compaint->$responses()->get() as $response)
-                <p>{{$response->content}}</p>
+    <div>
+        <h1 class="text-2xl font-bold p-5 text-center">Semua Pengaduan</h1>
+        <div class="flex flex-col justify-center items-center">
+            @foreach ($complaints as $complaint)
+                <div class="w-4/5 rounded-md border border-red-500 m-3 p-5">
+                    <div class="flex justify-between">
+                        <div>
+                            <h3 class="font-semibold">{{ censorName($complaint->user->name) }}</h3>
+                            <h5 class="font-semibold {{ $complaint->status == 'proses' ? 'text-yellow-300' : 'text-green-500'}}">{{ $complaint->status }}</h5>
+                        </div>
+                        <div>
+                            @auth
+                                @if (auth()->user()->role === 'admin')
+                                    <a href="{{ route('complaint.update', ['id'=>$complaint->id])}}" class="px-2 pt-0.5 pb-1.5 text-white rounded-sm {{ $complaint->status == 'proses' ? 'bg-green-500' : 'bg-yellow-300'}}">Ubah Status</a>
+                                @endif
+                            @endauth
+                            
+                            <a href="{{ route('complaint.detail', ['id'=>$complaint->id])}}" class="px-2 pt-0.5 pb-1.5 text-white rounded-sm bg-blue-500 hover:bg-blue-600">Lihat Detail</a>
+                        </div>
+                    </div>
+                    <p>{{ $complaint->content }}</p>
+                    <hr class="mt-1.5 mb-1 border border-gray-300">
+                    @foreach ($complaint->responses()->get() as $response)
+                        <div class="pl-7">
+                            <h4 class="font-semibold">{{ $response->user->role === 'admin' ? $response->user->name : censorName($response->user->name) }}</h4>
+                            <p>{{ $response->content }}</p>
+                        </div>
+                    @endforeach
+                </div>
             @endforeach
-        @endforeach --}}
-    {{-- </h1> --}}
+        </div>
+    </div>
 </body>
 </html>

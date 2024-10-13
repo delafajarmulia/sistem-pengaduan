@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ComplaintController;
+use App\Http\Controllers\ComplaintDetailController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegistrationController;
 use Illuminate\Support\Facades\Route;
@@ -24,12 +25,15 @@ Route::middleware(['auth'])->group(
     function(){
         Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/complaint/{id}/detail', [ComplaintDetailController::class, 'index'])->name('complaint.detail');
+        Route::post('/complaint/{id}/response', [ComplaintDetailController::class, 'addResponse'])->name('response.add');
     }
 );
 
 Route::middleware(['auth', 'user-access:admin'])->group(
     function(){
         Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+        Route::get('/complaint/{id}', [DashboardController::class, 'editStatus'])->name('complaint.update');
     }
 );
 
