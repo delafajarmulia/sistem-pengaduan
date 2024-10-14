@@ -16,7 +16,8 @@ class Complaint extends Model
         'category_id', 
         'user_id', 
         'content', 
-        'status'
+        'status',
+        'date_of_complaint'
     ];
 
     public function category()

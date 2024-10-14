@@ -58,7 +58,7 @@ class RegistrationController extends Controller
             'email'=>$request->input('email'),
             'phone'=>$request->input('no_hp'),
             'password'=>bcrypt($request->input('password')),
-            'role'=>'public'
+            'role'=>'user'
         ];
 
 

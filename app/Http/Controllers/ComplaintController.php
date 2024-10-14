@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Complaint;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,21 +34,22 @@ class ComplaintController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'isi_pengaduan'=>'required|min:5'
+            'isi_pengaduan' => 'required|min:5'
         ],[
-            'isi_pengaduan.required'=>'Harap isikan aduan Anda',
-            'isi_pengaduan.min'=>'Minimal karakter adalah 5'
+            'isi_pengaduan.required'    => 'Harap isikan aduan Anda',
+            'isi_pengaduan.min'         => 'Minimal karakter adalah 5'
         ]);
         
         $data = [
-            'category_id'=>$request->input('category'),
-            'user_id'=>Auth::user()->id,
-            'content'=>$request->input('isi_pengaduan'),
-            'status'=>'process'
+            'category_id'       => $request->input('category'),
+            'user_id'           => Auth::user()->id,
+            'content'           => $request->input('isi_pengaduan'),
+            'date_of_complaint' => Carbon::now()->format('Y-m-d H:i:s'),
+            'status'            => 'proses'
         ];
 
         Complaint::create($data);
-        return redirect()->route('complaint')->with('success', 'Terima kasih telah membuat laporan. Laporan Anda secepatnya akan kami proses');
+        return redirect()->route('dashboard')->with('success', 'Terima kasih telah membuat laporan. Laporan Anda secepatnya akan kami proses');
     }
 
     /**

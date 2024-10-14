@@ -26,7 +26,7 @@
             @csrf
             <div class="pt-4">
                 <label for="">Email</label><br>
-                <input class="border rounded-sm w-full px-2 py-0.5" type="email" name="email" id="" required value="{{ old('email') }}">
+                <input class="border rounded-sm w-full px-2 py-0.5" type="email" name="email" id="" required value="{{ old('email') }}" autocomplete="off">
                 <input class="border rounded-sm w-full px-2 py-0.5 bg-slate-100" type="email" >
                 <input class="border rounded-sm w-full px-2 py-0.5 bg-slate-200" type="email" >
             </div>

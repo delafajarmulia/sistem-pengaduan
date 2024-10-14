@@ -16,6 +16,6 @@ class DashboardController extends Controller
         $complaint->status = $complaint->status === 'proses' ? 'selesai' : 'proses';
         $complaint->save();
         
-        return redirect()->route('dashboard')->with('success', 'berhasil mengubah status');
+        return redirect()->route('dashboard')->with('success', 'Berhasil mengubah status');
     }
 }

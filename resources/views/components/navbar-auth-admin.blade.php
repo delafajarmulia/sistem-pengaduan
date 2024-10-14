@@ -2,7 +2,12 @@
     <div class="container mx-auto flex justify-between items-center px-5">
         <div>
             <a href="{{ route('dashboard') }}" class="text-white text-xl font-bold pr-5">Sistem Pengaduan</a>
-            <a href="{{ route('complaint') }}" class="text-gray-300 hover:text-white {{ Route::is('home') ? 'text-white' : '' }}">Buat Pengaduan</a>
+            <a href="{{ route('complaint') }}" class="text-gray-300 hover:text-white {{ Route::is('home') ? 'text-white' : '' }}">Cetak Laporan</a>
+        </div>
+
+        <!-- Menu Link -->
+        <div class="flex space-x-4">
+            
         </div>
 
         <!-- Profil Dropdown -->
