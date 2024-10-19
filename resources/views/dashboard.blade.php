@@ -15,7 +15,7 @@
             <x-navbar-auth-public />
         @endif
     @endauth
-    <div>
+    <div class="mt-20">
         <h1 class="text-2xl font-bold p-5 text-center">Semua Pengaduan</h1>
         <div class="flex flex-col justify-center items-center">
             @if (session('success'))

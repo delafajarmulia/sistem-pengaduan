@@ -15,7 +15,7 @@
             <x-navbar-auth-public />
         @endif
     @endauth
-    <div class="flex justify-center items-center">
+    <div class="mt-20 flex justify-center items-center">
         <div class="flex-col w-1/2 mt-5">
             <h1 class="text-center font-bold pb-5 text-2xl">Edit Profil</h1>
             <form action="" method="post" class="px-3">

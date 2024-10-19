@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\SpotFormController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -34,6 +35,7 @@ Route::middleware(['auth'])->group(
 Route::middleware(['auth', 'user-access:admin'])->group(
     function(){
         Route::get('/complaint/{id}', [DashboardController::class, 'editStatus'])->name('complaint.update');
+        Route::get('/spot', [SpotFormController::class, 'index'])->name('spot');
     }
 );
 

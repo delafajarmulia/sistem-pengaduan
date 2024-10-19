@@ -9,7 +9,7 @@
 </head>
 <body>
     <x-navbar-auth-public />
-    <div class="flex justify-center items-center">
+    <div class="mt-20 flex justify-center items-center">
         <div class="w-full p-5 ">
             <h1 class="text-2xl font-bold p-5 text-center">
                 Buat Pengaduan

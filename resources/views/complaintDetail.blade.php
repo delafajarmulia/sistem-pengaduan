@@ -15,7 +15,7 @@
             <x-navbar-auth-public />
         @endif
     @endauth
-    <div class="flex flex-col justify-center items-center">
+    <div class="mt-20 flex flex-col justify-center items-center">
         <div class="w-4/5 rounded-md border border-red-500 m-3 p-5">
             <div class="flex justify-between">
                 <div>
