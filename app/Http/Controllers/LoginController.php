@@ -7,7 +7,7 @@ use App\Models\PublicUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AuthController extends Controller
+class LoginController extends Controller
 {
     public function index(){
         return view('login');
@@ -20,7 +20,7 @@ class AuthController extends Controller
         ], [
             'email.required'=>'email wajib diisikan',
             'password.required'=>'password wajib diisikan',
-            'password.min'=>'panjang password minimal 3 karakter'
+            'password.min'=>'panjang password minimal :min karakter'
         ]);
 
         $credentials = [
@@ -30,12 +30,6 @@ class AuthController extends Controller
 
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
-
-            // if(Auth::user()->role == 'admin'){
-            //     return redirect('admin');
-            // }else{
-            //     return redirect('complaint');
-            // }
 
             return redirect('dashboard');
         }else{
