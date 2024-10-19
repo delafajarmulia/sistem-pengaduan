@@ -9,9 +9,9 @@
 </head>
 <body>
     <x-navbar-auth-public />
-    <div class="mt-20 flex justify-center items-center">
+    <div class="mt-20 flex justify-center items-center text-black">
         <div class="w-full p-5 ">
-            <h1 class="text-2xl font-bold p-5 text-center">
+            <h1 class="text-2xl font-bold pt-8 text-center md:pt-1">
                 Buat Pengaduan
             </h1>
             
@@ -24,15 +24,15 @@
                 <p class="text-center">
                     Memiliki keluhan? Jangan ragu untuk melaporkan yaa
                 </p>
+                <div class="mt-3 w-3/4 bg-red bg-opacity-75 rounded-md">
+                    @if ($errors->any())
+                        @foreach ($errors->all() as $error)
+                            <li class="py-1 px-3 text-white-strong">{{ $error }}</li>
+                        @endforeach
+                    @endif
+                </div>
             </div>
 
-            <div class="flex justify-center items-center mt-3 w-auto bg-red-300 rounded-md">
-                @if ($errors->any())
-                    @foreach ($errors->all() as $error)
-                        <li class="py-1 px-3 text-white">{{ $error }}</li>
-                    @endforeach
-                @endif
-            </div>
 
             <div class="flex justify-center items-center mt-3 w-auto bg-green-300 rounded-md">
                 @if (session('success'))
@@ -44,7 +44,7 @@
                 @csrf
                 <div class="w-4/5 mx-auto py-0.5">
                     <label for="">Kategori Pengaduan</label>
-                    <select name="category" id="" class="w-full p-1 border border-red-500 rounded-sm" required>
+                    <select name="category" id="" class="border border-gray rounded-md w-full px-2 py-1 pb-2" required>
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endforeach
@@ -52,10 +52,10 @@
                 </div>
                 <div class="w-4/5 mx-auto py-0.5">
                     <label for="">Isi Pengaduan</label>
-                    <textarea name="isi_pengaduan" id="" cols="" rows="" class="w-full h-32 border border-red-500 rounded-sm " required></textarea>
+                    <textarea name="isi_pengaduan" id="" cols="" rows="" class="border border-gray rounded-md w-full px-2 py-1 pb-2 h-32" required></textarea>
                 </div>
                 <div class="w-4/5 mx-auto py-0.5">
-                    <button type="submit" class="w-full p-1 mt-2 rounded-md text-white font-semibold bg-cyan-500 hover:bg-cyan-600">
+                    <button type="submit" class="w-full py-1.5 pb-2.5 mt-5 mb-1 rounded-md text-white-strong font-semibold bg-green-weak hover:bg-green-strong">
                         Buat Aduan
                     </button>
                 </div>

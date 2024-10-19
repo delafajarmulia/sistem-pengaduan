@@ -8,11 +8,11 @@
     @vite('resources/css/app.css')
 </head>
 <body class="flex justify-center items-center">
-    <div class="p-10 border border-inherit border-red-500 mt-5 w-96 rounded-md">
+    <div class="p-10 text-black mt-5 w-96 rounded-md md:shadow-2xl shadow-gray">
         <h1 class="text-center font-bold pb-5 text-2xl">Login</h1>
         <div class="flex justify-center items-center w-auto bg-red-300 rounded-md mt-3">
             @if ($errors->any())
-                <ul class="text-white text-center py-1 px-3">
+                <ul class="text-white-strong text-center py-1 px-3">
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
@@ -26,20 +26,18 @@
             @csrf
             <div class="pt-4">
                 <label for="">Email</label><br>
-                <input class="border rounded-sm w-full px-2 py-0.5" type="email" name="email" id="" required value="{{ old('email') }}" autocomplete="off">
-                <input class="border rounded-sm w-full px-2 py-0.5 bg-slate-100" type="email" >
-                <input class="border rounded-sm w-full px-2 py-0.5 bg-slate-200" type="email" >
+                <input class="border border-gray rounded-md w-full px-2 py-1 pb-2" type="email" name="email" placeholder="email" required value="{{ old('email') }}" autocomplete="off">
             </div>
             <div class="pt-4">
                 <label for="">Password</label><br>
-                <input class="border rounded-sm w-full px-2 py-0.5" type="password" name="password" id="" required value="{{ old('password') }}">
+                <input class="border border-gray rounded-md w-full px-2 py-1 pb-2" type="password" name="password" placeholder="password" required value="{{ old('password') }}"> <!-- focus:border-blue-strong -->
             </div>
             <div>
-                <button type="submit" class="w-full p-1 mt-5 mb-1 rounded-md text-white font-semibold bg-cyan-500 hover:bg-cyan-600">Login</button>
+                <button type="submit" class="w-full p-1 pb-1.5 mt-5 mb-1 rounded-md text-white-strong font-semibold bg-green-weak hover:bg-green-strong">Login</button>
             </div>
             <div>
                 <p class="mb-3 text-xs text-center">
-                    Belum punya akun? <a href="{{ route('registration') }}" class="text-cyan-600">Daftar Sekarang</a>
+                    Belum punya akun? <a href="{{ route('registration') }}" class="text-blue-strong hover:text-blue-weak">Daftar Sekarang</a>
                 </p>
             </div>
         </form>
