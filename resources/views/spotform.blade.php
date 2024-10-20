@@ -31,11 +31,15 @@
                 </div>
             @endif
 
-            <form action="{{ route('spot.post') }}" method="post" class="flex flex-col justify-center">
+            <form action="{{ route('spot.post') }}" method="post" enctype="multipart/form-data" class="flex flex-col justify-center">
                 @csrf
                 <div class="pt-2">
+                    <label for="">Gambar</label><br>
+                    <input class="border border-gray rounded-md w-full px-2 py-1 pb-2 @error('image') bg-red opacity-50 @enderror" type="file" name="image">
+                </div>
+                <div class="pt-2">
                     <label for="">Nama</label><br>
-                    <input class="border border-gray rounded-md w-full px-2 py-1 pb-2" type="name" name="name" placeholder="nama tempat wisata">
+                    <input class="border border-gray rounded-md w-full px-2 py-1 pb-2" type="text" name="name" placeholder="nama tempat wisata">
                 </div>
                 <div class="pt-2">
                     <label for="">Alamat</label><br>

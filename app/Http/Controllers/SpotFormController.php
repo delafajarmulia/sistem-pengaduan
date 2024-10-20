@@ -17,6 +17,7 @@ class SpotFormController extends Controller
         $request->validate(
             [
                 'name'          => 'required|min:3',
+                'image'         => 'required|image|mimes:jpeg,jpg,png,bmp,gif,svg+xml,webp|max:2048',
                 'address'       => 'required|min:3',
                 'html_address'  => 'required|min:3',
                 'description'   => 'required|min:3',
@@ -41,8 +42,12 @@ class SpotFormController extends Controller
             ]
         );
 
+        $image = $request->file('image');
+        $image->storeAs('public/spots/', $image->hashName());
+
         $data = [
             'name'          => $request->input('name'),
+            'image'         => $image->hashName(),
             'address'       => $request->input('address'),
             'html_address'  => $request->input('html_address'),
             'description'   => $request->input('description'),

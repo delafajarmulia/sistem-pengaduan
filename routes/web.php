@@ -2,16 +2,16 @@
 
 use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\ComplaintDetailController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\SpotFormController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [WelcomeController::class, 'index'])->name('main');
 
 Route::middleware(['guest'])->group(
     function(){

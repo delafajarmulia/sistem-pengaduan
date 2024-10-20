@@ -11,6 +11,7 @@ class Spot extends Model
     protected $table = 'spots';
     protected $fillable = [
         'name',
+        'image',
         'description',
         'address',
         'html_address'
