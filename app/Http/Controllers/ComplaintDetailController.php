@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class ComplaintDetailController extends Controller
 {
     public function index($id){
-        $complaint = Complaint::with('responses')->with('user')->with('category')->with(['responses.user'])->find($id);
+        $complaint = Complaint::with('responses')->with('user')->with('category')->with('spot')->with(['responses.user'])->find($id);
         
         return view('complaintDetail', compact('complaint'));
     }

@@ -15,42 +15,44 @@
             <x-navbar-auth-public />
         @endif
     @endauth
-    <div class="mt-20 flex flex-col justify-center items-center">
-        <div class="w-4/5 rounded-md border border-red-500 m-3 p-5">
-            <div class="flex justify-between">
+    <div class="mt-24 flex flex-col justify-center items-center">
+        <div class="w-full md:w-3/4 m-3 p-5 text-black rounded-md md:shadow-2xl shadow-gray md:px-7">
+            <h1 class="text-center pb-7 md:pb-5 text-2xl font-bold md:pt-4">Detail Pengaduan</h1>
+            <div class="flex flex-col md:flex-row justify-between">
                 <div>
-                    <h3 class="font-semibold">{{ censorName($complaint->user->name) }}</h3>
+                    <h3 class="font-semibold text-lg">{{ censorName($complaint->user->name) }}</h3>
                     <h5 class="text-xs">{{ $complaint->date_of_complaint }}</h5>
-                    <div class="flex flex-row">
-                        <h5 class="font-semibold pr-2 {{ $complaint->status == 'proses' ? 'text-yellow-300' : 'text-green-500'}}">{{ $complaint->status }}</h5>
+                    <h5 class="text-green-weak font-semibold text-md pt-2">{{ $complaint->spot?->name }}</h5>
+                    <div class="flex flex-row pb-2">
+                        <h5 class="font-semibold pr-2 {{ $complaint->status == 'proses' ? 'text-yellow-weak' : 'text-green-weak'}}">{{ $complaint->status }}</h5>
                         <h5 class="pr-2">|</h5>
-                        <h5 class="font-semibold text-green-500">{{ $complaint->category->name }}</h5>
+                        <h5 class="font-semibold text-green-weak whitespace-nowrap">{{ $complaint->category->name }}</h5>
                     </div>
                 </div>
-                <div>
+                <div class="mb-3">
                     @auth
                         @if (auth()->user()->role === 'admin')
-                            <a href="{{ route('complaint.update', ['id'=>$complaint->id])}}" class="px-3 pt-0.5 pb-1.5 text-white rounded-md {{ $complaint->status == 'proses' ? 'bg-green-500' : 'bg-yellow-300'}}">Ubah Status</a>
+                            <a href="{{ route('complaint.update', ['id'=>$complaint->id])}}" class="px-3 pt-0.5 pb-1.5 text-white-strong rounded-md {{ $complaint->status == 'proses' ? 'bg-green-weak hover:bg-green-strong' : 'bg-yellow-weak hover:bg-yellow-strong'}}">Ubah Status</a>
                         @endif
                     @endauth
                     
-                    <a href="{{ route('dashboard')}}" class="px-3 pt-0.5 pb-1.5 text-white rounded-md bg-blue-500 hover:bg-blue-600">Kembali</a>
+                    <a href="{{ route('dashboard')}}" class="px-3 pt-0.5 pb-1.5 text-white-strong rounded-md bg-blue-weak hover:bg-blue-strong">Kembali</a>
                 </div>
             </div>
             <p>{{ $complaint->content }}</p>
-            <hr class="mt-1.5 mb-1 border border-gray-300">
+            <hr class="mt-1.5 mb-1 border border-gray">
             @foreach ($complaint->responses()->get() as $response)
                 <div class="pl-7">
-                    <h3 class="font-semibold">{{ $response->user->role === 'admin' ? $response->user->name : censorName($response->user->name) }}</h3>
-                    <h5 class="text-xs">{{ $response->date_of_response }}</h5>
+                    <h3 class="font-semibold text-lg">{{ $response->user->role === 'admin' ? $response->user->name : censorName($response->user->name) }}</h3>
+                    <h5 class="text-xs pb-2">{{ $response->date_of_response }}</h5>
                     <p>{{ $response->content }}</p>
                 </div>
             @endforeach
             <form action="{{ route('response.add', ['id'=>$complaint->id])}}" method="post" class="mt-5">
                 @csrf
                 <label for="">Tambahkan tanggapan Anda</label><br>
-                <textarea name="response" class="w-full border border-red-500 rounded-md mt-1 p-2"></textarea>
-                <button type="submit" class="w-full py-1.5 bg-blue-500 text-white font-semibold rounded-md mt-2">
+                <textarea name="response" class="w-full border border-gray rounded-md mt-1 p-2 pb-3"></textarea>
+                <button type="submit" class="w-full py-1.5 pb-2 bg-green-weak hover:bg-green-strong text-white-strong font-semibold rounded-md mt-3 mb-5">
                     Tambahkan
                 </button>
             </form>

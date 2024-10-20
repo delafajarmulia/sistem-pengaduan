@@ -7,7 +7,7 @@ use App\Models\Complaint;
 class DashboardController extends Controller
 {
     public function index(){
-        $complaints = Complaint::with('responses')->with('user')->with('category')->with(['responses.user'])->get();
+        $complaints = Complaint::with('responses')->with('user')->with('category')->with('spot')->with(['responses.user'])->get();
         return view('dashboard', compact('complaints')); 
     }
 

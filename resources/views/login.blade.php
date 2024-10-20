@@ -10,18 +10,23 @@
 <body class="flex justify-center items-center">
     <div class="p-10 text-black mt-5 w-96 rounded-md md:shadow-2xl shadow-gray">
         <h1 class="text-center font-bold pb-5 text-2xl">Login</h1>
-        <div class="flex justify-center items-center w-auto bg-red-300 rounded-md mt-3">
-            @if ($errors->any())
-                <ul class="text-white-strong text-center py-1 px-3">
+        
+        @if ($errors->any())
+            <div class="flex justify-center items-center w-auto bg-red opacity-75 rounded-md mt-3">
+                <ul class="text-white-strong py-1 px-3">
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
                 </ul>
-            @endif
-            @if (session('failed'))
-                <p class="text-white text-center py-1 px-3">{{ session('failed') }}</p>
-            @endif
-        </div>
+            </div>
+        @endif
+
+        @if (session('failed'))
+            <div class="flex justify-center items-center w-auto bg-red opacity-75 rounded-md mt-3">
+                <p class="text-white-strong text-center py-1 px-3">{{ session('failed') }}</p>
+            </div>
+        @endif
+
         <form id="login-form" action="{{ route('login.action') }}" method="POST">
             @csrf
             <div class="pt-4">

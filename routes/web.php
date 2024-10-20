@@ -27,6 +27,7 @@ Route::middleware(['auth'])->group(
         Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/user/{id}', [ProfileController::class, 'index'])->name('profile');
+        Route::put('/user/{id}', [ProfileController::class, 'edit'])->name('profile.update');
         Route::get('/complaint/{id}/detail', [ComplaintDetailController::class, 'index'])->name('complaint.detail');
         Route::post('/complaint/{id}/response', [ComplaintDetailController::class, 'addResponse'])->name('response.add');
     }

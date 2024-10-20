@@ -16,12 +16,16 @@ export default {
         'weak': '#F4F4F4'
       },
       'blue': {
-        'strong': '#2563eb',
-        'weak': '#3b82f6'
+        'weak': '#1E90FF',
+        'strong': '#1874CD'
       },
       'green': {
         'weak': '#32CD32',
         'strong': '#28A428'
+      },
+      'yellow': {
+        'weak': '#FFD700',
+        'strong': '#DAA520'
       }
     }
   },
