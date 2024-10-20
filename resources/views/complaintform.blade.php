@@ -9,8 +9,8 @@
 </head>
 <body>
     <x-navbar-auth-public />
-    <div class="mt-20 flex justify-center items-center text-black">
-        <div class="w-full p-5 ">
+    <div class="mt-20 flex justify-center items-center text-black md:mb-20">
+        <div class="flex-col p-5 w-11/12 mt-5 md:w-3/4 md:shadow-2xl shadow-gray px-7">
             <h1 class="text-2xl font-bold pt-8 text-center md:pt-1">
                 Buat Pengaduan
             </h1>
@@ -23,9 +23,10 @@
                 <p class="text-center">
                     Memiliki keluhan? Jangan ragu untuk melaporkan yaa
                 </p>
+                
                 @if ($errors->any())
-                    <div class="mt-3 w-3/4 bg-red bg-opacity-75 rounded-md">
-                        <ul class="text-white-string py-1 px-1">
+                    <div class="mt-3 mx-auto w-auto bg-red bg-opacity-75 rounded-md md:w-3/4">
+                        <ul class="text-white-strong py-1.5 px-3 md:px-5">
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
                             @endforeach
@@ -59,7 +60,7 @@
                 </div>
                 <div class="w-4/5 mx-auto py-0.5">
                     <label for="">Isi Pengaduan</label>
-                    <textarea name="isi_pengaduan" id="" cols="" rows="" class="border border-gray rounded-md w-full px-2 py-1 pb-2 h-32" required></textarea>
+                    <textarea name="isi_pengaduan" id="" class="border border-gray rounded-md w-full px-2 py-1 pb-2 h-32" required></textarea>
                 </div>
                 <div class="w-4/5 mx-auto py-0.5">
                     <button type="submit" class="w-full py-1.5 pb-2.5 mt-5 mb-1 rounded-md text-white-strong font-semibold bg-green-weak hover:bg-green-strong">

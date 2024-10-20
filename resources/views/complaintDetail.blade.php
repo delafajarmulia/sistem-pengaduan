@@ -48,7 +48,7 @@
                     <p>{{ $response->content }}</p>
                 </div>
             @endforeach
-            <form action="{{ route('response.add', ['id'=>$complaint->id])}}" method="post" class="mt-5">
+            <form action="{{ route('response.post', ['id'=>$complaint->id])}}" method="post" class="mt-5">
                 @csrf
                 <label for="">Tambahkan tanggapan Anda</label><br>
                 <textarea name="response" class="w-full border border-gray rounded-md mt-1 p-2 pb-3"></textarea>

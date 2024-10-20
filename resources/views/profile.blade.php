@@ -24,12 +24,12 @@
                 @endauth
             </p>
             <p class="text-center">Ada data yang ingin kamu ubah?</p>
-            <form action="" method="post" class="px-3 py-2">
+            <form action="{{ route('profile.update', ['id'=>$user->id])}}" method="post" class="px-3 py-2">
                 @csrf
                 @method('put')
                 <div class="pt-4">
                     <label for="" class="mb-0.5">Nama</label><br>
-                    <input type="text" value="{{ $user->name }}" name="name" class="w-full px-2 py-1 pb-2 border border-gray rounded-md">
+                    <input type="text" value="{{ $user->name }}" name="name" class="w-full px-2 py-1 pb-2 border border-gray rounded-md" required>
                 </div>
                 <div class="pt-4">
                     <label for="" class="mb-0.5">NIK</label><br>
@@ -37,11 +37,11 @@
                 </div>
                 <div class="pt-4">
                     <label for="" class="mb-0.5">Email</label><br>
-                    <input type="text" value="{{ $user->email }}" name="email" class="w-full px-2 py-1 pb-2 border border-gray rounded-md">
+                    <input type="text" value="{{ $user->email }}" name="email" class="w-full px-2 py-1 pb-2 border border-gray rounded-md" required>
                 </div>
                 <div class="pt-4">
                     <label for="" class="mb-0.5">Nomor Telepon</label><br>
-                    <input type="text" value="{{ $user->phone }}" name="phone" class="w-full px-2 py-1 pb-2 border border-gray rounded-md">
+                    <input type="text" value="{{ $user->phone }}" name="phone" class="w-full px-2 py-1 pb-2 border border-gray rounded-md" required>
                 </div>
                 <div class="pt-4">
                     <label for="" class="mb-0.5">Password</label><br>

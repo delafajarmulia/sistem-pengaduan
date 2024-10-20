@@ -29,7 +29,7 @@ Route::middleware(['auth'])->group(
         Route::get('/user/{id}', [ProfileController::class, 'index'])->name('profile');
         Route::put('/user/{id}', [ProfileController::class, 'edit'])->name('profile.update');
         Route::get('/complaint/{id}/detail', [ComplaintDetailController::class, 'index'])->name('complaint.detail');
-        Route::post('/complaint/{id}/response', [ComplaintDetailController::class, 'addResponse'])->name('response.add');
+        Route::post('/complaint/{id}/response', [ComplaintDetailController::class, 'addResponse'])->name('response.post');
     }
 );
 
@@ -37,6 +37,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(
     function(){
         Route::get('/complaint/{id}', [DashboardController::class, 'editStatus'])->name('complaint.update');
         Route::get('/spot', [SpotFormController::class, 'index'])->name('spot');
+        Route::post('/spot', [SpotFormController::class, 'create'])->name('spot.post');
     }
 );
 
