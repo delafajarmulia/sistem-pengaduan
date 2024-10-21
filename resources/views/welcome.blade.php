@@ -13,7 +13,7 @@
         </h1>
 
         @foreach ($spots as $spot)
-            <img src="{{ asset('/storage/spots/'.$spot->image) }}" alt="" style="width: 150px">
+            <img src="{{ asset('spots/'.$spot->image) }}" alt="" style="width: 150px">
         @endforeach
     </body>
 </html>

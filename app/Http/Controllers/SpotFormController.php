@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Spot;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SpotFormController extends Controller
 {
@@ -41,13 +42,14 @@ class SpotFormController extends Controller
                 ],
             ]
         );
-
+        
         $image = $request->file('image');
-        $image->storeAs('public/spots/', $image->hashName());
+        $newFilename = time(). '-' .$image->getClientOriginalName() ; // . '.' . $image->getClientOriginalExtension()
+        $path = $image->move(public_path('spots'), $newFilename);
 
         $data = [
             'name'          => $request->input('name'),
-            'image'         => $image->hashName(),
+            'image'         => $newFilename,
             'address'       => $request->input('address'),
             'html_address'  => $request->input('html_address'),
             'description'   => $request->input('description'),
