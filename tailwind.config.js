@@ -27,7 +27,10 @@ export default {
         'weak': '#FFD700',
         'strong': '#DAA520'
       }
-    }
+    },
+    // backgroundImage : {
+    //   'leaf-bg': "url(\"/assets/leaf-background.jpg\") !important" 
+    // }
   },
   plugins: [],
 }

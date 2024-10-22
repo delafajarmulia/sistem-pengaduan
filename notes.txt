@@ -1,1 +1,30 @@
 composer dump-autoload
+npm install phosphor-icons
+
+php artisan cache:clear
+php artisan config:clear
+php artisan route:clear
+php artisan view:clear
+
+php artisan config:cache
+php artisan route:cache
+
+
+# CTA
+1. Laporkan kerusakan fasilitas pariwisata di Kabupaten Batang! Setiap laporan Anda adalah langkah menuju pariwisata yang lebih baik dan aman bagi semua.
+2. Kami berkomitmen untuk menjaga kenyamanan dan keamanan wisatawan. 
+   Jika Anda menemukan kerusakan pada fasilitas pariwisata, jangan ragu untuk melaporkannya. Setiap laporan sangat berarti untuk meningkatkan pengalaman wisata di Batang. 
+   Bersama-sama, kita wujudkan pariwisata yang lebih baik!
+   
+# BRANDING
+Dengan sistem pengaduan kerusakan fasilitas pariwisata, kami berkomitmen untuk menjaga kenyamanan dan keamanan wisatawan, 
+serta memperkuat partisipasi masyarakat dalam menjaga kualitas layanan pariwisata di Kabupaten Batang.
+
+Nikmati keindahan alam yang memikat, mulai dari pantai Ujungnegoro hingga air terjun Curug Genting. Kabupaten Batang di Jawa Tengah menawarkan pengalaman wisata yang tak terlupakan. 
+Ayo jelajahi sekarang dan rasakan keindahannya!
+
+5. Keunggulan yang Ditekankan
+Tepat dan Cepat: Menjamin respons cepat terhadap laporan.
+Transparan: Menyediakan transparansi dalam proses perbaikan.
+Partisipatif: Mengajak masyarakat untuk terlibat aktif dalam menjaga fasilitas pariwisata.
+Aman dan Terpercaya: Menyediakan sistem yang aman dan dapat diandalkan untuk melaporkan kerusakan dengan kerahasiaan terjaga.
