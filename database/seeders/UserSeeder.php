@@ -16,9 +16,10 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             [
                 'name'=>'Admin 1',
-                'nik'=>'',
+                'nik'=> '0000000000000000',
                 'email'=>'admin@gmail.com',
                 'phone'=>'089257819747',
+                'role'=>'admin',
                 'password'=>bcrypt('admin12345')
             ],
             [
@@ -26,6 +27,7 @@ class UserSeeder extends Seeder
                 'nik'=>'3325134204030001',
                 'email'=>'pipit@gmail.com',
                 'phone'=>'089257819746',
+                'role'=>'user',
                 'password'=>bcrypt('pipit12345')
             ],
             [
@@ -33,6 +35,7 @@ class UserSeeder extends Seeder
                 'nik'=>'3325134207010001',
                 'email'=>'yuli@gmail.com',
                 'phone'=>'089267819746',
+                'role'=>'user',
                 'password'=>bcrypt('yuli12345')
             ],
             [
@@ -40,6 +43,7 @@ class UserSeeder extends Seeder
                 'nik'=>'3325134210990001',
                 'email'=>'wulan@gmail.com',
                 'phone'=>'089557819746',
+                'role'=>'user',
                 'password'=>bcrypt('wulan12345')
             ],
             [
@@ -47,6 +51,7 @@ class UserSeeder extends Seeder
                 'nik'=>'3325134202070001',
                 'email'=>'dela@gmail.com',
                 'phone'=>'089557819749',
+                'role'=>'user',
                 'password'=>bcrypt('dela12345')
             ]
         ]);

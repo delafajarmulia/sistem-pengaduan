@@ -28,21 +28,21 @@
     
     <body class="text-black">
         <div class="bg-leaf-bg bg-cover bg-center h-screen flex items-center justify-center flex-col">
-            <h1 class="text-white-strong font-bold text-center text-5xl">
+            <h1 class="text-white-dark font-bold text-center text-5xl">
                 BATANG
             </h1>
             <div class="w-1/2 flex items-center justify-center mt-3">
-                {{-- <p class="text-white-strong text-center font-2xl">
+                {{-- <p class="text-white-dark text-center font-2xl">
                     Kami berkomitmen untuk menjaga kenyamanan dan keamanan wisatawan. 
                     Jika Anda menemukan kerusakan pada fasilitas pariwisata, jangan ragu untuk melaporkannya. Setiap laporan sangat berarti untuk meningkatkan pengalaman wisata di Batang. 
                     Bersama-sama, kita wujudkan pariwisata yang lebih baik!
                 </p> --}}
-                <p class="text-white-strong text-center font-2xl font-semibold">
+                <p class="text-white-dark text-center font-2xl font-semibold">
                     Laporkan kerusakan fasilitas pariwisata di Kabupaten Batang! Setiap laporan Anda adalah langkah menuju pariwisata yang lebih baik dan aman bagi semua.
                 </p>
             </div>
             <div class="mt-4">
-                <a href="{{ route('login') }}" class="text-green-weak bg-white-strong px-5 pb-3.5 py-2 rounded-full font-semibold font-2xl hover:bg-opacity-25 hover:text-white-strong"> <!-- hover:border border-3 border-white-strong-->
+                <a href="{{ route('login') }}" class="text-green-ligth bg-white-dark px-5 pb-3.5 py-2 rounded-full font-semibold font-2xl hover:bg-opacity-25 hover:text-white-dark"> <!-- hover:border border-3 border-white-dark-->
                     Buat Laporan
                 </a>
             </div>

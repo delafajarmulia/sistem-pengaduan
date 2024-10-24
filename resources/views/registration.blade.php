@@ -13,7 +13,7 @@
         
         @if ($errors->any())
             <div class="flex justify-center items-center w-auto bg-red opacity-75 rounded-md mt-3">
-                <ul class="text-white-strong py-1 px-3">
+                <ul class="text-white-dark py-1 px-3">
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
@@ -23,7 +23,7 @@
 
         @if (session('failed'))
             <div class="flex justify-center items-center w-auto bg-red opacity-75 rounded-md mt-3">
-                <p class="text-white-strong text-center py-1 px-3">{{ session('failed') }}</p>
+                <p class="text-white-dark text-center py-1 px-3">{{ session('failed') }}</p>
             </div>
         @endif
 
@@ -50,7 +50,7 @@
                 <input class="border border-gray rounded-md w-full px-2 py-1 pb-2" type="text" name="password" placeholder="password" required value="{{ old('password') }}">
             </div>
             <div>
-                <button type="submit" class="w-full p-1 pb-1.5 mt-5 mb-1 rounded-md text-white-strong font-semibold bg-green-weak hover:bg-green-strong">Daftarkan</button>
+                <button type="submit" class="w-full p-1 pb-1.5 mt-5 mb-1 rounded-md text-white-dark font-semibold bg-green-ligth hover:bg-green-dark">Daftarkan</button>
             </div>
         </form>
 

@@ -7,11 +7,13 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\SpotController;
 use App\Http\Controllers\SpotFormController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WelcomeController::class, 'index'])->name('main');
+Route::get('/spot', [SpotController::class, 'index'])->name('spot');
 
 Route::middleware(['guest'])->group(
     function(){
@@ -36,8 +38,8 @@ Route::middleware(['auth'])->group(
 Route::middleware(['auth', 'user-access:admin'])->group(
     function(){
         Route::get('/complaint/{id}', [DashboardController::class, 'editStatus'])->name('complaint.update');
-        Route::get('/spot', [SpotFormController::class, 'index'])->name('spot');
-        Route::post('/spot', [SpotFormController::class, 'create'])->name('spot.post');
+        Route::get('/spot-form', [SpotFormController::class, 'index'])->name('spot.form');
+        Route::post('/spot-form', [SpotFormController::class, 'create'])->name('spot.post');
     }
 );
 

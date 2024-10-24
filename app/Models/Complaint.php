@@ -17,6 +17,7 @@ class Complaint extends Model
         'user_id',
         'spot_id', 
         'content', 
+        'image',
         'status',
         'date_of_complaint'
     ];

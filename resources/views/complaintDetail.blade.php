@@ -22,21 +22,21 @@
                 <div>
                     <h3 class="font-semibold text-lg">{{ censorName($complaint->user->name) }}</h3>
                     <h5 class="text-xs">{{ $complaint->date_of_complaint }}</h5>
-                    <h5 class="text-green-weak font-semibold text-md pt-2">{{ $complaint->spot?->name }}</h5>
+                    <h5 class="text-green-ligth font-semibold text-md pt-2">{{ $complaint->spot?->name }}</h5>
                     <div class="flex flex-row pb-2">
-                        <h5 class="font-semibold pr-2 {{ $complaint->status == 'proses' ? 'text-yellow-weak' : 'text-green-weak'}}">{{ $complaint->status }}</h5>
+                        <h5 class="font-semibold pr-2 {{ $complaint->status == 'proses' ? 'text-yellow-ligth' : 'text-green-ligth'}}">{{ $complaint->status }}</h5>
                         <h5 class="pr-2">|</h5>
-                        <h5 class="font-semibold text-green-weak whitespace-nowrap">{{ $complaint->category->name }}</h5>
+                        <h5 class="font-semibold text-green-ligth whitespace-nowrap">{{ $complaint->category->name }}</h5>
                     </div>
                 </div>
                 <div class="mb-3">
                     @auth
                         @if (auth()->user()->role === 'admin')
-                            <a href="{{ route('complaint.update', ['id'=>$complaint->id])}}" class="px-3 pt-0.5 pb-1.5 text-white-strong rounded-md {{ $complaint->status == 'proses' ? 'bg-green-weak hover:bg-green-strong' : 'bg-yellow-weak hover:bg-yellow-strong'}}">Ubah Status</a>
+                            <a href="{{ route('complaint.update', ['id'=>$complaint->id])}}" class="px-3 pt-0.5 pb-1.5 text-white-dark rounded-md {{ $complaint->status == 'proses' ? 'bg-green-ligth hover:bg-green-dark' : 'bg-yellow-ligth hover:bg-yellow-dark'}}">Ubah Status</a>
                         @endif
                     @endauth
                     
-                    <a href="{{ route('dashboard')}}" class="px-3 pt-0.5 pb-1.5 text-white-strong rounded-md bg-blue-weak hover:bg-blue-strong">Kembali</a>
+                    <a href="{{ route('dashboard')}}" class="px-3 pt-0.5 pb-1.5 text-white-dark rounded-md bg-blue-ligth hover:bg-blue-dark">Kembali</a>
                 </div>
             </div>
             <p>{{ $complaint->content }}</p>
@@ -52,7 +52,7 @@
                 @csrf
                 <label for="">Tambahkan tanggapan Anda</label><br>
                 <textarea name="response" class="w-full border border-gray rounded-md mt-1 p-2 pb-3"></textarea>
-                <button type="submit" class="w-full py-1.5 pb-2 bg-green-weak hover:bg-green-strong text-white-strong font-semibold rounded-md mt-3 mb-5">
+                <button type="submit" class="w-full py-1.5 pb-2 bg-green-ligth hover:bg-green-dark text-white-dark font-semibold rounded-md mt-3 mb-5">
                     Tambahkan
                 </button>
             </form>

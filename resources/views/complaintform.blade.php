@@ -26,7 +26,7 @@
                 
                 @if ($errors->any())
                     <div class="mt-3 mx-auto w-auto bg-red bg-opacity-75 rounded-md md:w-3/4">
-                        <ul class="text-white-strong py-1.5 px-3 md:px-5">
+                        <ul class="text-white-dark py-1.5 px-3 md:px-5">
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
                             @endforeach
@@ -34,8 +34,8 @@
                     </div>
                 @endif
                 {{-- @if (session('success'))
-                    <div class="mt-3 w-auto bg-green-weak opacity-75 rounded-md">
-                        <p class="py-1 px-3 text-white-strong">{{ session('success') }}</p>
+                    <div class="mt-3 w-auto bg-green-ligth opacity-75 rounded-md">
+                        <p class="py-1 px-3 text-white-dark">{{ session('success') }}</p>
                     </div>
                 @endif --}}
             </div>
@@ -63,7 +63,7 @@
                     <textarea name="isi_pengaduan" id="" class="border border-gray rounded-md w-full px-2 py-1 pb-2 h-32" required></textarea>
                 </div>
                 <div class="w-4/5 mx-auto py-0.5">
-                    <button type="submit" class="w-full py-1.5 pb-2.5 mt-5 mb-1 rounded-md text-white-strong font-semibold bg-green-weak hover:bg-green-strong">
+                    <button type="submit" class="w-full py-1.5 pb-2.5 mt-5 mb-1 rounded-md text-white-dark font-semibold bg-green-ligth hover:bg-green-dark">
                         Buat Aduan
                     </button>
                 </div>

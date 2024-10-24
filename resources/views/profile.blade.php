@@ -61,7 +61,7 @@
                     </p>
                 </div>
                 <div class="pt-4 mb-5">
-                    <button type="submit" class="w-full py-1.5 pb-2 bg-green-weak hover:bg-green-strong text-white-strong font-semibold rounded-md mt-2">Perbarui</button>
+                    <button type="submit" class="w-full py-1.5 pb-2 bg-green-ligth hover:bg-green-dark text-white-dark font-semibold rounded-md mt-2">Perbarui</button>
                 </div>
             </form>
         </div>

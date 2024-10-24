@@ -12,20 +12,20 @@ export default {
       'black': '#33372C',
       'red': '#FF3B30',
       'white': {
-        'strong': '#FFFFFF',
-        'weak': '#F4F4F4'
+        'ligth': '#F4F4F4',
+        'dark': '#FFFFFF'
       },
       'blue': {
-        'weak': '#1E90FF',
-        'strong': '#1874CD'
+        'ligth': '#1E90FF',
+        'dark': '#1874CD'
       },
       'green': {
-        'weak': '#32CD32',
-        'strong': '#28A428'
+        'ligth': '#32CD32',
+        'dark': '#28A428'
       },
       'yellow': {
-        'weak': '#FFD700',
-        'strong': '#DAA520'
+        'ligth': '#FFD700',
+        'dark': '#DAA520'
       }
     },
     // backgroundImage : {
