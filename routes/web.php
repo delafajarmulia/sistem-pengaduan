@@ -13,7 +13,8 @@ use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WelcomeController::class, 'index'])->name('main');
-Route::get('/spot', [SpotController::class, 'index'])->name('spot');
+Route::get('/spot', [SpotController::class, 'index'])->name('spots');  // '/spots'
+Route::get('/spot/{id}', [SpotController::class, 'spotDetail'])->name('spot.detail');
 
 Route::middleware(['guest'])->group(
     function(){
@@ -38,8 +39,10 @@ Route::middleware(['auth'])->group(
 Route::middleware(['auth', 'user-access:admin'])->group(
     function(){
         Route::get('/complaint/{id}', [DashboardController::class, 'editStatus'])->name('complaint.update');
-        Route::get('/spot-form', [SpotFormController::class, 'index'])->name('spot.form');
-        Route::post('/spot-form', [SpotFormController::class, 'create'])->name('spot.post');
+        Route::get('/spot-form-add', [SpotController::class, 'spotForm'])->name('spot.form.add');
+        Route::post('/spot-form-add', [SpotController::class, 'createSpot'])->name('spot.post');
+        Route::get('/spot-form-edit/{id}', [SpotController::class, 'spotDetailForEdit'])->name('spot.form.edit');
+        Route::put('/spot-form-edit/{id}', [SpotController::class, 'spotUpdate'])->name('spot.edit');
     }
 );
 
