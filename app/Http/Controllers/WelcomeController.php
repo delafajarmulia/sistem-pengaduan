@@ -9,7 +9,7 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        // $spots = Spot::all();
-        return view('welcome'); // , compact('spots')
+        $spots = Spot::limit(3)->get();
+        return view('welcome', compact('spots')); // 
     }
 }

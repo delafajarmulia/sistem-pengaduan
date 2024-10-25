@@ -15,15 +15,25 @@
         .bg-leaf-bg {
             background-image: url(/assets/leaf-background.jpg);
         }
-
         .ph {
             display: inline-block;
             width: 50px;  /* Ukuran lebar ikon */
             height: 50px; /* Ukuran tinggi ikon */
             font-size: 50px; /* Ukuran font untuk ikon */
-            /* color: black; Ubah warna ikon untuk melihatnya */
+        }
+        /* Segitiga di kanan, lebih besar, menghadap ke bawah secara default */
+        details summary::after {
+            content: "";
+            @apply absolute right-0 top-1/2 transform -translate-y-1/2 border-solid;
+            border-width: 6px; /* Ukuran segitiga yang lebih besar */
+            border-color: black transparent transparent transparent; /* Menghadap ke bawah */
+            transition: transform 0.3s ease;
         }
 
+        /* Menghadap ke atas saat details dibuka */
+        details[open] summary::after {
+            transform: translateY(-50%) rotate(180deg);
+        }
     </style>
     
     <body class="text-black">
@@ -51,7 +61,7 @@
         <div class="py-20 px-5 w-auto mx-auto md:w-3/4">
             <div class="mx-auto ">
                 <h1 class="font-bold text-4xl">
-                    Komitmen kami
+                    Komitmen Kami
                 </h1>
                 <div class="grid grid-cols-1 gap-6 mt-8 flex justify-center items-center md:grid-cols-2">
                     <div class="flex flex-col text-center bg-gray bg-opacity-25 rounded-lg p-4 w-auto h-48 hover:shadow-xl shadow-gray">
@@ -95,20 +105,55 @@
 
         <div class="pt-0 pb-12 px-5 mx-auto md:w-3/4 md:pt-8 md:pb-24">
             <h1 class="font-bold text-4xl">
-                Wisata kami
+                Wisata Kami
             </h1>
+            <p class="text-right pr-2 text-blue-dark hover:text-blue-ligth md:pb-1">
+                <a 
+                    href="{{ route('spots') }}"
+                >
+                    lihat semua
+                </a>
+            </p>
+            <div class="grid md:grid-cols-3 gap-4">
+                @foreach ($spots as $spot)
+                    <div class="w-full px-3.5 py-5 bg-white-dark rounded-md shadow-md shadow-gray hover:shadow-xl shadow-gray">
+                        <img 
+                            src="{{ asset('spots/'.$spot->image) }}" 
+                            alt="{{ $spot->image }}"
+                            class="w-full h-48 rounded-md"
+                        >
+                        <h1 class="pt-2 font-semibold text-md">
+                            {{ $spot->name }}
+                        </h1>
+                    </div>
+                @endforeach
+            </div>
         </div>
 
-        <details>
-            <summary>test</summary>
-            <p>Nikmati keindahan alam yang memikat, mulai dari pantai Ujungnegoro hingga air terjun Curug Genting. Kabupaten Batang di Jawa Tengah menawarkan pengalaman wisata yang tak terlupakan. 
-                Ayo jelajahi sekarang dan rasakan keindahannya!</p>
-        </details>
-
-        {{-- @foreach ($spots as $spot)
-            <img src="{{ asset('spots/'.$spot->image) }}" alt="" style="width: 150px">
-        @endforeach --}}
-
-        {{-- <script src="{{ mix('js/app.js') }}"></script> --}}
+        <div class="py-5 px-9">
+            <div class="w-6/12 mx-auto mb-4">
+                <h1 class="font-bold text-3xl text-center pb-4">
+                    Ada Pertanyaan?
+                </h1>
+                <p class="text-center">
+                    Kami terbuka dengan pertanyaan apapun terkait Sistem Pengaduan. Sebelum Anda mengajukan pertanyaan, mungkin Anda bisa menemukan jawabannya di bawah ini.
+                </p>
+            </div>
+            @php
+                $FAQs = getFAQs();
+            @endphp
+            <div class="py-5 px-9 mx-auto md:w-3/5 bg-white-dark rounded-md shadow-md shadow-gray">
+                @foreach ($FAQs as $faq)
+                    <details class="border-b border-gray py-3">
+                        <summary class="flex items-center justify-between cursor-pointer pr-6 relative">
+                            {{ $faq->question }}
+                        </summary>
+                        <p class="mt-2">
+                            {{ $faq->answer }}
+                        </p>
+                    </details>
+                @endforeach
+            </div>
+        </div>
     </body>
 </html>

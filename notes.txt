@@ -9,6 +9,9 @@ php artisan view:clear
 php artisan config:cache
 php artisan route:cache
 
+kalo udah buat file helper, jangan lupa di add di file composer.json
+trs composer dump-autoload
+
 
 # CTA
 1. Laporkan kerusakan fasilitas pariwisata di Kabupaten Batang! Setiap laporan Anda adalah langkah menuju pariwisata yang lebih baik dan aman bagi semua.
@@ -28,3 +31,35 @@ Tepat dan Cepat: Menjamin respons cepat terhadap laporan.
 Transparan: Menyediakan transparansi dalam proses perbaikan.
 Partisipatif: Mengajak masyarakat untuk terlibat aktif dalam menjaga fasilitas pariwisata.
 Aman dan Terpercaya: Menyediakan sistem yang aman dan dapat diandalkan untuk melaporkan kerusakan dengan kerahasiaan terjaga.
+
+
+list pertanyaan
+1. Apa saja jenis fasilitas yang dapat dilaporkan kerusakannya di sistem ini?
+      Semua fasilitas umum di area pariwisata Kabupaten Batang dapat dilaporkan, seperti toilet, tempat duduk, jalan setapak, penerangan, dan fasilitas lainnya.
+
+2. Bagaimana cara membuat pengaduan kerusakan fasilitas?
+      Anda bisa membuat pengaduan dengan mengisi formulir online di website pengaduan. Isi semua informasi yang diminta, termasuk detail kerusakan, lokasi, dan foto jika memungkinkan.
+
+3. Apakah ada biaya untuk membuat pengaduan kerusakan?
+      Tidak ada biaya. Sistem pengaduan ini gratis dan terbuka bagi seluruh masyarakat yang ingin melaporkan kerusakan fasilitas pariwisata.
+
+4. Berapa lama waktu yang dibutuhkan hingga pengaduan saya diproses?
+      Setiap pengaduan biasanya diproses dalam 1-3 hari kerja, tergantung pada jumlah pengaduan yang masuk dan tingkat kerusakan yang dilaporkan.
+
+5. Bagaimana saya bisa mengetahui perkembangan dari pengaduan saya?
+      Anda dapat memantau status pengaduan melalui akun di sistem pengaduan, atau akan diberitahukan melalui email yang Anda daftarkan.
+
+6. Apakah saya bisa melaporkan pengaduan tanpa menyebutkan identitas saya?
+      Ya, pengaduan anonim diperbolehkan. Namun, akan lebih baik jika Anda mencantumkan identitas untuk memudahkan tindak lanjut, terutama jika memerlukan klarifikasi.
+
+7. Bagaimana jika pengaduan saya tidak ditindaklanjuti?
+      Anda dapat menghubungi tim pengelola pengaduan atau mengirimkan pengaduan ulang jika masalah belum diatasi setelah batas waktu yang ditentukan.
+
+8. Apakah saya bisa menambahkan informasi atau foto baru setelah pengaduan dibuat?
+      Anda dapat menghubungi admin atau tim pengelola melalui fitur kontak, atau mengirimkan email yang terdaftar pada sistem untuk menambahkan informasi baru terkait pengaduan Anda.
+
+9. Apa yang harus saya lakukan jika saya menemukan fasilitas pariwisata yang baru saja diperbaiki mengalami kerusakan lagi?
+      Anda bisa melaporkannya kembali melalui sistem dengan menjelaskan bahwa kerusakan terjadi pada fasilitas yang baru diperbaiki. Hal ini akan menjadi prioritas agar bisa segera ditindaklanjuti.
+
+10. Bagaimana cara mengetahui apakah pengaduan saya sudah selesai ditindaklanjuti?
+      Status pengaduan dapat dilihat di dashboard akun pengguna di sistem. Ketika pengaduan selesai ditangani, Anda juga akan menerima notifikasi melalui email atau SMS jika nomor Anda terdaftar.

@@ -65,12 +65,12 @@ class SpotController extends Controller
         );
         
         $image = $request->file('image');
-        $newFilename = time(). '-' .$image->getClientOriginalName() ; 
-        $image->move(public_path('spots'), $newFilename);
+        $newFileName = time(). '-' .$image->getClientOriginalName() ; 
+        $image->move(public_path('spots'), $newFileName);
 
         $data = [
             'name'          => $request->input('name'),
-            'image'         => $newFilename,
+            'image'         => $newFileName,
             'address'       => $request->input('address'),
             'html_address'  => $request->input('html_address'),
             'description'   => $request->input('description'),
@@ -154,10 +154,10 @@ class SpotController extends Controller
 
             // simpan file baru
             $image = $request->file('image');
-            $newFilename = time(). '-' .$image->getClientOriginalName() ; 
-            $image->move(public_path('spots'), $newFilename);
+            $newFileName = time(). '-' .$image->getClientOriginalName() ; 
+            $image->move(public_path('spots'), $newFileName);
 
-            $spot->image = $newFilename;
+            $spot->image = $newFileName;
         } else {
             $spot->image = $request->old_image;
         }
