@@ -8,7 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\SpotController;
-use App\Http\Controllers\SpotFormController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +22,7 @@ Route::middleware(['guest'])->group(
         Route::post('/login', [LoginController::class, 'actionLogin'])->name('login.action');
         Route::get('/registration', [RegistrationController::class, 'index'])->name('registration');
         Route::post('/registration', [RegistrationController::class, 'store'])->name('registration.post');
+        // Route::get('/forgot-password')
     }
 );
 
@@ -43,6 +44,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(
         Route::post('/spot-form-add', [SpotController::class, 'createSpot'])->name('spot.post');
         Route::get('/spot-form-edit/{id}', [SpotController::class, 'spotDetailForEdit'])->name('spot.form.edit');
         Route::put('/spot-form-edit/{id}', [SpotController::class, 'spotUpdate'])->name('spot.edit');
+        Route::get('/users', [UserController::class, 'index'])->name('users');
     }
 );
 

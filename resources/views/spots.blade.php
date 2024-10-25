@@ -15,10 +15,10 @@
             <x-navbar-auth-public />
         @endif
     @endauth
-    <div class="py-20 px-5 w-auto mx-auto text-black md:w-3/4">
+    <div class="py-5 px-5 w-auto mx-auto text-black md:w-3/4">
         <div class="grid grid-cols-1 gap-6 mt-8 flex justify-center items-center md:grid-cols-2">
             @foreach ($spots as $spot)
-                <div class="w-auto min-h-96 shadow-md shadow-gray px-5 py-5 rounded-md hover:shadow-2xl">
+                <div class="w-auto min-h-72 shadow-md shadow-gray px-5 py-5 rounded-md hover:shadow-2xl">
                     <a href="{{ route('spot.detail', ['id'=>$spot->id]) }}">
                         <img src="{{ asset('/spots/'.$spot->image) }}" alt="{{ $spot->image }}" class="w-auto rounded-md">
                         <div class="mt-2">

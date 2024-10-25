@@ -31,22 +31,14 @@
             @csrf
             <div class="pt-4">
                 <label for="">Email</label><br>
-                <input class="border border-gray rounded-md w-full px-2 py-1 pb-2" type="email" name="email" placeholder="Masukkan email" required value="{{ old('email') }}" autocomplete="off">
+                <input class="border border-gray rounded-md w-full px-2 py-1 pb-2" type="email" name="email" placeholder="email" required value="{{ old('email') }}" autocomplete="off">
             </div>
             <div class="pt-4">
-                <label for="">Kata sandi</label><br>
-                <input class="border border-gray rounded-md w-full px-2 py-1 pb-2" type="password" name="password" placeholder="Masukkan kata sandi" required value="{{ old('password') }}"> <!-- focus:border-blue-dark -->
-                <p class="text-right text-xs">
-                    <a href="" class="text-blue-dark hover:text-blue-ligth">Lupa kata sandi?</a>
-                </p>
+                <label for="">Password</label><br>
+                <input class="border border-gray rounded-md w-full px-2 py-1 pb-2" type="password" name="password" placeholder="password" required value="{{ old('password') }}"> <!-- focus:border-blue-dark -->
             </div>
             <div class="mt-5 mb-1 ">
                 <button type="submit" class="w-full p-1 pb-1.5 rounded-md text-white-dark font-semibold bg-green-ligth hover:bg-green-dark">Login</button>
-            </div>
-            <div>
-                <p class="mb-3 text-xs text-center">
-                    Belum punya akun? <a href="{{ route('registration') }}" class="text-blue-dark hover:text-blue-ligth">Daftar Sekarang</a>
-                </p>
             </div>
         </form>
     </div>
