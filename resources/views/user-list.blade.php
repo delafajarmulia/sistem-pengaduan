@@ -8,7 +8,8 @@
     @vite('resources/css/app.css')
 </head>
 <body class="flex justify-center items-center text-black">
-    <div class="px-5 py-5 mt-5 w-full md:w-3/4 md:rounded-md md:border border-gray">
+    <x-navbar-auth-admin />
+    <div class="px-5 py-5 mt-24 w-full md:w-3/4 md:rounded-md md:border border-gray">
         <h1 class="text-center font-bold pb-3 text-2xl md:pb-5">Daftar Pengguna</h1>
         <p class="text-right">Total pengguna : {{ $userSum }}</p>
 
@@ -23,9 +24,6 @@
                             <h6>
                                 {{ $user->email }}
                             </h6>
-                        </div>
-                        <div class="mt-3">
-                            <a href="" class="px-3 pt-1 pb-1.5 bg-blue-ligth rounded-md text-white-dark">Ubah data</a>
                         </div>
                     </div>
                 </a>

@@ -87,7 +87,7 @@ class SpotController extends Controller
         $spot = Spot::find($id);
         
         if(!$spot){
-            return view('spot-edit')->with('error', 'data not found');
+            return view('spot-edit')->with('error', 'Data wisata tidak ditemukan');
         }
 
         return view('spot-edit', compact('spot'));

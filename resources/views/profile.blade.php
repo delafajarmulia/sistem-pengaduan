@@ -24,32 +24,53 @@
                 @endauth
             </p>
             <p class="text-center">Ada data yang ingin kamu ubah?</p>
+            @if (session('success'))
+                <p>{{ session('success') }}</p>
+            @endif
             <form action="{{ route('profile.update', ['id'=>$user->id])}}" method="post" class="px-3 py-2">
                 @csrf
-                @method('put')
+                @method('PUT')
                 <div class="pt-4">
                     <label for="" class="mb-0.5">Nama</label><br>
                     <input type="text" value="{{ $user->name }}" name="name" class="w-full px-2 py-1 pb-2 border border-gray rounded-md" required>
+                    @error('name')
+                        <p>{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="pt-4">
                     <label for="" class="mb-0.5">NIK</label><br>
                     <input type="text" value="{{ $user->nik }}" name="nik" class="w-full px-2 py-1 pb-2 border border-gray rounded-md" {{ auth()->user()->role == 'admin' ? '' : 'readonly'}}>
+                    @error('nik')
+                        <p>{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="pt-4">
                     <label for="" class="mb-0.5">Email</label><br>
                     <input type="text" value="{{ $user->email }}" name="email" class="w-full px-2 py-1 pb-2 border border-gray rounded-md" required>
+                    @error('email')
+                        <p>{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="pt-4">
                     <label for="" class="mb-0.5">Nomor Telepon</label><br>
                     <input type="text" value="{{ $user->phone }}" name="phone" class="w-full px-2 py-1 pb-2 border border-gray rounded-md" required>
+                    @error('phone')
+                        <p>{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="pt-4">
                     <label for="" class="mb-0.5">Password</label><br>
-                    <input type="text" value="" name="password" class="w-full px-2 py-1 pb-2 border border-gray rounded-md">
+                    <input type="text" name="password" class="w-full px-2 py-1 pb-2 border border-gray rounded-md">
+                    @error('password')
+                        <p>{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="pt-4">
-                    <label for="" class="mb-0.5">Ulangi Password</label><br>
-                    <input type="text" value="" name="confirm_password" class="w-full px-2 py-1 pb-2 border border-gray rounded-md">
+                    <label for="" class="mb-0.5">Ulangi Password (konfimasi)</label><br>
+                    <input type="text" name="confirm_password" class="w-full px-2 py-1 pb-2 border border-gray rounded-md">
+                    @error('confirm_password')
+                        <p>{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="pt-4">
                     <p class="pb-1">
