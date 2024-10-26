@@ -29,10 +29,16 @@
                         <h5 class="font-semibold text-green-light whitespace-nowrap">{{ $complaint->category->name }}</h5>
                     </div>
                 </div>
-                <div class="mb-3">
+                <div class="mb-3 flex h-fit">
                     @auth
                         @if (auth()->user()->role === 'admin')
-                            <a href="{{ route('complaint.update', ['id'=>$complaint->id])}}" class="px-3 pt-0.5 pb-1.5 text-white-dark rounded-md {{ $complaint->status == 'proses' ? 'bg-green-light hover:bg-green-dark' : 'bg-yellow-light hover:bg-yellow-dark'}}">Ubah Status</a>
+                            <form action="{{ route('complaint.update', ['id'=>$complaint->id, 'user_away_id'=>$complaint->user_id])}}" method="post">
+                                @csrf
+                                @method('PUT')
+                                <button type="submit" class="px-3 pt-0.5 pb-1.5 mr-2 text-white-dark rounded-md {{ $complaint->status == 'proses' ? 'bg-green-light hover:bg-green-dark' : 'bg-yellow-light hover:bg-yellow-dark' }}">
+                                    Ubah Status
+                                </button>
+                            </form>
                         @endif
                     @endauth
                     

@@ -59,7 +59,7 @@ class ComplaintController extends Controller
                 'spot_id'           => $request->input('spot'),
                 'image'             => $newFileName,
                 'content'           => $request->input('content'),
-                'date_of_complaint' => Carbon::now()->format('Y-m-d H:i:s'),
+                'date_of_complaint' => Carbon::now()->setTimeZone('Asia/Jakarta')->format('Y-m-d H:i:s'),
                 'status'            => 'proses'
             ];
 
@@ -74,7 +74,7 @@ class ComplaintController extends Controller
             'spot_id'           => $request->input('spot'),
             'image'             => null,
             'content'           => $request->input('content'),
-            'date_of_complaint' => Carbon::now()->format('Y-m-d H:i:s'),
+            'date_of_complaint' => Carbon::now()->setTimeZone('Asia/Jakarta')->format('Y-m-d H:i:s'),
             'status'            => 'proses'
         ];
 

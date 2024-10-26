@@ -43,7 +43,6 @@
                                             Ubah Status
                                         </button>
                                     </form>
-                                    {{-- <a href="{{ route('complaint.update', ['id'=>$complaint->id, 'user_away_id'=>$complaint->user_id])}}" class="px-3 pt-0.5 pb-1.5 mr-2 text-white-dark rounded-md {{ $complaint->status == 'proses' ? 'bg-green-light hover:bg-green-dark' : 'bg-yellow-light hover:bg-yellow-dark'}}">Ubah Status</a> --}}
                                 @endif
                             @endauth
                             
@@ -62,6 +61,27 @@
                 </div>
             @endforeach
         </div>
+
+        <!-- Floating Action Button -->
+        <div class="fixed bottom-6 right-6">
+            <a 
+                href="{{ route('notifications', ['id'=>auth()->user()->id]) }}" 
+                class="relative bg-green-light hover:bg-green-dark text-white-dark font-bold pt-3 pb-4 px-5 rounded-full shadow-lg shadow-gray transition transform hover:scale-125"
+                >
+                <!-- Icon Notifikasi -->
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6 inline-block">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22c1.104 0 2-.896 2-2H10c0 1.104.896 2 2 2zm6-6V10c0-3.313-1.791-6.158-4.5-7.295A3.001 3.001 0 0012 2a3.001 3.001 0 00-1.5.705C8.791 3.842 7 6.687 7 10v6l-1 1v1h12v-1l-1-1z" />
+                </svg>
+                <span class="sr-only">
+                    Add Notification
+                </span>
+                <!-- Indikator Notifikasi -->
+                <span class="absolute top-0 right-0 inline-flex items-center justify-center w-5 h-5 bg-red text-white-strong text-xs font-bold rounded-full -mr-1 -mt-1">
+                    {{ $notificationCount }}
+                </span>
+            </a>
+        </div>
+
     </div>
 </body>
 </html>

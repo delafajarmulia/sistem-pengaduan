@@ -13,7 +13,9 @@ class Notification extends Model
         'user_home_id',
         'user_away_id',
         'complaint_id',
-        'message'
+        'category',
+        'message',
+        'date_of_notification'
     ];
 
     public function userHome()

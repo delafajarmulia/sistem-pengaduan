@@ -9,7 +9,7 @@
 </head>
 <body class="flex justify-center items-center text-black">
     <x-navbar-auth-admin />
-    <div class="px-5 py-5 mt-24 w-full md:w-3/4 md:rounded-md md:border border-gray">
+    <div class="px-5 py-5 mt-24 w-full md:w-1/2 md:rounded-md md:border border-gray">
         <h1 class="text-center font-bold pb-3 text-2xl md:pb-5">Daftar Pengguna</h1>
         <p class="text-right">Total pengguna : {{ $userSum }}</p>
 
