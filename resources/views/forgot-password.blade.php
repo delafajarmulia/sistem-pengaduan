@@ -38,7 +38,7 @@
                 <input class="border border-gray rounded-md w-full px-2 py-1 pb-2" type="password" name="password" placeholder="password" required value="{{ old('password') }}"> <!-- focus:border-blue-dark -->
             </div>
             <div class="mt-5 mb-1 ">
-                <button type="submit" class="w-full p-1 pb-1.5 rounded-md text-white-dark font-semibold bg-green-ligth hover:bg-green-dark">Login</button>
+                <button type="submit" class="w-full p-1 pb-1.5 rounded-md text-white-dark font-semibold bg-green-light hover:bg-green-dark">Login</button>
             </div>
         </form>
     </div>

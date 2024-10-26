@@ -12,19 +12,20 @@ export default {
       'black': '#33372C',
       'red': '#FF3B30',
       'white': {
-        'ligth': '#F4F4F4',
+        'light': '#F4F4F4',
         'dark': '#FFFFFF'
       },
       'blue': {
-        'ligth': '#1E90FF',
+        'light': '#1E90FF',
         'dark': '#1874CD'
       },
       'green': {
-        'ligth': '#32CD32',
+        'lighter': '#66FF66',
+        'light': '#32CD32',
         'dark': '#28A428'
       },
       'yellow': {
-        'ligth': '#FFD700',
+        'light': '#FFD700',
         'dark': '#DAA520'
       }
     },

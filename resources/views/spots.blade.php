@@ -15,12 +15,17 @@
             <x-navbar-auth-public />
         @endif
     @endauth
-    <div class="py-5 px-5 w-auto mx-auto text-black md:w-3/4">
-        <div class="grid grid-cols-1 gap-6 mt-8 flex justify-center items-center md:grid-cols-2">
+    <div class="py-5 px-5 pt-32 md:pt-28 w-auto mx-auto text-black md:w-3/4">
+        <h1 class="text-center font-bold pb-5 text-2xl">Daftar Wisata</h1>
+        <div class="grid grid-cols-1 gap-6 mt-2 flex justify-center items-center md:grid-cols-2">
             @foreach ($spots as $spot)
                 <div class="w-auto min-h-72 shadow-md shadow-gray px-5 py-5 rounded-md hover:shadow-2xl">
                     <a href="{{ route('spot.detail', ['id'=>$spot->id]) }}">
-                        <img src="{{ asset('/spots/'.$spot->image) }}" alt="{{ $spot->image }}" class="w-auto rounded-md">
+                        <img 
+                            src="{{ asset('/spots/'.$spot->image) }}" 
+                            alt="{{ $spot->image }}" 
+                            class="w-auto rounded-md h-48"
+                        >
                         <div class="mt-2">
                             <h1 class="font-semibold text-lg">
                                 {{ $spot->name }}
@@ -33,7 +38,7 @@
                             @auth
                                 @if (auth()->user()->role === 'admin')
                                     <a href="{{ route('spot.form.edit', ['id'=>$spot->id]) }}">
-                                        <button class="w-full py-1 bg-green-ligth text-white-dark rounded-md">Edit wisata</button>
+                                        <button class="w-full py-1 bg-green-light text-white-dark rounded-md">Edit wisata</button>
                                     </a>
                                 @endif
                             @endauth

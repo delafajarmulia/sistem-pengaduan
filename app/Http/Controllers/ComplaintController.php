@@ -29,11 +29,11 @@ class ComplaintController extends Controller
     {
         $request->validate(
             [
-                'isi_pengaduan' => 'required|min:5'
+                'content' => 'required|min:5'
             ],
             [
-                'isi_pengaduan.required'    => 'Harap isikan aduan Anda',
-                'isi_pengaduan.min'         => 'Minimal karakter adalah 5'
+                'content.required'    => 'Harap isikan aduan Anda',
+                'content.min'         => 'Laporan yang baik, minimal terdiri dari :min karakter'
             ]
         );
 
@@ -58,7 +58,7 @@ class ComplaintController extends Controller
                 'user_id'           => Auth::user()->id,
                 'spot_id'           => $request->input('spot'),
                 'image'             => $newFileName,
-                'content'           => $request->input('isi_pengaduan'),
+                'content'           => $request->input('content'),
                 'date_of_complaint' => Carbon::now()->format('Y-m-d H:i:s'),
                 'status'            => 'proses'
             ];
@@ -73,7 +73,7 @@ class ComplaintController extends Controller
             'user_id'           => Auth::user()->id,
             'spot_id'           => $request->input('spot'),
             'image'             => null,
-            'content'           => $request->input('isi_pengaduan'),
+            'content'           => $request->input('content'),
             'date_of_complaint' => Carbon::now()->format('Y-m-d H:i:s'),
             'status'            => 'proses'
         ];

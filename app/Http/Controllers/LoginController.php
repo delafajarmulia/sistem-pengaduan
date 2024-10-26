@@ -16,7 +16,7 @@ class LoginController extends Controller
     public function actionLogin(Request $request){
         $credentials = $request->validate([
             'email'=>'required',
-            'password'=>'required|min:3'
+            'password'=>'required|min:8'
         ], [
             'email.required'=>'email wajib diisikan',
             'password.required'=>'password wajib diisikan',
@@ -33,7 +33,7 @@ class LoginController extends Controller
 
             return redirect('dashboard');
         }else{
-            return redirect()->route('login')->with('failed', 'Email atau Password Anda salah. Pastikan Anda telah menggunakan email dan password yang benar.');
+            return redirect()->route('login')->withErrors(['error' => 'Email atau Password Anda salah.']);
         }
     }
 

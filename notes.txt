@@ -49,12 +49,14 @@ list pertanyaan
 5. Bagaimana saya bisa mengetahui perkembangan dari pengaduan saya?
       Anda dapat memantau status pengaduan melalui akun di sistem pengaduan, atau akan diberitahukan melalui email yang Anda daftarkan.
 
+# ini aku skip
 6. Apakah saya bisa melaporkan pengaduan tanpa menyebutkan identitas saya?
       Ya, pengaduan anonim diperbolehkan. Namun, akan lebih baik jika Anda mencantumkan identitas untuk memudahkan tindak lanjut, terutama jika memerlukan klarifikasi.
 
 7. Bagaimana jika pengaduan saya tidak ditindaklanjuti?
       Anda dapat menghubungi tim pengelola pengaduan atau mengirimkan pengaduan ulang jika masalah belum diatasi setelah batas waktu yang ditentukan.
 
+# ini juga skip
 8. Apakah saya bisa menambahkan informasi atau foto baru setelah pengaduan dibuat?
       Anda dapat menghubungi admin atau tim pengelola melalui fitur kontak, atau mengirimkan email yang terdaftar pada sistem untuk menambahkan informasi baru terkait pengaduan Anda.
 

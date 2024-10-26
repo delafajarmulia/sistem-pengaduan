@@ -26,7 +26,7 @@
             @endif --}}
 
             @if (session('success'))
-                <div class="mt-3 mx-auto w-auto bg-green-ligth opacity-75 rounded-md md:3/4">
+                <div class="mt-3 mx-auto w-auto bg-green-light opacity-75 rounded-md md:3/4">
                     <p class="text-white-dark py-1.5 px-3 md:px-5">{{ session('success') }}</p>
                 </div>
             @endif
@@ -116,7 +116,7 @@
                 </div>
                 <div class="mt-5 mb-1 ">
                     <button 
-                    type="submit" class="w-full p-1 pb-1.5 rounded-md text-white-dark font-semibold bg-green-ligth hover:bg-green-dark">Perbarui</button>
+                    type="submit" class="w-full p-1 pb-1.5 rounded-md text-white-dark font-semibold bg-green-light hover:bg-green-dark">Perbarui</button>
                 </div>
             </form>
         </div>

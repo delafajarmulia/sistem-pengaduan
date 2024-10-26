@@ -6,8 +6,6 @@
 
         <title>Sistem Pengaduan</title>
         @vite('resources/css/app.css')
-        {{-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> --}}
-        <link rel="stylesheet" href="https://unpkg.com/phosphor-icons@latest/src/styles.css" />
 
     </head>
 
@@ -52,7 +50,7 @@
                 </p>
             </div>
             <div class="mt-4">
-                <a href="{{ route('login') }}" class="text-green-ligth bg-white-dark px-5 pb-3.5 py-2 rounded-full font-semibold font-2xl hover:bg-opacity-25 hover:text-white-dark"> <!-- hover:border border-3 border-white-dark-->
+                <a href="{{ route('login') }}" class="text-green-light bg-white-dark px-5 pb-3.5 py-2 rounded-full font-semibold font-2xl hover:bg-opacity-25 hover:text-white-dark"> <!-- hover:border border-3 border-white-dark-->
                     Buat Laporan
                 </a>
             </div>
@@ -107,20 +105,20 @@
             <h1 class="font-bold text-4xl">
                 Wisata Kami
             </h1>
-            <p class="text-right pr-2 text-blue-dark hover:text-blue-ligth md:pb-1">
+            <p class="text-right pr-2 text-blue-dark hover:text-blue-light md:pb-1">
                 <a 
                     href="{{ route('spots') }}"
                 >
                     lihat semua
                 </a>
             </p>
-            <div class="grid md:grid-cols-3 gap-4">
+            <div class="grid md:grid-cols-1 gap-4 lg:grid-cols-3 gap-4">
                 @foreach ($spots as $spot)
                     <div class="w-full px-3.5 py-5 bg-white-dark rounded-md shadow-md shadow-gray hover:shadow-xl shadow-gray">
                         <img 
                             src="{{ asset('spots/'.$spot->image) }}" 
                             alt="{{ $spot->image }}"
-                            class="w-full h-48 rounded-md"
+                            class="w-full h-48 rounded-md md:h-56"
                         >
                         <h1 class="pt-2 font-semibold text-md">
                             {{ $spot->name }}
@@ -131,7 +129,7 @@
         </div>
 
         <div class="py-5 px-9">
-            <div class="w-6/12 mx-auto mb-4">
+            <div class="w-full mx-auto mb-4 md:w-6/12">
                 <h1 class="font-bold text-3xl text-center pb-4">
                     Ada Pertanyaan?
                 </h1>
@@ -145,7 +143,7 @@
             <div class="py-5 px-9 mx-auto md:w-3/5 bg-white-dark rounded-md shadow-md shadow-gray">
                 @foreach ($FAQs as $faq)
                     <details class="border-b border-gray py-3">
-                        <summary class="flex items-center justify-between cursor-pointer pr-6 relative">
+                        <summary class="flex items-center justify-between cursor-pointer pr-6 relative font-semibold text-green-dark">
                             {{ $faq->question }}
                         </summary>
                         <p class="mt-2">
@@ -154,6 +152,10 @@
                     </details>
                 @endforeach
             </div>
+        </div>
+
+        <div class="bg-gradient-to-r from-green-lighter via-green-light to-green-dark w-full px-5 py-7 mt-5">
+            <p>Sistem Pengaduan</p>
         </div>
     </body>
 </html>
