@@ -27,7 +27,9 @@
         "files": [
             "app/Helpers/helpers.php",
             "app/Helpers/FAQ.php",
-            "app/Helpers/FAQHelper.php"
+            "app/Helpers/FAQHelper.php",
+            "app/Helpers/commit.php",
+            "app/Helpers/commitHelper.php"
         ]
     },
     "autoload-dev": {

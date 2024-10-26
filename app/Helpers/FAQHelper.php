@@ -42,9 +42,3 @@ if(!function_exists('getFAQs')){
         ];
     }
 }
-
-if (!function_exists('testFunction')) {
-    function testFunction() {
-        return 'Hello World';
-    }
-}

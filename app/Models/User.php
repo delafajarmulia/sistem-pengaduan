@@ -60,4 +60,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Response::class);
     }
+
+    public function notificationAsHome()
+    {
+        return $this->hasMany(Notification::class, 'user_home_id');
+    }
+
+    public function notificationAsAway()
+    {
+        return $this->hasMany(Notification::class, 'user_away_id');
+    }
 }

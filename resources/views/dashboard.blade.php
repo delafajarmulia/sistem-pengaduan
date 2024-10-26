@@ -36,7 +36,14 @@
                         <div class="flex justify-end mb-2 md:order-2 mt-2 md:mt-0 w-full md:h-fit"> <!--  flex mt-2 md:mt-0 space-x-2 justify-end md:order-2 -->
                             @auth
                                 @if (auth()->user()->role === 'admin')
-                                    <a href="{{ route('complaint.update', ['id'=>$complaint->id])}}" class="px-3 pt-0.5 pb-1.5 mr-2 text-white-dark rounded-md {{ $complaint->status == 'proses' ? 'bg-green-light hover:bg-green-dark' : 'bg-yellow-light hover:bg-yellow-dark'}}">Ubah Status</a>
+                                    <form action="{{ route('complaint.update', ['id'=>$complaint->id, 'user_away_id'=>$complaint->user_id])}}" method="post">
+                                        @csrf
+                                        @method('PUT')
+                                        <button type="submit" class="px-3 pt-0.5 pb-1.5 mr-2 text-white-dark rounded-md {{ $complaint->status == 'proses' ? 'bg-green-light hover:bg-green-dark' : 'bg-yellow-light hover:bg-yellow-dark' }}">
+                                            Ubah Status
+                                        </button>
+                                    </form>
+                                    {{-- <a href="{{ route('complaint.update', ['id'=>$complaint->id, 'user_away_id'=>$complaint->user_id])}}" class="px-3 pt-0.5 pb-1.5 mr-2 text-white-dark rounded-md {{ $complaint->status == 'proses' ? 'bg-green-light hover:bg-green-dark' : 'bg-yellow-light hover:bg-yellow-dark'}}">Ubah Status</a> --}}
                                 @endif
                             @endauth
                             

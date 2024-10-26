@@ -62,34 +62,22 @@
                     Komitmen Kami
                 </h1>
                 <div class="grid grid-cols-1 gap-6 mt-8 flex justify-center items-center md:grid-cols-2">
-                    <div class="flex flex-col text-center bg-gray bg-opacity-25 rounded-lg p-4 w-auto h-48 hover:shadow-xl shadow-gray">
-                        <img src="{{ asset('assets/icons/timer.svg') }}" alt="" class="w-12 h-12 mb-3 mx-auto mt-1">
-                        <div>
-                            <p class="font-bold text-xl">Cepat dan Tepat</p>
-                            <p>Menjamin respons cepat terhadap laporan.</p>
+                    @php
+                        $commits = getCommits();
+                    @endphp
+                    @foreach ($commits as $commit)
+                        <div class="flex flex-col text-center bg-gray bg-opacity-25 rounded-lg p-4 w-auto h-48 hover:shadow-xl shadow-gray">
+                            <img src="{{ asset('assets/icons/'.$commit->icon) }}" alt="" class="w-12 h-12 mb-3 mx-auto mt-1">
+                            <div>
+                                <p class="font-bold text-xl">
+                                    {{ $commit->point }}
+                                </p>
+                                <p>
+                                    {{ $commit->description }}
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="flex flex-col text-center bg-gray bg-opacity-25 rounded-lg p-4 w-auto h-48 hover:shadow-xl shadow-gray">
-                        <img src="{{ asset('assets/icons/eye.svg') }}" alt="" class="w-12 h-12 mb-3 mx-auto">
-                        <div>
-                            <p class="font-bold text-xl">Transparan</p>
-                            <p>Menyediakan transparansi dalam proses perbaikan.</p>
-                        </div>
-                    </div>
-                    <div class="flex flex-col text-center bg-gray bg-opacity-25 rounded-lg p-4 w-auto h-48 hover:shadow-xl shadow-gray">
-                        <img src="{{ asset('assets/icons/chats.svg') }}" alt="" class="w-12 h-12 mb-3 mx-auto">
-                        <div>
-                            <p class="font-bold text-xl">Partisipatif</p>
-                            <p>Mengajak masyarakat untuk terlibat aktif dalam menjaga fasilitas pariwisata.</p>
-                        </div>
-                    </div>
-                    <div class="flex flex-col text-center bg-gray bg-opacity-25 rounded-lg p-4 w-auto h-48 hover:shadow-xl shadow-gray">
-                        <img src="{{ asset('assets/icons/seal-check.svg') }}" alt="" class="w-12 h-12 mb-3 mx-auto">
-                        <div>
-                            <p class="font-bold text-xl">Aman dan Terpercaya</p>
-                            <p>Menyediakan sistem yang aman dan dapat diandalkan untuk melaporkan kerusakan dengan kerahasiaan terjaga.</p>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

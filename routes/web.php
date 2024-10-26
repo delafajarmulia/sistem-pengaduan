@@ -4,6 +4,7 @@ use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\ComplaintDetailController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\SpotController;
 use App\Http\Controllers\UserController;
@@ -32,12 +33,13 @@ Route::middleware(['auth'])->group(
         Route::put('/user/{id}/update', [UserController::class, 'edit'])->name('profile.update');
         Route::get('/complaint/{id}/detail', [ComplaintDetailController::class, 'index'])->name('complaint.detail');
         Route::post('/complaint/{id}/response', [ComplaintDetailController::class, 'addResponse'])->name('response.post');
+        Route::get('/notifications/{id}', [NotificationController::class, 'index'])->name('notifications');
     }
 );
 
 Route::middleware(['auth', 'user-access:admin'])->group(
     function(){
-        Route::get('/complaint/{id}', [DashboardController::class, 'editStatus'])->name('complaint.update');
+        Route::put('/complaint/{id}', [DashboardController::class, 'editStatus'])->name('complaint.update');
         Route::get('/spot-form-add', [SpotController::class, 'spotForm'])->name('spot.form.add');
         Route::post('/spot-form-add', [SpotController::class, 'createSpot'])->name('spot.post');
         Route::get('/spot-form-edit/{id}', [SpotController::class, 'spotDetailForEdit'])->name('spot.form.edit');

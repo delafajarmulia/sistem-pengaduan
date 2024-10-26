@@ -24,7 +24,7 @@
                         <img 
                             src="{{ asset('/spots/'.$spot->image) }}" 
                             alt="{{ $spot->image }}" 
-                            class="w-auto rounded-md h-48"
+                            class="w-full rounded-md h-48 md:h-56"
                         >
                         <div class="mt-2">
                             <h1 class="font-semibold text-lg">
