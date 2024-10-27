@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\CheckUserAccess;
 use App\Http\Middleware\UserAccess;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -13,7 +14,8 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
-            'user-access' => UserAccess::class,
+            'user-access'       => UserAccess::class,
+            'user-access-self'  => CheckUserAccess::class
         ]);
         // $middleware->redirectGuestsTo('login');
     })

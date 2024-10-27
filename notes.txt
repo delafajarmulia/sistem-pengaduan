@@ -12,6 +12,8 @@ php artisan route:cache
 kalo udah buat file helper, jangan lupa di add di file composer.json
 trs composer dump-autoload
 
+abis add middleware jangan  lupa add di file kernel.php
+
 
 # CTA
 1. Laporkan kerusakan fasilitas pariwisata di Kabupaten Batang! Setiap laporan Anda adalah langkah menuju pariwisata yang lebih baik dan aman bagi semua.

@@ -12,7 +12,7 @@
         <h1 class="text-center font-bold pb-3 text-2xl md:pb-5">Notifikasi</h1>
 
         <div class="mt-5">
-            @foreach ($notifications as $notif)
+            @forelse ($notifications as $notif)
                 <a href="{{ $notif->complaint_id !== null ? route('complaint.detail', ['id'=>$notif->complaint_id]) : route('dashboard') }}">
                     <div class="flex my-1.5 rounded-md border border-gray pl-2 pr-3 pt-2 pb-2.5 md:px-4 md:my-3 hover:shadow-lg shadow-gray">
                         <img 
@@ -26,7 +26,11 @@
                         </div>
                     </div>
                 </a>
-            @endforeach
+            @empty
+                <p class="text-center">
+                    Belum ada notifikasi untuk Anda.
+                </p>
+            @endforelse
         </div>
     </div>
 </body>

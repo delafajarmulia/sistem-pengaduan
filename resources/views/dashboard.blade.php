@@ -19,7 +19,7 @@
         <h1 class="text-2xl font-bold pt-8 md:p-5 text-center">Semua Pengaduan</h1>
         <div class="flex flex-col justify-center items-center">
             @if (session('success'))
-                <p class="w-3/4 p-4 mb-4 mt-5 bg-green-light opacity-75 text-white-dark font-semibold rounded-lg">
+                <p class="w-full p-4 mb-4 mt-5 bg-green-light opacity-75 text-white-dark font-semibold rounded-lg">
                     {{ session('success') }}
                 </p>
             @endif

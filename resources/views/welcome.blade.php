@@ -61,7 +61,7 @@
                 <h1 class="font-bold text-4xl">
                     Komitmen Kami
                 </h1>
-                <div class="grid grid-cols-1 gap-6 mt-8 flex justify-center items-center md:grid-cols-2">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8 flex justify-center items-center">
                     @php
                         $commits = getCommits();
                     @endphp
@@ -100,18 +100,39 @@
                     lihat semua
                 </a>
             </p>
-            <div class="grid md:grid-cols-1 gap-4 lg:grid-cols-3 gap-4">
+            {{-- <div class="grid md:grid-cols-1 gap-4 lg:grid-cols-3">
                 @foreach ($spots as $spot)
                     <div class="w-full px-3.5 py-5 bg-white-dark rounded-md shadow-md shadow-gray hover:shadow-xl shadow-gray">
                         <img 
                             src="{{ asset('spots/'.$spot->image) }}" 
                             alt="{{ $spot->image }}"
-                            class="w-full h-48 rounded-md md:h-56"
+                            class="w-full h-48 rounded-md md:h-64 lg:h-48"
                         >
                         <h1 class="pt-2 font-semibold text-md">
                             {{ $spot->name }}
                         </h1>
                     </div>
+                @endforeach
+            </div> --}}
+
+            <div class="grid md:grid-cols-1 gap-4 lg:grid-cols-3">
+                @foreach ($spots as $spot)
+                    <a href="{{ route('spot.detail', ['id'=>$spot->id]) }}">
+                        <div
+                            class="relative overflow-hidden group"
+                        >
+                            <img 
+                                src="{{ asset('spots/'.$spot->image) }}" 
+                                alt="{{ $spot->image }}"
+                                class="w-full h-48 object-cover rounded-md md:h-64 lg:h-48 transition-transform duration-300 ease-in-out trnasform hover:scale-110"
+                            >
+                            <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <p class="text-white-dark font-semibold text-lg">
+                                  {{ $spot->name }}
+                                </p>
+                            </div>
+                        </div>
+                    </a>
                 @endforeach
             </div>
         </div>
@@ -128,7 +149,7 @@
             @php
                 $FAQs = getFAQs();
             @endphp
-            <div class="py-5 px-9 mx-auto md:w-3/5 bg-white-dark rounded-md shadow-md shadow-gray">
+            <div class="py-5 px-9 mx-auto md:w-11/12 lg:w-3/5 bg-white-dark rounded-md shadow-md shadow-gray">
                 @foreach ($FAQs as $faq)
                     <details class="border-b border-gray py-3">
                         <summary class="flex items-center justify-between cursor-pointer pr-6 relative font-semibold text-green-dark">
@@ -142,8 +163,21 @@
             </div>
         </div>
 
-        <div class="bg-gradient-to-r from-green-lighter via-green-light to-green-dark w-full px-5 py-7 mt-5">
-            <p>Sistem Pengaduan</p>
+        <div class="bg-gradient-to-r from-green-lighter via-green-light to-green-dark w-full px-5 py-7 mt-7 ">
+            <div class="w-full md:w-3/4 mx-auto grid gap-4 grid-cols-1 lg:grid-cols-2">
+                <div class="w-fit">
+                    <h1 class="text-white-dark font-bold text-2xl md:text-4xl">
+                        Sistem Pengaduan
+                    </h1>
+                </div>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3183.20886597735!2d109.72751776452944!3d-6.910077595013948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7024af0e11391f%3A0xef7ed8702b3c8520!2sDinas%20Pariwisata%20Kepemudaan%20Dan%20Olahraga%20Kabupaten%20Batang!5e0!3m2!1sid!2sid!4v1729996015469!5m2!1sid!2sid" 
+                    class="border-none w-full h-auto md:h-72" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+            </div>
         </div>
     </body>
 </html>

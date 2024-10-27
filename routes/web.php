@@ -29,11 +29,11 @@ Route::middleware(['auth'])->group(
     function(){
         Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-        Route::get('/user/{id}', [UserController::class, 'userDetail'])->name('profile');
+        Route::get('/user/{id}', [UserController::class, 'userDetail'])->middleware('user-access-self')->name('profile');
         Route::put('/user/{id}/update', [UserController::class, 'edit'])->name('profile.update');
         Route::get('/complaint/{id}/detail', [ComplaintDetailController::class, 'index'])->name('complaint.detail');
         Route::post('/complaint/{id}/detail', [ComplaintDetailController::class, 'addResponse'])->name('response.post');
-        Route::get('/notifications/{id}', [NotificationController::class, 'index'])->name('notifications');
+        Route::get('/notifications/{id}', [NotificationController::class, 'index'])->middleware('user-access-self')->name('notifications');
     }
 );
 

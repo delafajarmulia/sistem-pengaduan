@@ -42,7 +42,7 @@
 
             <form action="{{ route('complaint.post') }}" method="post" enctype="multipart/form-data" class="flex flex-col justify-center">
                 @csrf
-                <div class="w-3/4 mx-auto py-0 5">
+                <div class="w-4/5 mx-auto py-0 5">
                     <label for="">Gambar (opsional)</label>
                     <input type="file" name="image" class="border border-gray rounded-md w-full px-2 py-1 pb-2 @error('image') bg-red opacity-50 @enderror">
                     @error('image')
