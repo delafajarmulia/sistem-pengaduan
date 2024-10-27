@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Notification;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -42,7 +45,7 @@ class UserController extends Controller
                 'name'      => 'required|min:3|max:50',
                 'email'     => 'required|min:3|max:100|unique:users,email,' . $user->id,
                 'nik'       => 'unique:users,nik,' . $user->id . '|alpha_num:ascii|min:16|max:16',
-                'phone'     => 'unique:users,phone,' . $user->id . '|alpha_num:ascii|min:10|max:13'
+                'phone'     => '|alpha_num:ascii|min:10|max:13'
             ],
             [
                 'name'=>[

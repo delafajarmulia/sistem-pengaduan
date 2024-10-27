@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChangeNIKController;
 use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\ComplaintDetailController;
 use App\Http\Controllers\DashboardController;
@@ -45,6 +46,8 @@ Route::middleware(['auth', 'user-access:admin'])->group(
         Route::get('/spot-form-edit/{id}', [SpotController::class, 'spotDetailForEdit'])->name('spot.form.edit');
         Route::put('/spot-form-edit/{id}', [SpotController::class, 'spotUpdate'])->name('spot.edit');
         Route::get('/users', [UserController::class, 'index'])->name('users');
+        Route::get('/change-nik/{id}', [ChangeNIKController::class, 'changeNIKForm'])->name('change.nik.form');
+        Route::put('/change-nik/{id}', [ChangeNIKController::class, 'editNIK'])->name('change.nik.action');
     }
 );
 
@@ -52,5 +55,7 @@ Route::middleware(['auth', 'user-access:user'])->group(
     function(){
         Route::get('/complaint', [ComplaintController::class, 'index'])->name('complaint');
         Route::post('/complaint', [ComplaintController::class, 'store'])->name('complaint.post');
+        Route::get('/request-change-nik/{id}', [ChangeNIKController::class, 'requestChangeNIK'])->middleware('user-access-self')->name('request.change.nik');
+        Route::post('/request-change-nik/{id}', [ChangeNIKController::class, 'changeNIK'])->name('request.change.nik.post');
     }
 );
