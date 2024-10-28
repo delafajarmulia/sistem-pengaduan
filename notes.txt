@@ -71,3 +71,6 @@ list pertanyaan
 
 10. Bagaimana cara mengetahui apakah pengaduan saya sudah selesai ditindaklanjuti?
       Status pengaduan dapat dilihat di dashboard akun pengguna di sistem. Ketika pengaduan selesai ditangani, Anda juga akan menerima notifikasi melalui email atau SMS jika nomor Anda terdaftar.
+
+
+allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
