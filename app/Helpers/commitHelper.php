@@ -7,24 +7,14 @@ if(!function_exists('getCommits')){
         return [
             new commit(
                 'timer.svg',
-                'Cepat dan Tepat',
-                'Menjamin respons cepat terhadap laporan.'
+                'Efisien',
+                'Proses pengaduan lebih cepat, solusi lebih tepat.'
             ),
             new commit(
                 'eye.svg',
                 'Transparan',
                 'Menyediakan transparansi dalam proses perbaikan.'
-            ),
-            new commit(
-                'chats.svg',
-                'Partisipatif',
-                'Mengajak masyarakat untuk terlibat aktif dalam menjaga fasilitas pariwisata.'
-            ),
-            new commit(
-                'seal-check.svg',
-                'Aman dan Terpercaya',
-                'Menyediakan sistem yang aman dan dapat diandalkan untuk melaporkan kerusakan dengan kerahasiaan terjaga.'
-            ),
+            )
         ];
     }
 }

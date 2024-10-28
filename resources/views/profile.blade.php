@@ -8,14 +8,8 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-    @auth
-        @if (auth()->user()->role === 'admin')
-            <x-navbar-auth-admin />
-        @else
-            <x-navbar-auth-public />
-        @endif
-    @endauth
-    <div class="mt-20 mb-8 text-black flex justify-center items-center md:mb-20">
+    <x-navbar-auth />
+    <div class="mt-4 md:mt-14 mb-8 text-black flex justify-center items-center md:mb-20">
         <div class="flex-col p-5 w-11/12 mt-5 md:w-3/4 md:shadow-2xl shadow-gray px-7">
             <h1 class="text-center font-bold pb-3 pt-8 text-2xl md:pt-5">Edit Profil</h1>
             <p class="text-center">
@@ -74,7 +68,8 @@
                 </div>
                 <div class="pt-4">
                     <p class="pb-1">
-                        *Jika terjadi kesalahan pada NIK, maka kami menyarankan Anda untuk melaporkan pada petugas sistem pengaduan.
+                        *Jika terjadi kesalahan pada NIK, maka kami menyarankan Anda untuk melaporkan pada petugas Sistem Pengaduan, dengan cara 
+                        <a href="{{ route('request.change.nik', ['id'=>$user->id]) }}" class="underline text-blue-dark hover:text-blue-light">klik disini</a>.
                     </p>
                     <p>
                         **Untuk melindungi privasi dan keamanan Anda, kami menyimpan password Anda dalam bentuk terenkripsi (hash). Artinya, tidak ada yang bisa melihat atau mengakses password Anda, 

@@ -8,8 +8,8 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-    <x-navbar-auth-public />
-    <div class="mt-20 flex justify-center items-center text-black md:mb-20">
+    <x-navbar-auth />
+    <div class="mt-4 md:mt-14 flex justify-center items-center text-black md:mb-20">
         <div class="flex-col p-5 w-11/12 mt-5 md:w-3/4 md:shadow-2xl shadow-gray px-7">
             <h1 class="text-2xl font-bold pt-8 text-center md:pt-1">
                 Buat Pengaduan

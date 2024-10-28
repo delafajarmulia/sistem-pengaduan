@@ -14,6 +14,10 @@ trs composer dump-autoload
 
 abis add middleware jangan  lupa add di file kernel.php
 
+eifisien
+
+alro bold -> myfont
+anta -> google font
 
 # CTA
 1. Laporkan kerusakan fasilitas pariwisata di Kabupaten Batang! Setiap laporan Anda adalah langkah menuju pariwisata yang lebih baik dan aman bagi semua.

@@ -8,14 +8,8 @@
     @vite('resources/css/app.css')
 </head>
 <body class="flex justify-center items-center text-black">
-    @auth
-        @if (auth()->user()->role === 'admin')
-            <x-navbar-auth-admin />
-        @else
-            <x-navbar-auth-public />
-        @endif
-    @endauth
-    <div class="px-5 py-5 mt-24 w-full md:w-1/2 md:rounded-md md:border border-gray">
+    <x-navbar-auth />
+    <div class="px-5 py-5 mt-14 md:mt-24 w-full md:w-1/2 md:rounded-md md:border border-gray">
         <h1 class="text-center font-bold pb-3 text-2xl md:pb-5">Notifikasi</h1>
 
         <div class="mt-5">

@@ -8,25 +8,19 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-    @auth
-        @if (auth()->user()->role === 'admin')
-            <x-navbar-auth-admin />
-        @else
-            <x-navbar-auth-public />
-        @endif
-    @endauth
-    <div class="mt-24 flex flex-col justify-center items-center">
+    <x-navbar-auth />
+    <div class="mt-14 flex flex-col justify-center items-center text-black">
         <div class="w-full md:w-3/4 m-3 p-5 text-black rounded-md md:shadow-2xl shadow-gray md:px-7">
             <h1 class="text-center pb-7 md:pb-5 text-2xl font-bold md:pt-4">Detail Pengaduan</h1>
             <div class="flex flex-col md:flex-row justify-between">
                 <div>
                     <h3 class="font-semibold text-lg">{{ censorName($complaint->user->name) }}</h3>
                     <h5 class="text-xs">{{ $complaint->date_of_complaint }}</h5>
-                    <h5 class="text-green-light font-semibold text-md pt-2">{{ $complaint->spot?->name }}</h5>
+                    <h5 class="font-semibold text-md pt-2">{{ $complaint->spot?->name }}</h5>
                     <div class="flex flex-row pb-2">
                         <h5 class="font-semibold pr-2 {{ $complaint->status == 'proses' ? 'text-yellow-light' : 'text-green-light'}}">{{ $complaint->status }}</h5>
                         <h5 class="pr-2">|</h5>
-                        <h5 class="font-semibold text-green-light whitespace-nowrap">{{ $complaint->category->name }}</h5>
+                        <h5 class="font-semibold whitespace-nowrap">{{ $complaint->category->name }}</h5>
                     </div>
                 </div>
                 <div class="mb-3 flex h-fit">
@@ -45,6 +39,17 @@
                     <a href="{{ route('dashboard')}}" class="px-3 pt-0.5 pb-1.5 text-white-dark rounded-md bg-blue-light hover:bg-blue-dark">Kembali</a>
                 </div>
             </div>
+
+            @if ($complaint->image)
+                <div class="flex justify-center items-center">
+                    <img 
+                        src="{{ asset('complaints/'.$complaint->image) }}" 
+                        alt="{{ $complaint->image }}"
+                        class="mx-1"
+                    >
+                </div>
+            @endif
+
             <p>{{ $complaint->content }}</p>
             <hr class="mt-1.5 mb-1 border border-gray">
             @foreach ($complaint->responses()->get() as $response)

@@ -8,14 +8,8 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-    @auth
-        @if (auth()->user()->role === 'admin')
-            <x-navbar-auth-admin />
-        @else
-            <x-navbar-auth-public />
-        @endif
-    @endauth
-    <div class="py-5 px-5 pt-32 md:pt-28 w-auto mx-auto text-black md:w-3/4">
+    <x-navbar-auth />
+    <div class="py-5 px-5 mt-14 md:mt-5 md:pt-28 w-auto mx-auto text-black md:w-3/4">
         <h1 class="text-center font-bold pb-5 text-2xl">Daftar Wisata</h1>
         <div class="grid grid-cols-1 gap-6 mt-2 flex justify-center items-center lg:grid-cols-2">
             @foreach ($spots as $spot)

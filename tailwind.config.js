@@ -6,7 +6,11 @@ export default {
     "./resources/**/*.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        custom: ['Anta']
+      }
+    },
     colors: {
       'gray': '#C5C4C8',
       'black': '#33372C',

@@ -8,10 +8,10 @@
     @vite('resources/css/app.css')
 </head>
 <body class="text-black">
-    <x-navbar-auth-public />
-    <div class="flex justify-center items-center mt-20 mb-8 md:mb-20">
+    <x-navbar-auth />
+    <div class="flex justify-center items-center mt-4 md:mt-14 mb-8 md:mb-20">
         <div class="flex-col p-5 w-11/12 mt-5 md:w-3/4 md:shadow-2xl shadow-gray px-7">
-            <h1 class="text-center font-bold pb-3 pt-8 text-2xl md:pt-5">Edit Profil</h1>
+            <h1 class="text-center font-bold pb-3 pt-8 text-2xl md:pt-5">Edit NIK</h1>
             <p class="text-center">
                 @auth
                     Hallo {{ auth()->user()->name }} 👋🏻...

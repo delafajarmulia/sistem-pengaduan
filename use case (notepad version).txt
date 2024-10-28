@@ -1,0 +1,43 @@
+use case (notepad version):
+
+USER -> ROLE(USER):
+	1. melihat halaman Utama
+	2. melihat semua daftar wisata
+	3. registrasi
+	4. login
+	5. melihat halaman dashboard
+	6. membuat pengaduan
+	7. melihat detail pengaduan	
+	8. menambahkan tanggapan
+	9. melihat profile
+	10. mengedit profile (kecuali NIK)
+	11. membuat permintaan perubahan NIK 
+	12. melihat notifikasi
+	13. logout
+	14. melihat detail wisata (masih bingung sama UI nya)
+
+USER -> ROLE(ADMIN):
+	1. melihat halaman Utama
+	2. login
+	3. melihat halaman dashboard
+	4. melihat semua daftar wisata
+	5. membuat data wisata baru
+	6. mengedit wisata
+	7. mengubah status pengaduan
+	8. melihat detail pengaduan
+	9. menambahkan tanggapan
+	10. melihat profile
+	11. mengubah profile
+	12. mengubah NIK user (jika user mengirimkan request)
+	13. logout
+	14. melihat notifikasi
+	15. mencetak laporan (belum dibuat sih hehe)
+	16. melihat detail wisata (masih bingung sama UI nya)
+	17. melihat daftar pengguna (only name and email)
+
+schema for notification:
+	1. admin akan mengirimkan notif ke user yang membuat laporan, jika admin mengubah status
+	2. admin akan mengirimkan notif ke user yang membuat laporan, jika admin menambahkan tanggapan
+	3. user (another user) akan mengirimkan notif ke user yang membuat laporan, jika user menambahkan tanggapan
+	4. user akan membuat notif ke admin request change NIK. beserta NIK yg akan diubah
+	5. admin akan mengirimkan notif ke user jika telah mengubah NIK sesuai dengan request user
