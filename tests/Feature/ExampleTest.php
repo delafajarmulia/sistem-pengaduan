@@ -25,6 +25,8 @@ class ExampleTest extends TestCase
         if ($response->status() !== 200) {
             Log::info('Response content:', [$response->getContent()]);
         }    
+        $response->dump();
+        dd($response);
         $response->assertStatus(200); // Memastikan status 200
         $response->assertSee('spots'); // Memastikan halaman mengandung kata "spots"
     }

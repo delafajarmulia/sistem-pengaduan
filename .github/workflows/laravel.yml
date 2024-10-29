@@ -102,6 +102,12 @@ jobs:
           php artisan test --env=testing
           tail -n 20 storage/logs/laravel.log # Menampilkan 20 baris terakhir dari log
 
+      - name: Check connection to database
+        run: |
+          echo "Checking MySQL connection..."
+          mysql -h 127.0.0.1 -u root -e "SHOW DATABASES;"
+
+
   tailwind-build:
     runs-on: ubuntu-latest
     needs: laravel-tests
