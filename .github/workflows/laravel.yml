@@ -27,16 +27,14 @@ jobs:
           - 3306:3306
 
     steps:
-      # Checkout the code
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Tambahkan langkah ini untuk menunggu layanan siap
       - name: Wait for MySQL to be ready
         run: |
           echo "Waiting for MySQL to be ready..."
           for i in {1..30}; do
-            if mysqladmin ping -h"127.0.0.1" --silent; then  # Menggunakan 127.0.0.1
+            if mysqladmin ping -h"mysql" --silent; then
               echo "MySQL is ready!"
               break
             fi
@@ -44,13 +42,11 @@ jobs:
             sleep 2
           done
 
-      # Check MySQL logs
       - name: Check MySQL logs
         run: |
           CONTAINER_ID=$(docker ps -q --filter "ancestor=mysql:8")
           docker logs $CONTAINER_ID
 
-      # Setup PHP
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -59,23 +55,21 @@ jobs:
           ini-values: post_max_size=256M, upload_max_filesize=256M
           coverage: none
 
-      # Install composer dependencies
       - name: Install Composer dependencies
         run: composer install --prefer-dist --no-progress --no-suggest --no-interaction
 
-      # Copy .env.testing to .env and generate application key
       - name: Setup Environment
         run: |
           cp .env.testing .env
           php artisan key:generate
           php artisan config:cache
+          php artisan config:clear
 
-      # Drop and create database
       - name: Drop and create database
         run: |
           echo "Waiting for MySQL to be ready..."
           for i in {1..30}; do
-            if mysqladmin ping -h"127.0.0.1" --silent; then  # Menggunakan 127.0.0.1
+            if mysqladmin ping -h"mysql" --silent; then
               echo "MySQL is ready!"
               break
             fi
@@ -83,20 +77,29 @@ jobs:
             sleep 2
           done
 
-          mysql -h 127.0.0.1 -u root -e "DROP DATABASE IF EXISTS sistem_pengaduan;"
-          mysql -h 127.0.0.1 -u root -e "CREATE DATABASE sistem_pengaduan;"
+          mysql -h mysql -u root -e "DROP DATABASE IF EXISTS sistem_pengaduan;"
+          mysql -h mysql -u root -e "CREATE DATABASE sistem_pengaduan;"
 
-      # Run migrations and seed database
       - name: Run migrations and seed database
         run: |
           php artisan migrate --env=testing
           php artisan db:seed --env=testing
 
-      # Check users table structure
       - name: Check users table structure
         run: php artisan tinker --execute="Schema::getColumnListing('users');"
 
-      # Run tests
+      - name: Wait for MySQL to be ready before testing
+        run: |
+          echo "Waiting for MySQL to be ready..."
+          for i in {1..30}; do
+            if mysqladmin ping -h"mysql" --silent; then
+              echo "MySQL is ready!"
+              break
+            fi
+            echo "Waiting for MySQL... ($i)"
+            sleep 2
+          done
+
       - name: Run Laravel tests
         run: |
           php artisan test --env=testing
@@ -114,7 +117,6 @@ jobs:
         with:
           node-version: '20' 
 
-      # Install dependencies dan build Tailwind CSS
       - name: Install npm dependencies and build Tailwind
         run: |
           npm install
