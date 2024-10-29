@@ -15,7 +15,7 @@ jobs:
       mysql:
         image: mysql:8
         env:
-          MYSQL_ROOT_PASSWORD: ""
+          MYSQL_ROOT_PASSWORD: ""  # Kosongkan jika tidak ada password
           MYSQL_DATABASE: sistem_pengaduan
         options: >-
           --health-cmd="mysqladmin ping"
@@ -29,7 +29,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Tambahkan langkah ini untuk menunggu layanan siap
+      # Wait for MySQL to be ready
       - name: Wait for MySQL to be ready
         run: |
           while ! docker exec mysql mysqladmin ping -h"127.0.0.1" --silent; do
@@ -42,7 +42,7 @@ jobs:
           CONTAINER_ID=$(docker ps -q --filter "ancestor=mysql:8")
           docker logs $CONTAINER_ID
 
-      #setup PHP
+      # Setup PHP
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -51,21 +51,16 @@ jobs:
           ini-values: post_max_size=256M, upload_max_filesize=256M
           coverage: none
 
-      # install composer dependencies
+      # Install Composer dependencies
       - name: Install Composer dependencies
         run: composer install --prefer-dist --no-progress --no-suggest --no-interaction
 
-      # copy .env.example to .env and generate application key
+      # Setup Environment
       - name: Setup Environment
         run: |
-          cp .env.example .env
+          cp .env.testing .env  # Menggunakan .env.testing
           php artisan key:generate
           php artisan config:cache
-          php artisan migrate --env=testing
-
-      # Setup database
-      - name: Set up database
-        run: |
           php artisan migrate --env=testing
 
       # Run tests
