@@ -16,6 +16,7 @@ jobs:
         image: mysql:8
         env:
           MYSQL_ROOT_PASSWORD: ""  # Tidak ada password
+          MYSQL_ALLOW_EMPTY_PASSWORD: "yes"  # Mengizinkan password kosong
           MYSQL_DATABASE: sistem_pengaduan
         options: >-
           --health-cmd="mysqladmin ping -h localhost"
