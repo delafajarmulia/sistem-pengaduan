@@ -48,7 +48,7 @@ jobs:
           cp .env.example .env
           php artisan key:generate
           php artisan config:cache
-          phpa artisan migrate --env=testing
+          php artisan migrate --env=testing
 
       # Setup database
       - name: Set up database
