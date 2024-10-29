@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('nik', length:16)->unique()->after('name');
+            $table->string('nik', length:16)->unique()->nullable()->after('name');
             $table->string('phone', length:13)->after('email');
             $table->enum('role', ['user', 'admin'])->after('phone');
         });
