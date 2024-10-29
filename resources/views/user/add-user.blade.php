@@ -8,8 +8,9 @@
     @vite('resources/css/app.css')
 </head>
 <body class="flex justify-center items-center">
-    <div class="p-10 text-black mt-5 w-96 rounded-md md:shadow-2xl shadow-gray">
-        <h1 class="text-center font-bold pb-5 text-2xl">Registrasi</h1>
+    <x-navbar-auth />
+    <div class="p-10 text-black mt-14 w-96 rounded-md md:shadow-2xl shadow-gray">
+        <h1 class="text-center font-bold pb-5 text-2xl">Tambah Pengguna</h1>
         
         @if ($errors->has('error'))
             <div class="flex justify-center items-center w-auto bg-red opacity-75 rounded-md mt-3">
@@ -19,23 +20,7 @@
             </div>
         @endif
 
-        {{-- @if ($errors->any())
-            <div class="flex justify-center items-center w-auto bg-red opacity-75 rounded-md mt-3">
-                <ul class="text-white-dark py-1 px-3">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-        @if (session('failed'))
-            <div class="flex justify-center items-center w-auto bg-red opacity-75 rounded-md mt-3">
-                <p class="text-white-dark text-center py-1 px-3">{{ session('failed') }}</p>
-            </div>
-        @endif --}}
-
-        <form id="login-form" action="{{ route('registration.post') }}" method="POST">
+        <form id="login-form" action="{{ route('user.add.post') }}" method="POST">
             @csrf
             <div class="pt-4">
                 <label for="">Nama</label><br>
@@ -68,6 +53,18 @@
                 <label for="">No Telepon</label><br>
                 <input class="border border-gray rounded-md w-full px-2 py-1 pb-2" type="number" name="phone" placeholder="nomor telepon" required value="{{ old('phone') }}" autocomplete="off">
                 @error('phone')
+                    <p class="text-xs text-red">
+                        {{ $message }}
+                    </p>
+                @enderror
+            </div>
+            <div class="pt-4">
+                <label for="">Posisi</label>
+                <select name="role" id="" class="border border-gray rounded-md w-full px-2 py-1 pb-2">
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                </select>
+                @error('role')
                     <p class="text-xs text-red">
                         {{ $message }}
                     </p>

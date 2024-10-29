@@ -33,7 +33,7 @@
                 </div>
                 <div class="pt-4">
                     <label for="" class="mb-0.5">NIK</label><br>
-                    <input type="text" value="{{ $user->nik }}" name="nik" class="w-full px-2 py-1 pb-2 border border-gray rounded-md" {{ auth()->user()->role == 'admin' ? '' : 'readonly'}}>
+                    <input type="text" value="{{ $user->nik }}" name="nik" class="w-full px-2 py-1 pb-2 border border-gray rounded-md" readonly>
                     @error('nik')
                         <p>{{ $message }}</p>
                     @enderror

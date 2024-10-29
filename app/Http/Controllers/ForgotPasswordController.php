@@ -8,6 +8,6 @@ class ForgotPasswordController extends Controller
 {
     public function index($id)
     {
-        return view('forgot-password');
+        return view('auth.forgot-password');
     }
 }

@@ -12,7 +12,7 @@ class ChangeNIKController extends Controller
 {
     public function requestChangeNIK($id)
     {
-        return view('request-change-nik');
+        return view('change-nik.request-change-nik');
     }
 
     public function changeNIK(Request $request, $id)
@@ -60,7 +60,7 @@ class ChangeNIKController extends Controller
         $messageArray = explode(' ', $nikRequest);
         $nikChanged = end($messageArray);
 
-        return view('change-nik-form', compact(['userRequest', 'nikChanged']));
+        return view('change-nik.change-nik-form', compact(['userRequest', 'nikChanged']));
     }
 
     public function editNIK(Request $request, $id)

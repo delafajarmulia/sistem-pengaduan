@@ -16,7 +16,7 @@ class UserController extends Controller
         $users = User::all();
         $userSum = User::count();
 
-        return view('user-list', compact('users', 'userSum'));
+        return view('user.user-list', compact('users', 'userSum'));
     }
 
     // lihat detail pengguna
@@ -25,10 +25,10 @@ class UserController extends Controller
         $user = User::find($id);
 
         if(!$user){
-            return view('profile')->with('error', 'Data pengguna tidak ditemukan');
+            return view('user.profile')->with('error', 'Data pengguna tidak ditemukan');
         }
         
-        return view('profile', compact('user'));
+        return view('user.profile', compact('user'));
     }
 
     // edit data pengguna
@@ -116,5 +116,75 @@ class UserController extends Controller
         $user->save();
 
         return redirect()->route('profile', ['id'=>$user->id])->with('success', 'Berhasil mengubah data');
+    }
+
+    public function showUserAdd()
+    {
+        return view('user.add-user');
+    }
+
+    public function addUser(Request $request){
+        $request->validate(
+            [
+                'name'      =>'required|min:3|max:50',
+                'email'     =>'required|min:3|max:100|unique:users,email',
+                'nik'       =>'unique:users,nik|alpha_num:ascii|min:16|max:16',
+                'phone'     =>'alpha_num:ascii|min:10|max:13',
+                'password'  =>'required|min:8|max:50'
+            ],
+            [
+                'name'=>[
+                    'required'  =>'Data nama harus diisikian',
+                    'min'       =>'Nama minimal diisikan oleh :min karakter',
+                    'max'       =>'Nama maksimal diisikan oleh :max karakter'
+                ],
+                'email'=>[
+                    'required'  =>'Data email harus diisikian',
+                    'min'       =>'Email minimal diisikan oleh :min karakter',
+                    'max'       =>'Email maksimal diisikan oleh :max karakter',
+                    'unique'    =>'Email sudah terdaftar'
+                ],
+                'nik'=>[
+                    'required'  =>'Data nama harus diisikian',
+                    'min'       =>'NIK minimal diisikan oleh :min karakter',
+                    'max'       =>'NIK maksimal diisikan oleh :max karakter',
+                    'unique'    =>'NIK sudah terdaftar',
+                    'alpha_num' =>'NIK hanya boleh diisikan oleh angka'
+                ],
+                'phone'=>[
+                    'required'  =>'Data nomor telepon harus diisikian',
+                    'min'       =>'Nomor Telepon minimal diisikan oleh :min karakter',
+                    'max'       =>'Nomor telepon maksimal diisikan oleh :max karakter',
+                    'alpha_num' =>'NIK hanya boleh diisikan oleh angka'
+                ],
+                'password'=>[
+                    'required'  =>'Data password harus diisikian',
+                    'min'       =>'Password minimal diisikan oleh :min karakter',
+                    'max'       =>'Password maksimal diisikan oleh :max karakter',
+                ]
+            ]
+        );
+
+        $data = [
+            'name'=>$request->input('name'),
+            'nik'=>$request->input('nik'),
+            'email'=>$request->input('email'),
+            'phone'=>$request->input('phone'),
+            'password'=>bcrypt($request->input('password')),
+            'role'=>$request->input('role')
+        ];
+
+
+        if (User::where('nik', $request->nik)->exists()) {
+            return redirect()->route('registration')->withErrors(['nik' => 'NIK sudah terdaftar']);
+        }
+
+        if (User::where('email', $request->email)->exists()) {
+            return redirect()->route('registration')->withErrors(['email' => 'Email sudah terdaftar']);
+        }
+
+        User::create($data);
+
+        return redirect()->route('dashboard')->with('success', 'Berhasil menambahkan pengguna baru.');
     }
 }

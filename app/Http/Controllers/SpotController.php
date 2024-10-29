@@ -12,20 +12,20 @@ class SpotController extends Controller
     public function index()
     {
         $spots = Spot::all();
-        return view('spots', compact('spots'));
+        return view('spot.spots', compact('spots'));
     }
 
     // lihat detail wisata
     public function spotDetail($id)
     {
         $spot = Spot::findOrFail($id);
-        return view('spot-detail', compact('spot'));
+        return view('spot.spot-detail', compact('spot'));
     }
 
     // tambah wisata
     public function spotForm()
     {
-        return view('spot-add');
+        return view('spot.spot-add');
     }
 
     // logic tambah wisata
@@ -87,10 +87,10 @@ class SpotController extends Controller
         $spot = Spot::find($id);
         
         if(!$spot){
-            return view('spot-edit')->with('error', 'Data wisata tidak ditemukan');
+            return view('spot.spot-edit')->with('error', 'Data wisata tidak ditemukan');
         }
 
-        return view('spot-edit', compact('spot'));
+        return view('spot.spot-edit', compact('spot'));
     }
 
     // logic update wisata

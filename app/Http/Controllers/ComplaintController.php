@@ -19,7 +19,7 @@ class ComplaintController extends Controller
         $categories = Category::all();
         $spots = Spot::all();
 
-        return view('complaintform', compact(['categories', 'spots']));
+        return view('complaint.complaintform', compact(['categories', 'spots']));
     }
 
     /**

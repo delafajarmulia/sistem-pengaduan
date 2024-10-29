@@ -14,7 +14,7 @@ class ComplaintDetailController extends Controller
     public function index($id){
         $complaint = Complaint::with('responses')->with('user')->with('category')->with('spot')->with(['responses.user'])->find($id);
         
-        return view('complaint-detail', compact('complaint'));
+        return view('complaint.complaint-detail', compact('complaint'));
     }
 
     public function addResponse(Request $request, string $id){
@@ -53,6 +53,6 @@ class ComplaintDetailController extends Controller
 
         $complaint = Complaint::with('responses')->with('user')->with('category')->with(['responses.user'])->find($id);
         
-        return view('complaint-detail', compact('complaint'));
+        return view('complaint.complaint-detail', compact('complaint'));
     }
 }

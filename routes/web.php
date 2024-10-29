@@ -31,7 +31,7 @@ Route::middleware(['auth'])->group(
         Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/user/{id}', [UserController::class, 'userDetail'])->middleware('user-access-self')->name('profile');
-        Route::put('/user/{id}/update', [UserController::class, 'edit'])->name('profile.update');
+        Route::put('/user/{id}', [UserController::class, 'edit'])->name('profile.update');
         Route::get('/complaint/{id}/detail', [ComplaintDetailController::class, 'index'])->name('complaint.detail');
         Route::post('/complaint/{id}/detail', [ComplaintDetailController::class, 'addResponse'])->name('response.post');
         Route::get('/notifications/{id}', [NotificationController::class, 'index'])->middleware('user-access-self')->name('notifications');
@@ -48,6 +48,8 @@ Route::middleware(['auth', 'user-access:admin'])->group(
         Route::get('/users', [UserController::class, 'index'])->name('users');
         Route::get('/change-nik/{id}', [ChangeNIKController::class, 'changeNIKForm'])->name('change.nik.form');
         Route::put('/change-nik/{id}', [ChangeNIKController::class, 'editNIK'])->name('change.nik.action');
+        Route::get('/user-form-add', [UserController::class, 'showUserAdd'])->name('user.form.add');
+        Route::post('/user-form-add', [UserController::class, 'addUser'])->name('user.add.post');
     }
 );
 
