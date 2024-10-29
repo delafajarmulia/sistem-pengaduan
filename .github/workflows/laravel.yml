@@ -63,7 +63,7 @@ jobs:
           cp .env.testing .env
           php artisan key:generate
           php artisan config:cache
-          php artisan migrate --env=testing
+          php artisan migrate --env=testing --seed  # Menjalankan migrasi dan seeder
 
       # Run tests
       - name: Run Laravel tests
