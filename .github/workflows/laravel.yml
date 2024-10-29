@@ -25,6 +25,7 @@ jobs:
           --health-retries=5
         ports:
           - 3306:3306
+
     steps:
       # Checkout the code
       - name: Checkout code
@@ -49,7 +50,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
-          extensions: mbstring, intl, bcmath
+          extensions: mbstring, intl, bcmath, xml, curl
           ini-values: post_max_size=256M, upload_max_filesize=256M
           coverage: none
 
@@ -63,7 +64,22 @@ jobs:
           cp .env.testing .env
           php artisan key:generate
           php artisan config:cache
-          php artisan migrate --env=testing --seed  # Menjalankan migrasi dan seeder
+
+      # Drop and create database
+      - name: Drop and create database
+        run: |
+          mysql -u root -e "DROP DATABASE IF EXISTS sistem_pengaduan;"
+          mysql -u root -e "CREATE DATABASE sistem_pengaduan;"
+
+      # Run migrations and seed database
+      - name: Run migrations and seed database
+        run: |
+          php artisan migrate --env=testing
+          php artisan db:seed --env=testing
+
+      # Check users table structure
+      - name: Check users table structure
+        run: php artisan tinker --execute="Schema::getColumnListing('users');"
 
       # Run tests
       - name: Run Laravel tests
