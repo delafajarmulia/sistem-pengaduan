@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('complaints', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('category_id');
-            $table->unsignedBigInteger('user_id');
-            $table->longText('content');
-            $table->enum('status', ['proses', 'selesai']);
-            $table->dateTime('date_of_complaint');
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->longText('content')->nullable();
+            $table->enum('status', ['proses', 'selesai'])->default('proses');
+            $table->dateTime('date_of_complaint')->nullable();
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');

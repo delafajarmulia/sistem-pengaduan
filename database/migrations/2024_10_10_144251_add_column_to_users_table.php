@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('nik', length:16)->unique()->nullable()->after('name');
             $table->string('phone', length:13)->nullable()->after('email');
-            $table->enum('role', ['user', 'admin'])->after('phone');
+            $table->enum('role', ['user', 'admin'])->default('user')->after('phone');
         });
     }
 
