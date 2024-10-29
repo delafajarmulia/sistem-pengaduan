@@ -67,7 +67,9 @@ jobs:
 
       # Run tests
       - name: Run Laravel tests
-        run: php artisan test --env=testing
+        run: |
+          php artisan test --env=testing
+          tail -n 20 storage/logs/laravel.log # Menampilkan 20 baris terakhir dari log
 
   tailwind-build:
     runs-on: ubuntu-latest
