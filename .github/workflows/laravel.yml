@@ -15,14 +15,13 @@ jobs:
       mysql:
         image: mysql:8
         env:
-          MYSQL_ROOT_PASSWORD: ""  # Kosongkan password untuk root
+          MYSQL_ROOT_PASSWORD: ""  # Tidak ada password
           MYSQL_DATABASE: sistem_pengaduan
         options: >-
           --health-cmd="mysqladmin ping -h localhost"
           --health-interval=30s
           --health-timeout=10s
           --health-retries=5
-          --log-error=/var/log/mysql/error.log
         ports:
           - 3306:3306
     steps:
@@ -38,14 +37,11 @@ jobs:
             sleep 2
           done
       
+      # Check MySQL logs
       - name: Check MySQL logs
         run: |
           CONTAINER_ID=$(docker ps -q --filter "ancestor=mysql:8")
-          if [ -z "$CONTAINER_ID" ]; then
-            echo "MySQL container not found!"
-          else
-            docker logs $CONTAINER_ID
-          fi
+          docker logs $CONTAINER_ID
 
       # Setup PHP
       - name: Setup PHP
@@ -56,20 +52,16 @@ jobs:
           ini-values: post_max_size=256M, upload_max_filesize=256M
           coverage: none
 
-      # Install Composer dependencies
+      # Install composer dependencies
       - name: Install Composer dependencies
         run: composer install --prefer-dist --no-progress --no-suggest --no-interaction
 
-      # Copy .env.example to .env and generate application key
+      # Copy .env.testing to .env and generate application key
       - name: Setup Environment
         run: |
-          cp .env.example .env
+          cp .env.testing .env
           php artisan key:generate
           php artisan config:cache
-
-      # Setup database
-      - name: Set up database
-        run: |
           php artisan migrate --env=testing
 
       # Run tests
@@ -88,7 +80,7 @@ jobs:
         with:
           node-version: '20' 
 
-      # Install dependencies and build Tailwind CSS
+      # Install dependencies dan build Tailwind CSS
       - name: Install npm dependencies and build Tailwind
         run: |
           npm install
