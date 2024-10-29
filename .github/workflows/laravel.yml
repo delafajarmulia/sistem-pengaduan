@@ -29,6 +29,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Tambahkan langkah ini untuk menunggu layanan siap
+      - name: Wait for MySQL to be ready
+        run: |
+          while ! docker exec mysql mysqladmin ping -h"127.0.0.1" --silent; do
+            echo "Waiting for MySQL..."
+            sleep 2
+          done
+      
+      - name: Check MySQL logs
+        run: |
+          CONTAINER_ID=$(docker ps -q --filter "ancestor=mysql:8")
+          docker logs $CONTAINER_ID
+
       #setup PHP
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
