@@ -1,0 +1,63 @@
+name: Sistem Pengaduan Laravel
+
+on: 
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  laravel-tests:
+    runs-on: ubuntu-latest
+    steps:
+      # checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      #setup PHP
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, intl, bcmath
+          ini-values: post_max_size=256M, upload_max_filesize=256M
+          coverage: none
+
+      # install composer dependencies
+      - name: Install Composer dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest --no-interaction
+
+      # copy .env.example to .env and generate application key
+      - name: Setup Environment
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+
+      # Setup database
+      - name: Set up database
+        run: |
+          php artisan migrate --env=testing
+
+      # Run tests
+      - name: Run Laravel tests
+        run: php artisan test --env=testing
+
+  tailwind-build:
+    runs-on: ubuntu-latest
+    needs: laravel-tests
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20' 
+
+      # Install dependencies dan build Tailwind CSS
+      - name: Install npm dependencies and build Tailwind
+        run: |
+          npm install
+          npm run build
