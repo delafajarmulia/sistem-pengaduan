@@ -34,11 +34,16 @@ jobs:
       # Tambahkan langkah ini untuk menunggu layanan siap
       - name: Wait for MySQL to be ready
         run: |
-          while ! mysqladmin ping -h"127.0.0.1" --silent; do
-            echo "Waiting for MySQL..."
+          echo "Waiting for MySQL to be ready..."
+          for i in {1..30}; do
+            if mysqladmin ping -h"mysql" --silent; then  # Menggunakan nama layanan MySQL
+              echo "MySQL is ready!"
+              break
+            fi
+            echo "Waiting for MySQL... ($i)"
             sleep 2
           done
-      
+
       # Check MySQL logs
       - name: Check MySQL logs
         run: |
@@ -68,12 +73,18 @@ jobs:
       # Drop and create database
       - name: Drop and create database
         run: |
-          while ! mysqladmin ping -h"127.0.0.1" --silent; do
-            echo "Waiting for MySQL to be ready for dropping the database..."
+          echo "Waiting for MySQL to be ready..."
+          for i in {1..30}; do
+            if mysqladmin ping -h"mysql" --silent; then  # Menggunakan nama layanan MySQL
+              echo "MySQL is ready!"
+              break
+            fi
+            echo "Waiting for MySQL... ($i)"
             sleep 2
           done
-          mysql -u root -e "DROP DATABASE IF EXISTS sistem_pengaduan;"
-          mysql -u root -e "CREATE DATABASE sistem_pengaduan;"
+
+          mysql -h mysql -u root -e "DROP DATABASE IF EXISTS sistem_pengaduan;"
+          mysql -h mysql -u root -e "CREATE DATABASE sistem_pengaduan;"
 
       # Run migrations and seed database
       - name: Run migrations and seed database
