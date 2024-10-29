@@ -19,7 +19,7 @@
                 </p>
             @endif
 
-            @foreach ($complaints as $complaint)
+            @forelse ($complaints as $complaint)
                 <div class="w-4/5 rounded-md border border-gray m-3 p-5 md:p-7">
                     <div class="flex flex-col md:flex-row justify-between">
                         <div class="md:order-1">
@@ -66,7 +66,11 @@
                         </div>
                     @endforeach
                 </div>
-            @endforeach
+            @empty
+                <p class="text-center">
+                    Belum ada laporan.
+                </p>
+            @endforelse
         </div>
 
         <!-- Floating Action Button -->
