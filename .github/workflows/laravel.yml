@@ -36,7 +36,7 @@ jobs:
         run: |
           echo "Waiting for MySQL to be ready..."
           for i in {1..30}; do
-            if mysqladmin ping -h"mysql" --silent; then  # Menggunakan nama layanan MySQL
+            if mysqladmin ping -h"127.0.0.1" --silent; then  # Menggunakan 127.0.0.1
               echo "MySQL is ready!"
               break
             fi
@@ -75,7 +75,7 @@ jobs:
         run: |
           echo "Waiting for MySQL to be ready..."
           for i in {1..30}; do
-            if mysqladmin ping -h"mysql" --silent; then  # Menggunakan nama layanan MySQL
+            if mysqladmin ping -h"127.0.0.1" --silent; then  # Menggunakan 127.0.0.1
               echo "MySQL is ready!"
               break
             fi
@@ -83,8 +83,8 @@ jobs:
             sleep 2
           done
 
-          mysql -h mysql -u root -e "DROP DATABASE IF EXISTS sistem_pengaduan;"
-          mysql -h mysql -u root -e "CREATE DATABASE sistem_pengaduan;"
+          mysql -h 127.0.0.1 -u root -e "DROP DATABASE IF EXISTS sistem_pengaduan;"
+          mysql -h 127.0.0.1 -u root -e "CREATE DATABASE sistem_pengaduan;"
 
       # Run migrations and seed database
       - name: Run migrations and seed database
