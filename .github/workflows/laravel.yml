@@ -68,6 +68,10 @@ jobs:
       # Drop and create database
       - name: Drop and create database
         run: |
+          while ! mysqladmin ping -h"127.0.0.1" --silent; do
+            echo "Waiting for MySQL to be ready for dropping the database..."
+            sleep 2
+          done
           mysql -u root -e "DROP DATABASE IF EXISTS sistem_pengaduan;"
           mysql -u root -e "CREATE DATABASE sistem_pengaduan;"
 
