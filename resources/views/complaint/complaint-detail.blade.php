@@ -45,7 +45,7 @@
                     <img 
                         src="{{ asset('complaints/'.$complaint->image) }}" 
                         alt="{{ $complaint->image }}"
-                        class="mx-1"
+                        class="w-1/2 h-1/2 my-1"
                     >
                 </div>
             @endif

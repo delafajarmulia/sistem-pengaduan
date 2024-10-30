@@ -19,6 +19,12 @@
                 </p>
             @endif
 
+            @if ($errors->has('error'))
+                <p class="w-3/4 p-4 mb-4 mt-5 bg-red opacity-75 text-white-dark font-semibold rounded-lg">
+                    {{ $errors->first('error') }}
+                </p>
+            @endif
+
             @forelse ($complaints as $complaint)
                 <div class="w-4/5 rounded-md border border-gray m-3 p-5 md:p-7">
                     <div class="flex flex-col md:flex-row justify-between">
@@ -52,7 +58,7 @@
                             <img 
                                 src="{{ asset('complaints/'.$complaint->image) }}" 
                                 alt="{{ $complaint->image }}"
-                                class="mx-1"
+                                class="w-1/2 h-1/2 my-1"
                             >
                         </div>
                     @endif

@@ -20,6 +20,6 @@ class UserAccess
             return $next($request);
         }
 
-        return redirect('login')->with('failed', 'cant access page');
+        return redirect('dashboard')->withErrors(['error', 'cant access page']);
     }
 }

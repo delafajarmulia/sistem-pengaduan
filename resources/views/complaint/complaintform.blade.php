@@ -23,21 +23,6 @@
                 <p class="text-center">
                     Memiliki keluhan? Jangan ragu untuk melaporkan yaa
                 </p>
-                
-                {{-- @if ($errors->any())
-                    <div class="mt-3 mx-auto w-auto bg-red bg-opacity-75 rounded-md md:w-3/4">
-                        <ul class="text-white-dark py-1.5 px-3 md:px-5">
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif --}}
-                {{-- @if (session('success'))
-                    <div class="mt-3 w-auto bg-green-light opacity-75 rounded-md">
-                        <p class="py-1 px-3 text-white-dark">{{ session('success') }}</p>
-                    </div>
-                @endif --}}
             </div>
 
             <form action="{{ route('complaint.post') }}" method="post" enctype="multipart/form-data" class="flex flex-col justify-center">

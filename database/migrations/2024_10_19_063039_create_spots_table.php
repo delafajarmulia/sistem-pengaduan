@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('spots', function (Blueprint $table) {
             $table->id();
-            $table->string('name', length:150)->nullable();
-            $table->longText('description')->nullable();
-            $table->string('address', length:150)->nullable();
+            $table->string('name', length:150);
+            $table->longText('description');
+            $table->string('address', length:150);
             $table->longText('html_address')->nullable();
             $table->timestamps();
         });

@@ -10,18 +10,17 @@
 <body class="flex justify-center items-center">
     <div class="p-10 text-black mt-5 w-96 rounded-md md:shadow-2xl shadow-gray">
         <h1 class="text-center font-bold pb-5 text-2xl">Login</h1>
+        
+        @if (session('success'))
+            <p class="w-3/4 p-4 mb-4 mt-5 bg-green-light opacity-75 text-white-dark font-semibold rounded-lg">
+                {{ session('success') }}
+            </p>
+        @endif
 
         @if ($errors->has('error'))
-            <div class="flex justify-center items-center w-auto bg-red opacity-75 rounded-md mt-3">
-                <p class="text-white-dark text-center py-1 px-3">
-                    {{ $errors->first('error') }}    
-                </p>
-            </div>
-        @endif
-        @if (session('failed'))
-            <div class="flex justify-center items-center w-auto bg-red opacity-75 rounded-md mt-3">
-                <p class="text-white-dark text-center text-xs py-1 px-3">{{ session('failed') }}</p>
-            </div>
+            <p class="w-3/4 p-4 mb-4 mt-5 bg-redt opacity-75 text-white-dark font-semibold rounded-lg">
+                {{ $errors->first('error') }}
+            </p>
         @endif
 
         <form id="login-form" action="{{ route('login.action') }}" method="POST">

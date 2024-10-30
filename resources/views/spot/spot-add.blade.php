@@ -15,16 +15,6 @@
                 Edit Tempat Wisata
             </h1>
 
-            {{-- @if ($errors->any())
-                <div class="mt-3 mx-auto w-auto bg-red bg-opacity-75 rounded-md md:w-3/4">
-                    <ul class="text-white-dark py-1.5 px-3 md:px-5">
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif --}}
-
             @if (session('success'))
                 <div class="mt-3 mx-auto w-auto bg-green-light opacity-75 rounded-md md:3/4">
                     <p class="text-white-dark py-1.5 px-3 md:px-5">{{ session('success') }}</p>

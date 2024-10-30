@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('responses', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('complaint_id')->nullable();
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->longText('content')->nullable();
-            $table->dateTime('date_of_response')->nullable();
+            $table->unsignedBigInteger('complaint_id');
+            $table->unsignedBigInteger('user_id');
+            $table->longText('content');
+            $table->dateTime('date_of_response');
             $table->timestamps();
 
             $table->foreign('complaint_id')->references('id')->on('complaints')->onDelete('cascade');

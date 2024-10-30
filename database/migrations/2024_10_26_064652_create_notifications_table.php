@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_home_id')->nullable();
-            $table->unsignedBigInteger('user_away_id')->nullable();
+            $table->unsignedBigInteger('user_home_id');
+            $table->unsignedBigInteger('user_away_id');
             $table->unsignedBigInteger('complaint_id')->nullable(); // emg dari awal udah nullable
             $table->enum('category', ['add_response', 'change_status', 'change_nik'])->default('add_response');
-            $table->longText('message')->nullable();
-            $table->dateTime('date_of_notification')->nullable();
+            $table->longText('message');
+            $table->dateTime('date_of_notification');
             $table->timestamps();
 
             $table->foreign('user_home_id')->references('id')->on('users')->onDelete('cascade');

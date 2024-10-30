@@ -74,6 +74,6 @@ class RegistrationController extends Controller
 
         User::create($data);
 
-        return redirect()->route('login');
+        return redirect()->route('login')->with('success', 'Silakan masuk ke dalam sistem dengan email dan password yang telah Anda daftarkan.');
     }
 }
