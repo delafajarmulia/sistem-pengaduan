@@ -6,6 +6,7 @@ use App\Http\Controllers\ComplaintDetailController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\PrintReportController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\SpotController;
 use App\Http\Controllers\UserController;
@@ -50,6 +51,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(
         Route::put('/change-nik/{id}', [ChangeNIKController::class, 'editNIK'])->name('change.nik.action');
         Route::get('/user-form-add', [UserController::class, 'showUserAdd'])->name('user.form.add');
         Route::post('/user-form-add', [UserController::class, 'addUser'])->name('user.add.post');
+        Route::get('/print-report', [PrintReportController::class, 'index'])->name('print.report');
     }
 );
 

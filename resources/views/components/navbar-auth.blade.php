@@ -16,7 +16,7 @@
             @if (auth()->user()->role === 'admin')
                 <!-- Menu Link untuk Desktop -->
                 <div id="desktopMenu" class="hidden md:flex md:items-center md:space-x-1 mt-2 md:mt-0 md:ml-5">
-                    <a href="{{ route('complaint') }}" class="rounded-md px-1 py-2 font-medium {{ Route::is('complaint') ? 'bg-white-light bg-opacity-25 px-3 py-0.5 pb-1.5' : '' }}">Cetak laporan</a>
+                    <a href="{{ route('print.report') }}" class="rounded-md px-1 py-2 font-medium {{ Route::is('print.report') ? 'bg-white-light bg-opacity-25 px-3 py-0.5 pb-1.5' : '' }}">Cetak laporan</a>
                     <a href="{{ route('spot.form.add') }}" class="rounded-md px-1 py-2 font-medium {{ Route::is('spot.form.add') ? 'bg-white-light bg-opacity-25 px-3 py-0.5 pb-1.5' : '' }}">Tambah wisata</a>
                     <a href="{{ route('user.form.add') }}" class="rounded-md px-1 py-2 font-medium {{ Route::is('user.form.add') ? 'bg-white-light bg-opacity-25 px-3 py-0.5 pb-1.5' : '' }}">Tambah pengguna</a>
                     <a href="{{ route('spots') }}" class="rounded-md px-1 py-2 font-medium {{ Route::is('spots') ? 'bg-white-light bg-opacity-25 px-3 py-0.5 pb-1.5' : '' }}">Daftar wisata</a>
@@ -35,7 +35,7 @@
             @if (auth()->user()->role === 'admin')
                 <!-- Menu Link untuk Mobile (hidden by default) -->
                 <div id="mobileMenu" class="hidden mt-2 md:hidden flex flex-col w-full text-left">
-                    <a href="{{ route('complaint') }}" class="rounded-md px-0 py-2 font-medium {{ Route::is('complaint') ? 'bg-white-light bg-opacity-25 px-3 py-0 pb-1.5' : '' }}">Cetak laporan</a>
+                    <a href="{{ route('print.report') }}" class="rounded-md px-0 py-2 font-medium {{ Route::is('print.report') ? 'bg-white-light bg-opacity-25 px-3 py-0 pb-1.5' : '' }}">Cetak laporan</a>
                     <a href="{{ route('spot.form.add') }}" class="rounded-md px-0 py-2 font-medium {{ Route::is('spot.form.add') ? 'bg-white-light bg-opacity-25 px-3 py-0 pb-1.5' : '' }}">Tambah wisata</a>
                     <a href="{{ route('user.form.add') }}" class="rounded-md px-0 py-2 font-medium {{ Route::is('user.form.add') ? 'bg-white-light bg-opacity-25 px-3 py-0 pb-1.5' : '' }}">Tambah pengguna</a>
                     <a href="{{ route('spots') }}" class="rounded-md px-0 py-2 font-medium {{ Route::is('spots') ? 'bg-white-light bg-opacity-25 px-3 py-0 pb-1.5' : '' }}">Daftar wisata</a>
