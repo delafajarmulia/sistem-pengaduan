@@ -12,13 +12,13 @@
         <h1 class="text-center font-bold pb-5 text-2xl">Login</h1>
         
         @if (session('success'))
-            <p class="w-3/4 p-4 mb-4 mt-5 bg-green-light opacity-75 text-white-dark font-semibold rounded-lg">
+            <p class="w-full p-4 mb-4 mt-5 bg-green-light opacity-75 text-white-dark font-semibold rounded-lg">
                 {{ session('success') }}
             </p>
         @endif
 
         @if ($errors->has('error'))
-            <p class="w-3/4 p-4 mb-4 mt-5 bg-redt opacity-75 text-white-dark font-semibold rounded-lg">
+            <p class="w-full p-4 mb-4 mt-5 bg-redt opacity-75 text-white-dark font-semibold rounded-lg">
                 {{ $errors->first('error') }}
             </p>
         @endif
@@ -36,7 +36,11 @@
             </div>
             <div class="pt-4">
                 <label for="">Kata sandi</label><br>
-                <input class="border border-gray rounded-md w-full px-2 py-1 pb-2" type="password" name="password" placeholder="Masukkan kata sandi" required value="{{ old('password') }}"> <!-- focus:border-blue-dark -->
+                <input class="border border-gray rounded-md w-full px-2 py-1 pb-2" type="password" id="password" name="password" placeholder="Masukkan kata sandi" required value="{{ old('password') }}"> <!-- focus:border-blue-dark -->
+                <div class="flex flex-cols mt-0.5">
+                    <input type="checkbox" onclick="showPw()"> 
+                    <p class="text-sm pl-1">lihat kata sandi</p>                  
+                </div>
                 @error('password')
                     <p class="text-xs text-red">
                         {{ $message }}
@@ -56,5 +60,17 @@
             </div>
         </form>
     </div>
+
+    <script>
+        function showPw(){
+            let inputPw = document.getElementById('password');
+
+            if(inputPw.type === 'password'){
+                inputPw.type = 'text';
+            }else{
+                inputPw.type = 'password';
+            }
+        }
+    </script>
 </body>
 </html>

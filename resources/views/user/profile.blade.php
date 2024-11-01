@@ -54,14 +54,22 @@
                 </div>
                 <div class="pt-4">
                     <label for="" class="mb-0.5">Password</label><br>
-                    <input type="text" name="password" class="w-full px-2 py-1 pb-2 border border-gray rounded-md">
+                    <input type="password" name="password" id="password" class="w-full px-2 py-1 pb-2 border border-gray rounded-md">
+                    <div class="flex flex-cols mt-0.5">
+                        <input type="checkbox" onclick="showPw()"> 
+                        <p class="text-sm pl-1">lihat kata sandi</p>                  
+                    </div>
                     @error('password')
                         <p>{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="pt-4">
                     <label for="" class="mb-0.5">Ulangi Password (konfimasi)</label><br>
-                    <input type="text" name="confirm_password" class="w-full px-2 py-1 pb-2 border border-gray rounded-md">
+                    <input type="password" name="confirm_password" id="retypePw" class="w-full px-2 py-1 pb-2 border border-gray rounded-md">
+                    <div class="flex flex-cols mt-0.5">
+                        <input type="checkbox" onclick="showRetypePw()"> 
+                        <p class="text-sm pl-1">lihat kata sandi</p>                  
+                    </div>
                     @error('confirm_password')
                         <p>{{ $message }}</p>
                     @enderror
@@ -82,5 +90,28 @@
             </form>
         </div>
     </div>
+
+    <script>
+        function showPw(){
+            let inputPw = document.getElementById('password');
+
+            if(inputPw.type === 'password'){
+                inputPw.type = 'text';
+            }else{
+                inputPw.type = 'password';
+            }
+        }
+
+        function showRetypePw(){
+            let inputPw = document.getElementById('retypePw');
+
+            if(inputPw.type === 'password'){
+                inputPw.type = 'text';
+            }else{
+                inputPw.type = 'password';
+            }
+        }
+    </script>
+
 </body>
 </html>
