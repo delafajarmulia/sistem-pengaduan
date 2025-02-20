@@ -25,6 +25,14 @@
                 </p>
             </div>
 
+            <div class="flex justify-center">
+                @if (session('error'))
+                    <p class="w-3/4 p-4 mb-4 mt-5 bg-red opacity-75 text-white-dark font-semibold rounded-lg">
+                        {{ session('error') }}
+                    </p>
+                @endif
+            </div>
+
             <form action="{{ route('complaint.post') }}" method="post" enctype="multipart/form-data" class="flex flex-col justify-center">
                 @csrf
                 <div class="w-4/5 mx-auto py-0 5">

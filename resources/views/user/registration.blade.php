@@ -39,7 +39,7 @@
                     </p>
                 @enderror
             </div>
-            <div class="pt-4">
+            {{-- <div class="pt-4">
                 <label for="">NIK</label><br>
                 <input class="border border-gray rounded-md w-full px-2 py-1 pb-2" type="number" name="nik" placeholder="nik" required value="{{ old('nik') }}" autocomplete="off">
                 @error('nik')
@@ -47,7 +47,7 @@
                         {{ $message }}
                     </p>
                 @enderror
-            </div>
+            </div> --}}
             <div class="pt-4">
                 <label for="">No Telepon</label><br>
                 <input class="border border-gray rounded-md w-full px-2 py-1 pb-2" type="number" name="phone" placeholder="nomor telepon" required value="{{ old('phone') }}" autocomplete="off">
@@ -72,6 +72,11 @@
             </div>
             <div>
                 <button type="submit" class="w-full p-1 pb-1.5 mt-5 mb-1 rounded-md text-white-dark font-semibold bg-green-light hover:bg-green-dark">Daftarkan</button>
+            </div>
+            <div>
+                <p class="mb-3 text-xs text-center">
+                    Sudah punya akun? <a href="{{ route('login') }}" class="text-blue-dark hover:text-blue-light">Masuk disini</a>
+                </p>
             </div>
         </form>
     </div>

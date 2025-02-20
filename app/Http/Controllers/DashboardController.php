@@ -10,9 +10,15 @@ use Illuminate\Support\Facades\Auth;
 class DashboardController extends Controller
 {
     public function index(){
-        $complaints = Complaint::with('responses')->with('user')->with('category')->with('spot')->with(['responses.user'])->latest()->get();
-        $notificationCount = Notification::where('user_away_id', Auth::id())->count();
-        return view('dashboard', compact(['complaints', 'notificationCount'])); 
+        if(Auth::user()->role === 'admin'){
+            $complaints = Complaint::with('responses')->with('user')->with('category')->with('spot')->with(['responses.user'])->latest()->get();
+            $notificationCount = Notification::where('user_away_id', Auth::id())->count();
+            return view('dashboard', compact(['complaints', 'notificationCount'])); 
+        } else {
+            $complaints = Complaint::where('user_id', Auth::id())->with('responses')->with('user')->with('category')->with('spot')->with(['responses.user'])->latest()->get();
+            $notificationCount = Notification::where('user_away_id', Auth::id())->count();
+            return view('dashboard', compact(['complaints', 'notificationCount'])); 
+        }
     }
 
     public function editStatus($id)

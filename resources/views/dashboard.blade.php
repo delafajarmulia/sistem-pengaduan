@@ -9,7 +9,7 @@
 </head>
 <body>
     <x-navbar-auth />
-    <div class="mt-20 text-black">
+    <div class="mt-20 text-black mb-5">
         <h1 class="text-2xl font-bold md:p-5 text-center">Semua Pengaduan</h1>
         <div class="flex flex-col justify-center items-center">
 
@@ -40,7 +40,7 @@
                                     <form action="{{ route('complaint.update', ['id'=>$complaint->id, 'user_away_id'=>$complaint->user_id])}}" method="post">
                                         @csrf
                                         @method('PUT')
-                                        <button type="submit" class="px-3 pt-0.5 pb-1.5 mr-2 text-white-dark rounded-md {{ $complaint->status == 'proses' ? 'bg-green-light hover:bg-green-dark' : 'bg-yellow-light hover:bg-yellow-dark' }}">
+                                        <button type="submit" class="px-3 pt-0.5 pb-1.5 mr-2 text-white-dark rounded-md {{ $complaint->status == 'proses' ? 'bg-blue-light hover:bg-green-dark' : 'bg-yellow-light hover:bg-yellow-dark' }}">
                                             Ubah status
                                         </button>
                                     </form>

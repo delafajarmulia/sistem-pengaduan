@@ -63,6 +63,11 @@
                 @csrf
                 <label for="">Tambahkan tanggapan Anda</label><br>
                 <textarea name="response" class="w-full border border-gray rounded-md mt-1 p-2 pb-3"></textarea>
+                @error('response')
+                    <p class="text-xs text-red">
+                        {{ $message }}
+                    </p>
+                @enderror
                 <button type="submit" class="w-full py-1.5 pb-2 bg-green-light hover:bg-green-dark text-white-dark font-semibold rounded-md mt-3 mb-5">
                     Tambahkan
                 </button>

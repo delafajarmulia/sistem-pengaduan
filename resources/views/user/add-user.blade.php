@@ -40,7 +40,7 @@
                     </p>
                 @enderror
             </div>
-            <div class="pt-4">
+            {{-- <div class="pt-4">
                 <label for="">NIK</label><br>
                 <input class="border border-gray rounded-md w-full px-2 py-1 pb-2" type="number" name="nik" placeholder="nik" required value="{{ old('nik') }}" autocomplete="off">
                 @error('nik')
@@ -48,7 +48,7 @@
                         {{ $message }}
                     </p>
                 @enderror
-            </div>
+            </div> --}}
             <div class="pt-4">
                 <label for="">No Telepon</label><br>
                 <input class="border border-gray rounded-md w-full px-2 py-1 pb-2" type="number" name="phone" placeholder="nomor telepon" required value="{{ old('phone') }}" autocomplete="off">

@@ -12,7 +12,7 @@
     <div class="mt-4 md:mt-14 flex justify-center items-center text-black">
         <div class="flex-col p-5 w-11/12 mt-5 md:w-3/4 md:shadow-2xl shadow-gray px-7 md:mb-9">
             <h1 class="text-2xl font-bold pt-8 text-center md:pt-1">
-                Edit Tempat Wisata
+                Tambah Tempat Wisata
             </h1>
 
             @if (session('success'))

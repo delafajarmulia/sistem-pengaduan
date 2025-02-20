@@ -27,7 +27,8 @@
             @csrf
             <div class="pt-4">
                 <label for="">Email</label><br>
-                <input class="border border-gray rounded-md w-full px-2 py-1 pb-2" type="email" name="email" placeholder="Masukkan email" required value="{{ old('email') }}" autocomplete="off">
+                <input class="border border-gray rounded-md w-full px-2 py-1 pb-2" type="email" name="email" placeholder="Masukkan email" 
+                        required value="{{ old('email') }}" autocomplete="off">
                 @error('email')
                     <p class="text-xs text-red">
                         {{ $message }}
@@ -36,7 +37,8 @@
             </div>
             <div class="pt-4">
                 <label for="">Kata sandi</label><br>
-                <input class="border border-gray rounded-md w-full px-2 py-1 pb-2" type="password" id="password" name="password" placeholder="Masukkan kata sandi" required value="{{ old('password') }}"> <!-- focus:border-blue-dark -->
+                <input class="border border-gray rounded-md w-full px-2 py-1 pb-2" type="password" id="password" name="password" 
+                        placeholder="Masukkan kata sandi" required value="{{ old('password') }}"> <!-- focus:border-blue-dark -->
                 <div class="flex flex-cols mt-0.5">
                     <input type="checkbox" onclick="showPw()"> 
                     <p class="text-sm pl-1">lihat kata sandi</p>                  

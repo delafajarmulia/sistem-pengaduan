@@ -8,10 +8,27 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-    <x-navbar-auth />
-    <div class="py-5 px-5 mt-14 md:mt-5 md:pt-28 w-auto mx-auto text-black md:w-3/4">
+    @auth
+        <x-navbar-auth />
+    @endauth
+    @guest
+        <x-navbar />
+    @endguest
+    <div class="py-5 px-5 mt-14 md:mt-3 md:pt-28 w-auto mx-auto text-black md:w-3/4">
         <h1 class="text-center font-bold pb-5 text-2xl">Daftar Wisata</h1>
-        <div class="grid grid-cols-1 gap-6 mt-2 flex justify-center items-center lg:grid-cols-2">
+        @if (session('success'))
+            <p class="w-full p-4 mb-4 mt-5 bg-green-light opacity-75 text-white-dark font-semibold rounded-lg">
+                {{ session('success') }}
+            </p>
+        @endif
+        @auth
+            @if (auth()->user()->role === 'admin')
+                <a href="{{ route('spot.form.add') }}" class="flex justify-end text-white-light mb-3">
+                    <div class="bg-green-light px-2 pt-1 pb-1.5 rounded-md">Tambah wisata</div>
+                </a>
+            @endif
+        @endauth
+        <div class="grid grid-cols-1 gap-6 mt-2 justify-center items-center lg:grid-cols-2">
             @foreach ($spots as $spot)
                 <div class="w-auto min-h-72 shadow-md shadow-gray px-5 py-5 rounded-md hover:shadow-2xl">
                     <a href="{{ route('spot.detail', ['id'=>$spot->id]) }}">
@@ -28,12 +45,17 @@
                                 {{ $spot->address }}
                             </p>
                         </div>
-                        <div class="mt-2">
+                        <div class="mt-2 flex flex-wrap w-full gap-2">
                             @auth
                                 @if (auth()->user()->role === 'admin')
                                     <a href="{{ route('spot.form.edit', ['id'=>$spot->id]) }}">
-                                        <button class="w-full py-1 bg-green-light text-white-dark rounded-md">Edit wisata</button>
+                                        <button class="px-3 py-1 bg-green-light text-white-dark rounded-md">Edit wisata</button>
                                     </a>
+                                    <form action="{{ route('spot.delete', ['id'=>$spot->id]) }}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="px-3 py-1 bg-red text-white-dark rounded-md">Hapus wisata</button>
+                                    </form>
                                 @endif
                             @endauth
                         </div>

@@ -23,11 +23,12 @@ class ComplaintController extends Controller
         return view('complaint.complaintform', compact(['categories', 'spots']));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
+        $userID = Auth::user()->id;
+        $categoryID = $request->input('category');
+        $categorieName = Category::where('id', $categoryID)->select('name')->first();
+
         $request->validate(
             [
                 'content' => 'required|min:5'
@@ -38,8 +39,14 @@ class ComplaintController extends Controller
             ]
         );
 
+        $userComplaintAvailabled = Complaint::where('user_id', $userID)->where('category_id', $categoryID)->get();
+
+        if(count($userComplaintAvailabled) >= 1){
+            return redirect()->route('complaint')->with('error', 'Maaf Anda telah membuat laporan untuk kategori '. $categorieName->name);
+        }
+
         if($request->hasFile('image')){
-           $request->validate(
+            $request->validate(
                 [
                     'image'     => 'image|mimes:jpeg,jpg,png,bmp,gif,webp|max:2048'
                 ],
@@ -55,8 +62,8 @@ class ComplaintController extends Controller
             $image->move(public_path('complaints'), $newFileName);
 
             $data = [
-                'category_id'       => $request->input('category'),
-                'user_id'           => Auth::user()->id,
+                'category_id'       => $categoryID,
+                'user_id'           => $userID,
                 'spot_id'           => $request->input('spot'),
                 'image'             => $newFileName,
                 'content'           => $request->input('content'),
@@ -68,10 +75,9 @@ class ComplaintController extends Controller
             return redirect()->route('dashboard')->with('success', 'Terima kasih telah membuat laporan. Laporan Anda secepatnya akan kami proses');
         }
 
-
         $data = [
-            'category_id'       => $request->input('category'),
-            'user_id'           => Auth::user()->id,
+            'category_id'       => $categoryID,
+            'user_id'           => $userID,
             'spot_id'           => $request->input('spot'),
             'image'             => null,
             'content'           => $request->input('content'),

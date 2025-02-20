@@ -46,12 +46,15 @@ Route::middleware(['auth', 'user-access:admin'])->group(
         Route::post('/spot-form-add', [SpotController::class, 'createSpot'])->name('spot.post');
         Route::get('/spot-form-edit/{id}', [SpotController::class, 'spotDetailForEdit'])->name('spot.form.edit');
         Route::put('/spot-form-edit/{id}', [SpotController::class, 'spotUpdate'])->name('spot.edit');
+        Route::delete('/spot-delete/{id}', [SpotController::class, 'spotDelete'])->name('spot.delete');
         Route::get('/users', [UserController::class, 'index'])->name('users');
+        Route::put('/user/is-active/{id}', [UserController::class, 'isActiveUpdate'])->name('user.activated.update');
         Route::get('/change-nik/{id}', [ChangeNIKController::class, 'changeNIKForm'])->name('change.nik.form');
         Route::put('/change-nik/{id}', [ChangeNIKController::class, 'editNIK'])->name('change.nik.action');
         Route::get('/user-form-add', [UserController::class, 'showUserAdd'])->name('user.form.add');
         Route::post('/user-form-add', [UserController::class, 'addUser'])->name('user.add.post');
         Route::get('/print-report', [PrintReportController::class, 'index'])->name('print.report');
+        Route::post('/print-report', [PrintReportController::class, 'filterReport'])->name('filter.report');
     }
 );
 

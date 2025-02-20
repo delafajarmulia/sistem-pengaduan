@@ -3,9 +3,6 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        {{-- <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> --}}
         <link href="https://fonts.googleapis.com/css2?family=Anta&display=swap" rel="stylesheet">
         <title>Sistem Pengaduan</title>
         @vite('resources/css/app.css')
@@ -14,7 +11,7 @@
 
     <style>
         .bg-leaf-bg {
-            background-image: url(/assets/leaf-background.jpg);
+            background-image: url(/assets/alun-alun.jpg);
         }
         .ph {
             display: inline-block;
@@ -39,41 +36,74 @@
     
     <body class="text-black">
         <div class="bg-leaf-bg bg-cover bg-center h-screen flex flex-col">
-            <nav class="bg-white-dark opacity-70 w-full fixed top-0 z-10 py-4 px-5">
-                <a href="{{ route('main') }}">
-                    <h1 class="text-black font-semibold text-xl md:text-2xl opacity-100">
-                        Sistem Pengaduan
-                    </h1>
-                </a>
-            </nav>
-            <div class="flex-grow flex items-center justify-center flex-col">
+
+            <!-- Header Start -->
+            <header class="absolute top-0 left-0 z-10 flex w-full items-center bg-transparent">
+                <div class="container">
+                    <div class="relative flex items-center justify-between lg:justify-start">
+                        <div class="px-4 ml-3">
+                            <a href="#home" class="block py-6 text-lg font-bold text-green-light lg:text-2xl">Sistem Pengaduan</a>
+                        </div>
+                        <div class="flex items-center px-4">
+                            <button id="hamburger" name="hamburger" type="button" class="absolute right-4 block lg:hidden">
+                                <span class="hamburger-line origin-top-left transition duration-300 ease-in-out"></span>
+                                <span class="hamburger-line transition duration-300 ease-in-out"></span>
+                                <span class="hamburger-line origin-bottom-left transition duration-300 ease-in-out"></span>
+                            </button>
+
+                            <nav 
+                                id="nav-menu" 
+                                class="absolute right-4 top-full hidden w-full max-w-[250px] rounded-lg bg-white-dark py-5 shadow-lg lg:static lg:block lg:max-w-full lg:rounded-none lg:bg-transparent lg:bg-opacity-0 lg:pt-6 lg:shadow-none"
+                            >
+                                <ul class="block lg:flex">  
+                                    <li class="li-nav group">
+                                        <a href="#commit" class="mx-8 flex py-2 text-base text-black lg:text-green-light lg:font-semibold group-hover:text-primary">Komitmen</a>
+                                    </li>
+                                    <li class="li-nav group">
+                                        <a href="#spots" class="mx-8 flex py-2 text-base text-black lg:text-green-light lg:font-semibold group-hover:text-primary">Wisata</a>
+                                    </li>
+                                    <li class="li-nav group">
+                                        <a href="#faq" class="mx-8 flex py-2 text-base text-black lg:text-green-light lg:font-semibold group-hover:text-primary">FAQ</a>
+                                    </li>
+                                    <li class="li-nav group">
+                                        <a href="#contact" class="mx-8 flex py-2 text-base text-black lg:text-green-light lg:font-semibold group-hover:text-primary">Kontak</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- Header End -->
+
+            <div class="flex-grow flex items-center justify-center flex-col" id="home">
                 <h1 class="font-custom text-white-dark font-bold text-center text-3xl md:text-5xl">
                     DESTINASI WISATA
                 </h1>
                 <div class="w-1/2 flex items-center justify-center mt-3">
-                    <div class="text-white-dark text-center font-2xl font-semibold">
-                        <p>
+                    <div class="text-green-light bg-white-dark px-5 pb-3.5 py-2 rounded-full font-semibold font-2xl">
+                        <p class="text-center">
                             Laporkan kerusakan fasilitas pariwisata di Kabupaten Batang!
                         </p>
-                        <p>
+                        <p class="text-center">
                             Setiap laporan Anda adalah langkah menuju pariwisata yang lebih baik dan aman bagi semua.
                         </p>
                     </div>
                 </div>
-                <div class="mt-4">
-                    <a href="{{ route('login') }}" class="text-green-light bg-white-dark px-5 pb-3.5 py-2 rounded-full font-semibold font-2xl hover:bg-opacity-25 hover:text-white-dark"> <!-- hover:border border-3 border-white-dark-->
-                        Buat Laporan
+                <div class="mt-10">
+                    <a href="{{ route('login') }}" class="text-green-light bg-white-dark px-5 pb-3.5 py-2 rounded-full font-semibold font-3xl hover:bg-opacity-25 hover:text-white-dark"> 
+                        BUAT LAPORAN
                     </a>
                 </div>
             </div>
         </div>
 
-        <div class="py-20 px-5 w-auto mx-auto md:w-3/4">
+        <div id="commit" class="py-20 px-5 w-auto mx-auto md:w-3/4">
             <div class="mx-auto ">
                 <h1 class="font-bold text-3xl">
                     Komitmen kami
                 </h1>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8 flex justify-center items-center">
+                <div class="grid grid-cols-1 mx-auto lg:grid-cols-2 gap-6 mt-8">
                     @php
                         $commits = getCommits();
                     @endphp
@@ -94,26 +124,19 @@
             </div>
         </div>
 
-        <div class="pt-0 pb-12 px-12 mx-auto md:w-3/4 md:pt-8 md:pb-24">
+        <div id="invite" class="pt-0 pb-12 px-12 mx-auto md:w-3/4 md:pt-8 md:pb-24">
             <p class="text-center text-xl font-semibold">
                 Laporkan kerusakan fasilitas pariwisata untuk bantu tingkatkan pengalaman wisata! 
                 Dengan satu laporan, Anda berkontribusi untuk pariwisata yang lebih baik di Kabupaten Batang!
             </p>
         </div>
 
-        <div class="pt-0 pb-12 px-5 mx-auto md:w-3/4 md:pt-8 md:pb-24">
+        <div id="spots" class="pt-0 pb-12 px-5 mx-auto md:w-3/4 md:pt-8 md:pb-24">
             <h1 class="font-bold text-3xl">
                 Wisata Kami
             </h1>
-            <p class="text-right underline pr-2 text-blue-dark hover:text-blue-light md:pb-1">
-                <a 
-                    href="{{ route('spots') }}"
-                >
-                    lihat semua
-                </a>
-            </p>
 
-            <div class="grid md:grid-cols-1 gap-4 lg:grid-cols-3">
+            <div class="grid md:grid-cols-1 gap-4 lg:grid-cols-3 mt-2">
                 @foreach ($spots as $spot)
                     <a href="{{ route('spot.detail', ['id'=>$spot->id]) }}">
                         <div
@@ -133,9 +156,27 @@
                     </a>
                 @endforeach
             </div>
+
+            <p class="text-right underline mt-1 pr-2 text-blue-dark hover:text-blue-light">
+                <a 
+                    href="{{ route('spots') }}"
+                >
+                    lihat semua
+                </a>
+            </p>
         </div>
 
-        <div class="py-5 px-9">
+        <div id="" class="pt-0 pb-12 px-5 mx-auto md:w-3/4 md:pt-8 md:pb-24">
+            <h1 class="font-bold text-3xl text-center pb-4">Contoh</h1>
+            <div>
+                @foreach ($complaints as $complaint)
+                    <p>{{ censorName($complaint->user->name) }}</p>
+                    <p>{{ $complaint->content }}</p>
+                @endforeach
+            </div>
+        </div>
+
+        <div id="faq" class="py-5 px-9">
             <div class="w-full mx-auto mb-4 md:w-6/12">
                 <h1 class="font-bold text-3xl text-center pb-4">
                     Ada pertanyaan?
@@ -161,7 +202,7 @@
             </div>
         </div>
 
-        <div class="bg-gradient-to-r from-green-lighter via-green-light to-green-dark w-full px-5 py-7 mt-7 ">
+        <div id="contact" class="bg-gradient-to-r from-green-lighter via-green-light to-green-dark w-full px-5 py-7 mt-7 ">
             <div class="w-full md:w-3/4 mx-auto grid gap-4 grid-cols-1 lg:grid-cols-2">
                 <div class="w-fit">
                     <h1 class="text-white-dark font-bold text-2xl md:text-3xl">
@@ -184,4 +225,42 @@
             </div>
         </div>
     </body>
+
+    <script>
+        // Navbar Fixed
+        window.onscroll = function () {
+            const header = document.querySelector('header');
+            const fixedNav = header.offsetTop;
+            const toTop = document.querySelector('#to-top');
+            const liNav = document.querySelectorAll('li-nav');
+
+            if (window.pageYOffset > fixedNav) {
+                header.classList.add('navbar-fixed');
+                toTop.classList.remove('hidden');
+                toTop.classList.add('flex');
+                liNav.classList.add('text-black');
+            } else {
+                header.classList.remove('navbar-fixed');
+                toTop.classList.remove('flex');
+                toTop.classList.add('hidden');
+            }
+        };
+
+        // Hamburger
+        const hamburger = document.querySelector('#hamburger');
+        const navMenu = document.querySelector('#nav-menu');
+
+        hamburger.addEventListener('click', function () {
+        hamburger.classList.toggle('hamburger-active');
+        navMenu.classList.toggle('hidden');
+        });
+
+        // Klik di luar hamburger
+        window.addEventListener('click', function (e) {
+        if (e.target != hamburger && e.target != navMenu) {
+            hamburger.classList.remove('hamburger-active');
+            navMenu.classList.add('hidden');
+        }
+        });
+    </script>
 </html>

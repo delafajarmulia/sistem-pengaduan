@@ -14,9 +14,17 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        $userSum = User::count();
+        $userSum = count($users);
 
         return view('user.user-list', compact('users', 'userSum'));
+    }
+
+    public function isActiveUpdate($id){
+        $user = User::find($id);
+        $user->is_active = $user->is_active === 'true' ? 'false' : 'true';
+        $user->save();
+
+        return redirect()->route('users')->with('success', 'Berhasil mengubah status');
     }
 
     // lihat detail pengguna
@@ -44,7 +52,7 @@ class UserController extends Controller
             [
                 'name'      => 'required|min:3|max:50',
                 'email'     => 'required|min:3|max:100|unique:users,email,' . $user->id,
-                'nik'       => 'unique:users,nik,' . $user->id . '|alpha_num:ascii|min:16|max:16',
+                // 'nik'       => 'unique:users,nik,' . $user->id . '|alpha_num:ascii|min:16|max:16',
                 'phone'     => '|alpha_num:ascii|min:10|max:13'
             ],
             [
@@ -59,13 +67,13 @@ class UserController extends Controller
                     'max'       =>'Email maksimal diisikan oleh :max karakter',
                     'unique'    =>'Email sudah terdaftar'
                 ],
-                'nik'=>[
-                    'required'  =>'Data nama harus diisikian',
-                    'min'       =>'NIK minimal diisikan oleh :min karakter',
-                    'max'       =>'NIK maksimal diisikan oleh :max karakter',
-                    'unique'    =>'NIK sudah terdaftar',
-                    'alpha_num' =>'NIK hanya boleh diisikan oleh angka'
-                ],
+                // 'nik'=>[
+                //     'required'  =>'Data nama harus diisikian',
+                //     'min'       =>'NIK minimal diisikan oleh :min karakter',
+                //     'max'       =>'NIK maksimal diisikan oleh :max karakter',
+                //     'unique'    =>'NIK sudah terdaftar',
+                //     'alpha_num' =>'NIK hanya boleh diisikan oleh angka'
+                // ],
                 'phone'=>[
                     'required'  =>'Data nomor telepon harus diisikian',
                     'min'       =>'Nomor Telepon minimal diisikan oleh :min karakter',
@@ -77,7 +85,7 @@ class UserController extends Controller
 
         $user->name = $request->name;
         $user->email = $user->email;
-        $user->nik = $user->nik;
+        // $user->nik = $user->nik;
         $user->password = $user->password;
         $user->role = $user->role;
         $user->phone = $request->phone;
@@ -85,13 +93,23 @@ class UserController extends Controller
         // Cek apakah password dan confirm_password diisi
         if ($request->filled('password') || $request->filled('confirm_password')) {
             // Validasi hanya jika salah satu terisi
-            $request->validate([
-                'password'          => 'nullable|min:8|max:50',
-                'confirm_password'  => 'required_with:password|same:password|min:8|max:50',
-            ], [
-                'confirm_password.same'         => 'Konfirmasi password harus sama dengan password',
-                'confirm_password.required_with' => 'Konfirmasi password harus diisi jika password diisi',
-            ]);
+            $request->validate(
+                [
+                    'password'          => 'nullable|min:8|max:50',
+                    'confirm_password'  => 'required_with:password|same:password|min:8|max:50',
+                ],
+                [ 
+                    'password'=>[
+                        'nullable'      => 'Password harus diisikan',
+                        'min'           => 'Password minimal harus mengandung :min karakter',      
+                        'max'           => 'Password maksimal harus mengandung :max karakter'      
+                    ],
+                    'confirm_password'=>[
+                        'same'          => 'Konfirmasi password harus sama dengan password',
+                        'required_with' => 'Konfirmasi password harus diisi jika password diisi',
+                    ] 
+                ]
+            );
 
             if ($request->filled('password')) {
                 $user->password = bcrypt($request->password);
@@ -99,12 +117,12 @@ class UserController extends Controller
         }
 
         // Cek dan update NIK dan Email jika ada perubahan
-        if ($request->nik !== $user->nik) {
-            if (User::where('nik', $request->nik)->exists()) {
-                return redirect()->route('profile', ['id' => $user->id])->withErrors(['nik' => 'NIK sudah terdaftar']);
-            }
-            $user->nik = $request->nik;
-        }
+        // if ($request->nik !== $user->nik) {
+        //     if (User::where('nik', $request->nik)->exists()) {
+        //         return redirect()->route('profile', ['id' => $user->id])->withErrors(['nik' => 'NIK sudah terdaftar']);
+        //     }
+        //     $user->nik = $request->nik;
+        // }
 
         if ($request->email !== $user->email) {
             if (User::where('email', $request->email)->exists()) {
@@ -128,7 +146,7 @@ class UserController extends Controller
             [
                 'name'      =>'required|min:3|max:50',
                 'email'     =>'required|min:3|max:100|unique:users,email',
-                'nik'       =>'unique:users,nik|alpha_num:ascii|min:16|max:16',
+                // 'nik'       =>'unique:users,nik|alpha_num:ascii|min:16|max:16',
                 'phone'     =>'alpha_num:ascii|min:10|max:13',
                 'password'  =>'required|min:8|max:50'
             ],
@@ -144,13 +162,13 @@ class UserController extends Controller
                     'max'       =>'Email maksimal diisikan oleh :max karakter',
                     'unique'    =>'Email sudah terdaftar'
                 ],
-                'nik'=>[
-                    'required'  =>'Data nama harus diisikian',
-                    'min'       =>'NIK minimal diisikan oleh :min karakter',
-                    'max'       =>'NIK maksimal diisikan oleh :max karakter',
-                    'unique'    =>'NIK sudah terdaftar',
-                    'alpha_num' =>'NIK hanya boleh diisikan oleh angka'
-                ],
+                // 'nik'=>[
+                //     'required'  =>'Data nama harus diisikian',
+                //     'min'       =>'NIK minimal diisikan oleh :min karakter',
+                //     'max'       =>'NIK maksimal diisikan oleh :max karakter',
+                //     'unique'    =>'NIK sudah terdaftar',
+                //     'alpha_num' =>'NIK hanya boleh diisikan oleh angka'
+                // ],
                 'phone'=>[
                     'required'  =>'Data nomor telepon harus diisikian',
                     'min'       =>'Nomor Telepon minimal diisikan oleh :min karakter',
@@ -167,17 +185,18 @@ class UserController extends Controller
 
         $data = [
             'name'=>$request->input('name'),
-            'nik'=>$request->input('nik'),
+            // 'nik'=>$request->input('nik'),
             'email'=>$request->input('email'),
             'phone'=>$request->input('phone'),
             'password'=>bcrypt($request->input('password')),
-            'role'=>$request->input('role')
+            'role'=>$request->input('role'),
+            'is_active'=>'true'
         ];
 
 
-        if (User::where('nik', $request->nik)->exists()) {
-            return redirect()->route('registration')->withErrors(['nik' => 'NIK sudah terdaftar']);
-        }
+        // if (User::where('nik', $request->nik)->exists()) {
+        //     return redirect()->route('registration')->withErrors(['nik' => 'NIK sudah terdaftar']);
+        // }
 
         if (User::where('email', $request->email)->exists()) {
             return redirect()->route('registration')->withErrors(['email' => 'Email sudah terdaftar']);

@@ -164,6 +164,11 @@ class SpotController extends Controller
 
         $spot->save();
 
-        return redirect()->route('spots')->with('success', 'Berhasil menambahkan data');
+        return redirect()->route('spots')->with('success', 'Berhasil mengubah data');
+    }
+
+    public function spotDelete(string $id){
+        Spot::where('id', $id)->delete();
+        return redirect()->route('spots')->with('success', 'Berhasil menghapus data');
     }
 }

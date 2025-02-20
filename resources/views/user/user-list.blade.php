@@ -24,6 +24,15 @@
                             {{ $user->email }}
                         </h6>
                     </div>
+                    <div class="my-auto">
+                        <form action="{{ route('user.activated.update', ['id'=>$user->id])}}" method="post">
+                            @csrf
+                            @method('PUT')
+                            <button class="px-2 pt-1 pb-1.5 text-white-dark text-sm font-semibold rounded {{ $user->is_active === 'true' ? 'bg-red' : 'bg-green-light'}}">
+                                {{ $user->is_active === 'true' ? 'Nonaktifkan' : 'Aktifkan'}}
+                            </button>
+                        </form>
+                    </div>
                 </div>
             @endforeach
         </div>
