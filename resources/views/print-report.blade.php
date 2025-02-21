@@ -9,7 +9,22 @@
 </head>
 <body>
     <div class="mt-9 text-black">
-        <h1 class="text-2xl font-bold md:p-5 text-center">Semua Pengaduan</h1>
+        <div class="flex justify-between w-3/4 mx-auto">
+            <img 
+                src="/assets/logo-batang.png" 
+                alt="Logo Kab Batang"
+                class="w-20"
+            >
+            <div class="text-center">
+                <h1 class="font-bold">PEMERINTAH KABUPATEN BATANG</h1>
+                <h1 class="font-bold">DINAS PARIWISATA KEPEMUDAAN DAN OLAHRAGA</h1>
+                <p>Jl. RA Kartini No.1, Bogoran, Kauman, Kec. Batang, Kabupaten Batang, Jawa Tengah 51216</p>
+            </div>
+        </div>
+
+        <hr class="w-3/4 border-2 my-3 mx-auto">
+
+        {{-- <h1 class="text-2xl font-bold md:p-5 text-center">Semua Pengaduan</h1> --}}
         <div class="flex flex-row justify-between mt-5 px-20">
             <p class="mb-1">Dicetak pada : {{ $datetimeNow }}</p>
             <form id="filter-report" action="{{ route('filter.report') }}" method="post">
