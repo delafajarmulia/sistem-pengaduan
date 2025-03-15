@@ -167,43 +167,12 @@
         </div>
 
         <div id="" class="pt-0 pb-12 px-5 mx-auto md:w-3/4 md:pt-8 md:pb-24">
-            <h1 class="font-bold text-3xl text-center pb-4">Aduan Masyarakat</h1>
-            <div class="space-y-2 p-4">
-                @foreach ($complaints as $complaint)
-                    <div class="flex">
-                        <div class="relative p-4 rounded-lg max-w-3xl text-black
-                                     bg-green-light mr-auto ">
-                            
-                            <!-- Bubble Content -->
-                            <p class="font-semibold">{{ censorName($complaint->user->name) }}</p>
-                            @if ($complaint->image)
-                                <div class="flex justify-center items-center">
-                                    <img 
-                                        src="{{ asset('complaints/'.$complaint->image) }}" 
-                                        alt="{{ $complaint->image }}"
-                                        class="w-auto h-auto md:w-full md:h-full my-1 rounded-md"
-                                    >
-                                </div>
-                            @endif
-                            <p>{{ $complaint->content }}</p>
-            
-                            <!-- Tail -->
-                            <div class="absolute top-2 w-0 h-0"
-                                style="
-                                    border-top: 8px solid transparent;
-                                    border-bottom: 8px solid transparent;
-                                    border-right: 8px solid #32CD32; left: -8px;
-                                ">
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
+            <h1 class="font-bold text-3xl text-center pb-4 mb-3">Aduan Masyarakat</h1>
 
             <div class="grid grid-cols-3 gap-3">
                 @foreach ($complaints as $complaint)
-                    <div class="h-fit p-2 rounded-md shadow-md shadow-gray hover:shadow-green-light">
-                        <div class="flex gap-2">
+                    <div class="h-fit p-2 rounded-md shadow-md shadow-gray hover:shadow-lg">
+                        <div class="flex gap-2 mb-1.5">
                             <img src="https://www.w3schools.com/w3images/avatar2.png" class="w-8 h-8 rounded-full" alt="Avatar">
                             <p class="font-semibold my-auto">{{ censorName($complaint->user->name) }}</p>
                         </div>
@@ -212,7 +181,7 @@
                                 <img 
                                     src="{{ asset('complaints/'.$complaint->image) }}" 
                                     alt="{{ $complaint->image }}"
-                                    class="w-auto h-auto md:w-full md:h-full my-1 rounded-md"
+                                    class="w-auto h-24 md:w-full md:h-full my-1 rounded-md"
                                 >
                             </div>
                         @endif
