@@ -11,7 +11,7 @@
 
     <style>
         .bg-leaf-bg {
-            background-image: url(/assets/alun-alun.jpg);
+            background-image: url(/assets/leaf-background.jpg);
         }
         .ph {
             display: inline-block;
