@@ -39,11 +39,11 @@ class ComplaintController extends Controller
             ]
         );
 
-        $userComplaintAvailabled = Complaint::where('user_id', $userID)->where('category_id', $categoryID)->get();
+        // $userComplaintAvailabled = Complaint::where('user_id', $userID)->where('category_id', $categoryID)->get();
 
-        if(count($userComplaintAvailabled) >= 1){
-            return redirect()->route('complaint')->with('error', 'Maaf Anda telah membuat laporan untuk kategori '. $categorieName->name);
-        }
+        // if(count($userComplaintAvailabled) >= 1){
+        //     return redirect()->route('complaint')->with('error', 'Maaf Anda telah membuat laporan untuk kategori '. $categorieName->name);
+        // }
 
         if($request->hasFile('image')){
             $request->validate(

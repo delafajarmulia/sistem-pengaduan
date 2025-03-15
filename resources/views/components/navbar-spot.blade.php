@@ -2,7 +2,7 @@
     <div class="container mx-auto flex flex-col md:flex-row md:justify-between items-start md:items-center px-5">
         <!-- Bagian Nama Aplikasi dan Hamburger -->
         <div class="flex justify-between items-center w-full md:w-auto">
-            <a href="{{ auth()->check() ? route('dashboard') : route('main') }}" class="text-lg font-bold text-green-light lg:text-2xl">Sistem Pengaduan</a>
+            <a href="{{ auth()->check() ? route('dashboard') : route('main') }}" class="text-lg font-bold text-green-light lg:text-2xl">Suara Qita</a>
 
             <!-- Toggle Button for Mobile (Hamburger Icon) -->
             <button id="menuToggle" class="md:hidden focus:outline-none ml-4">

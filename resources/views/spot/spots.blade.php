@@ -30,7 +30,7 @@
         @endauth
         <div class="grid grid-cols-1 gap-6 mt-2 justify-center items-center lg:grid-cols-2">
             @foreach ($spots as $spot)
-                <div class="w-auto min-h-72 shadow-md shadow-gray px-5 py-5 rounded-md hover:shadow-2xl">
+                <div class="w-auto min-h-72 shadow-md shadow-gray px-5 py-5 rounded-md hover:shadow-lg">
                     <a href="{{ route('spot.detail', ['id'=>$spot->id]) }}">
                         <img 
                             src="{{ asset('/spots/'.$spot->image) }}" 
