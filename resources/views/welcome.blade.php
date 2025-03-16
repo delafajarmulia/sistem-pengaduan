@@ -169,7 +169,7 @@
         <div id="" class="pt-0 pb-12 px-5 mx-auto md:w-3/4 md:pt-8 md:pb-24">
             <h1 class="font-bold text-3xl text-center mb-4">Aduan Masyarakat</h1>
 
-            <div class="grid grid-cols-3 gap-3">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                 @foreach ($complaints as $complaint)
                     <div class="h-fit p-2 rounded-md shadow-md shadow-gray hover:shadow-lg">
                         <div class="flex gap-2 m-2">
